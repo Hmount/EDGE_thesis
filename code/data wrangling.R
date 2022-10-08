@@ -7,9 +7,8 @@
 # edited to be more concise and now leaving Sevietta sites separated
 
 #### data ####
-
 # read CSV from Dave code to calculate lambda
-cover <- read.csv("cover.csv") 
+cover <- read.csv("data/cover.csv") 
 
 #library loading
 library(tidyverse)
@@ -355,7 +354,7 @@ NEWallSBK$invasiondiff = NEWallSBK$invasionLDGRchr - NEWallSBK$invasionLDGRcon
 
 #### Bind all site data together ####
 all <- bind_rows(CHY, HYS, KNZ, SGS, SBL, SBK) ##all raw site data
-write.csv(all, "all.csv", row.names = F)
+write.csv(all, "data/allraw.csv", row.names = F)
 
 NEWalldata <- bind_rows(NEWalldat, NEWallHYS, NEWallKNZ, NEWallSGS, NEWallSBL, NEWallSBK, .id = "source") ##all calculated site data
 
@@ -363,7 +362,7 @@ NEWalldata <- bind_rows(NEWalldat, NEWallHYS, NEWallKNZ, NEWallSGS, NEWallSBL, N
 NEWalldata$condiff = NEWalldata$invasionLDGRcon - NEWalldata$intrinsicLDGRcon #in ambient
 NEWalldata$chrdiff = NEWalldata$invasionLDGRchr - NEWalldata$intrinsicLDGRchr #in drought
 
-write.csv(NEWalldata, file='alldata.csv', row.names = F) #make csv
+write.csv(NEWalldata, file='data/alldata.csv', row.names = F) #make csv
 
 
 ################################################################################################
@@ -372,7 +371,7 @@ write.csv(NEWalldata, file='alldata.csv', row.names = F) #make csv
 #*original master trait datasheet lost, but final CSV from original analysis still exists with that data in it, so that is just read in here. See OG analysis rmd for how it was created.*
 
 ##also read in master trait list with valus from TRY, DB, AS, ST
-all_previous <- read.csv("allsp.csv", 
+all_previous <- read.csv("data/allsp.csv", 
                          header = TRUE, 
                          fill =TRUE, na.strings = c("NA", " ", ""))
 MasterTrait <- subset(all_previous[,1:17])
@@ -477,7 +476,7 @@ NEWallsite <- NEWallsite %>%
 
 
 #save
-write.csv(NEWallsite, file='allsite_new.csv', row.names = F) #make csv
+write.csv(NEWallsite, file='data/allsite_new.csv', row.names = F) #make csv
 
-#clean environment
-rm(list=ls(NEWallsite))
+#clean environment, save final data frame only
+rm(list=setdiff(ls(), "NEWallsite"))
