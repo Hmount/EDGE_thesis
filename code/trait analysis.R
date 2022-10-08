@@ -1,98 +1,92 @@
 #### traits analysis ####
 
+#### data and packages + clean ####
+library(tidyverse)
+
+CWM_sitedata <- read.csv("data/CWM_sitedata.csv") #trait data
+
+trtdata<-CWM_sitedata[,c(1:13,27:37,39,41:48)] #just variables I will use
+trtdata[,c(3:11,13,16:25,33)]<-log(trtdata[,c(3:11,13,16:25,33)]) #log focal and CWM traits 
+trtdata[,12]<-log(abs(trtdata[,12])) #abs then log for TLP.x
 
 
-#### basic stats ####
-#how many populations have data?
+#### basic stats and relationships ####
+# how many populations have data?
 sum(complete.cases(NEWallsite[,c(6:16)])) #21 species have all rows
 trtcnt <- rowSums(!is.na(NEWallsite[,c(6:16)])) #count for each row w/ traits filled in
 sum(trtcnt == 0) #20 have no trait data 
 sum(trtcnt > 5) #58 have more than 5 traits
 (sum(trtcnt > 5)/sum(trtcnt >= 0))*100 #50% of data has more than 5 traits
 
+# do CWMs differ between grasslands? by both traits? (yes and yes)
+summary(aov(SLA.x ~ grassland_type, trtdata))
+summary(aov(TLP.x ~ grassland_type, trtdata))
+summary(mod<-lm(SLA.x~TLP.x*grassland_type, trtdata))
+anova(mod)
+#view:
+ggplot(trtdata, aes(x=TLP.x, y=SLA.x, color=grassland_type))+ 
+  geom_point()
+
+# does intrinsicdiff change with CWM SLA alone or by grassland? (no)
+ggplot(trtdata, aes(x=SLA.x, y=intrinsicdiff))+ 
+  geom_point()
+summary(lm(intrinsicdiff~SLA.x, trtdata))
+
 
 #### modelling ####
-#clean:
-CWM_sitedata<-CWM_sitedata[,c(1:13,26,28:43,45:48)] #just variables I will use
-CWM_sitedata[,c(3:11,13,15:25)]<-log(CWM_sitedata[,c(3:11,13,15:25)]) #log focal and CWM traits 
-CWM_sitedata[,12]<-log(abs(CWM_sitedata[,12])) #diff abs then log for TLP
+# model responses as a function of focal traits* grassland + community CWM SLA and TLP
+# considered including + total relative cover, but I am looking at pop. level diffs not 
+# specific times/cover so it would either be redundant with grassland or difference in
+# cover between conditions?
 
-##model responses as a function of focal traits* grassland + community CWM for SLA and TLP + total relative cover by grassland growth rate
-#exploratory plot
-
-
-#some relationships:
-#CWM are clearly different at the different grasslands 
-ggplot(CWM_sitedata, aes(x=TLP.x, y=SLA.x, color=grassland_type))+ 
-  geom_point()
-summary(mod<-lm(SLA.x~TLP.x*grassland_type, CWM_sitedata))
-anova(mod)
-summary(aov(SLA.x ~ grassland_type, CWM_sitedata))
-
-#intrinsic diff is not related to CWM SLA alone or by grassland
-ggplot(CWM_sitedata, aes(x=SLA.x, y=intrinsicdiff))+ 
-  geom_point()
-summary(lm(intrinsicdiff~SLA.x, CWM_sitedata))
-
-#mean of other per species per each species-site
-meancov_local <- allothermeans %>% group_by(grassland_type, species) %>% summarize(meancov_local = mean(meanother))
-#find relative coverage of site with trait coverage
-allnewsum <- allnew %>% group_by(grassland_type, species) %>% #group and order variables 
-  summarise(abscov = sum(cover))
-CWM_sitedata1 <- merge(CWM_sitedata, allnewsum, by=c("species","grassland_type"))
-
-
-###unneeded?
-#now response to drought by trait
-summary(mod_la<-lm(intrinsicdiff~leafarea.y*grassland_type + SLA.x + TLP.x + abscov, data=CWM_sitedata1)) #** 36.5%
-summary(mod_la<-lm(intrinsicdiff~leafarea.y*grassland_type + TLP.x + meancov_local, data=CWM_sitedata1)) #** 36.5%
+# Response to drought by each trait
+summary(mod_la<-lm(intrinsicdiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 22%
 anova(mod_la)
-summary(modt<-lm(intrinsicdiff~leafN.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(intrinsicdiff~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #na
 anova(modt)
-summary(modt<-lm(intrinsicdiff~LDMC.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(intrinsicdiff~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(intrinsicdiff~LTD.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah
+summary(modt<-lm(intrinsicdiff~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(intrinsicdiff~TLP_tran*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah
+summary(modt<-lm(intrinsicdiff~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(intrinsicdiff~SLA.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(intrinsicdiff~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #na
 anova(modt)
-summary(modt<-lm(intrinsicdiff~height.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(intrinsicdiff~height.y*grassland_type + SLA.x + TLP.x,data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(intrinsicdiff~RTD.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(intrinsicdiff~RTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(intrinsicdiff~rootN.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(intrinsicdiff~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #na
 anova(modt)
-summary(mod_srl<-lm(intrinsicdiff~SRL.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #** 30%
+summary(mod_srl<-lm(intrinsicdiff~SRL.y*grassland_type + SLA.x + TLP.x , data=trtdata)) #*close 20%
 anova(mod_srl)
-summary(mod_rd<-lm(intrinsicdiff~rootdiam.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #** 30%
-anova(modt)#TLP.x and rootdiam:grassland (sig. as expected!)
-summary(mod_rd<-lm(intrinsicdiff~rootdiam.y*grassland_type  + TLP.x + meancov_local, data=CWM_sitedata1))
+summary(mod_rd<-lm(intrinsicdiff~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 24%
+anova(modt)
+
 
 #now response to neighbors in drought
-summary(modt<-lm(chrdiff~leafarea.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(chrdiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 22%
 anova(modt)
-summary(mod_ln<-lm(chrdiff~leafN.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #** 32%
-anova(mod_ln) #SLA.x + grassland"leafN
-summary(modt<-lm(chrdiff~LDMC.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(mod_ln<-lm(chrdiff~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #** 36%
+anova(mod_ln) #SLA.x + grassland*leafN
+summary(modt<-lm(chrdiff~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #** 22%
 anova(modt)
-summary(modt<-lm(chrdiff~LTD.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah
+summary(modt<-lm(chrdiff~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #nah?
 anova(modt)
-summary(modt<-lm(chrdiff~TLP_tran*grassland_type + SLA.x + TLP.x, data=CWM_sitedata1)) #nah?
+summary(modt<-lm(chrdiff~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #*** 35% (wow)
 anova(modt)
-summary(mod_sla<-lm(chrdiff~SLA.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #** 15% (so nah)
+summary(mod_sla<-lm(chrdiff~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #** 22%
 anova(mod_sla)#grassland+SLA.x
-summary(modt<-lm(chrdiff~height.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(chrdiff~height.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #close 13%
 anova(modt)
-summary(mod_rtd<-lm(chrdiff~RTD.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #** 40% (no now?)
+summary(mod_rtd<-lm(chrdiff~RTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(mod_rtd) #SLA.x
-summary(modt<-lm(chrdiff~rootN.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(chrdiff~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(chrdiff~SRL.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(chrdiff~SRL.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #close, 19%
 anova(modt)
-summary(modt<-lm(chrdiff~rootdiam.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah
+summary(modt<-lm(chrdiff~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-
 
 
 #now response to neighbors in ambient
@@ -118,9 +112,9 @@ summary(modt<-lm(condiff~rootdiam.y*grassland_type + SLA.x + TLP.x + meancov_loc
 anova(modt)
 
 
-
-#response = response to drought
-#leaf area
+#### figures ####
+# response = response to drought
+# leaf area
 modD_la<-lm(intrinsicdiff~leafarea.y*grassland_type + SLA.x + TLP.x + abscov, data=CWM_sitedata1) #full model
 summary(modD_la) #** 36.5%
 anova(modD_la) #* trait, grassland, interaction, TLP

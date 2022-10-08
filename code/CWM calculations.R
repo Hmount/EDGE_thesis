@@ -87,7 +87,8 @@ awt1 <- awt1 %>%
 
 #functcomp function only does not work with intraspecific variation, run each 
 #model on grassland individually with a loop
-awt1.5 <- awt1 %>% filter(grassland_type!="Tallgrass") #subset out tallgrass
+awt1.5 <- awt1 %>% filter(grassland_type!="Tallgrass") %>% #subset out tallgrass
+  filter(grassland_type!="Southern Shortgrass") #and southern shortgrass/sev blue
 gland <- unique(awt1.5$grassland_type) #create grassland list
 CWM <- data.frame() #create dataframe to fill
 CWMtemp <- data.frame()
@@ -126,7 +127,7 @@ for (j in 1:length(spp)){
   CWMsite <- bind_rows(CWMsite, CWMtemp)
 }
 #merge dataframes 
-CWMs2 <- merge(CWMsite, awt1[,c(1,2,34:43)], by=c("grassland_type", "species")) 
+CWMs2 <- merge(CWMsite, awt1[,c(1,2,3,34:43)], by=c("grassland_type", "species")) 
 #filter out CWM values for spp-site whose relative cover for that trait is less than 80%
 #do this for each trait and recombine dataframes to fill NA where CWM is inappropriate for % cover
 CWMs2$height <- replace(CWMs2$height, CWMs2$relcov_height < 75, NA)
@@ -150,12 +151,15 @@ CWM_sitedata <- merge(CWM_sitedata, awt1[c(1,2,44)], by=c("species", "grassland_
 #relevel to view grassland_type facets along precipitation gradient 
 CWM_sitedata <- CWM_sitedata %>%
   mutate(grassland_type = fct_relevel(grassland_type,
-                                      "Desert", "Southern Shortgrass", "Northern Shortgrass", 
+                                      "Desert", "Northern Shortgrass", #no southern shortgrass, not enough data
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
 
-#determine trait coverage per grassland
+#save dataframe
+write.csv(CWM_sitedata, file='data/CWM_sitedata.csv', row.names = F) #make csv
 
+
+#determine trait coverage per grassland
 test <- CWM_sitedata %>%
   group_by(grassland_type) %>%
   summarise(total_non_na = sum(!is.na(leafarea.x)))
