@@ -2,7 +2,8 @@
 # testing for a trade-off in responses to drought and neighbors in different conditions
 
 # last edited 10/8/22 by Hailey Mount
-# edited to be more concise and now including both Sevietta sites
+# edited order for clarity and now use MA as the main analysis type, r as the stat I
+# report, ANOVA's to show lack of grassland importance, and 
 
 #### data and packages ####
 library(tidyverse)
@@ -35,13 +36,48 @@ ggplot(NEWallsite, aes(x=condiff, y=chrdiff, color=grassland_type))+
 #### How do responses to drought relate to responses to neighbors in diff. conditions? ####
 # using lm function to incorporate weights and compare model w/ and w/out grassland,
 # but calculating r to report in paper (same as cor):
-#removing row 106 for -inf:
+# (removing row 106 for -inf)
 ### neighbors response in ambient conditions: 
 intcon <- lm(condiff~intrinsicdiff, weights=weight2, NEWallsite[-106,]) #model with weights 
 summary(intcon) #uncorrelated -> the pure response to neighbors and to drought are not related 
 #(not a physiological trade-off, but an expressed trade-off?)
 sqrt(summary(intcon)$adj.r.squared)#calculate r
 
+#run second model w/ grassland
+intcon2_fig <- lm(condiff~intrinsicdiff*grassland_type, weights=weight2, NEWallsite[-106,]) #old finding 
+summary(intcon2_fig) 
+#compare w/ anova
+anova(intcon,intcon2_fig)
+
+### neighbors response in drought conditions: 
+intchr <- lm(chrdiff~intrinsicdiff, weights=weight2, NEWallsite[-106,]) #new main finding
+summary(intchr) #trade-off
+sqrt(summary(intchr)$adj.r.squared)#calculate r
+
+#run second model w/ grassland
+intchr2 <- lm(chrdiff~intrinsicdiff*grassland_type, weights=weight2, NEWallsite[-106,]) #old finding 
+summary(intchr2) 
+#compare w/ anova
+anova(intchr,intchr2)
+
+
+#### repeat with Standard Major Axis regression ####
+# robert suggested to use MA regression instead of OLS to avoid causal relationships 
+
+library(tidyverse)
+library(smatr) #for major axis regression
+
+alldat <- read.csv("allsite_new.csv")
+
+# re-run model of response to neighbors and response to drought as major axis regression
+test <- sma(chrdiff~intrinsicdiff,NEWallsite[-106,]) # weights=weight2, )
+summary.sma(test)
+sqrt(test$r2[[1]]) #correlation
+plot(test)
+
+test1 <- sma(chrdiff~intrinsicdiff+grassland_type,NEWallsite[-106,])
+anova(test,test1)
+#### make figures ####
 #plot:
 intcon_fig <- ggplot(NEWallsite, aes(y=condiff,x=intrinsicdiff))+
   geom_point() +
@@ -53,11 +89,6 @@ intcon_fig <- ggplot(NEWallsite, aes(y=condiff,x=intrinsicdiff))+
   labs(y=" ", x = " ")+
   theme_classic()+
   theme(axis.title.y.left = element_blank())
-#run second model w/ grassland
-intcon2_fig <- lm(condiff~intrinsicdiff*grassland_type, weights=weight2, NEWallsite[-106,]) #old finding 
-summary(intcon2_fig) 
-#compare w/ anova
-anova(intcon,intcon2_fig)
 #plot by grassland type
 intcon2_fig <- ggplot(NEWallsite,aes(y=condiff,x=intrinsicdiff, color = grassland_type)) +
   geom_point(size=1)+
@@ -71,10 +102,6 @@ intcon2_fig <- ggplot(NEWallsite,aes(y=condiff,x=intrinsicdiff, color = grasslan
   theme(legend.position = "none",
         axis.title.y.left = element_blank())
 
-### neighbors response in drought conditions: 
-intchr <- lm(chrdiff~intrinsicdiff, weights=weight2, NEWallsite[-106,]) #new main finding
-summary(intchr) #trade-off
-sqrt(summary(intchr)$adj.r.squared)#calculate r
 #plot:
 intchr_fig <- ggplot(NEWallsite, aes(y=chrdiff,x=intrinsicdiff))+
   geom_point() +
@@ -86,11 +113,6 @@ intchr_fig <- ggplot(NEWallsite, aes(y=chrdiff,x=intrinsicdiff))+
   labs(y=" ", x = " ")+
   theme_classic()+
   theme(axis.title.y.left = element_blank())
-#run second model w/ grassland
-intchr2 <- lm(chrdiff~intrinsicdiff*grassland_type, weights=weight2, NEWallsite[-106,]) #old finding 
-summary(intchr2) 
-#compare w/ anova
-anova(intchr,intchr2)
 #plot by grassland type
 intchr2_fig <- ggplot(NEWallsite,aes(y=chrdiff,x=intrinsicdiff, color = grassland_type)) +
   #geom_point(size=1)+
@@ -105,12 +127,8 @@ intchr2_fig <- ggplot(NEWallsite,aes(y=chrdiff,x=intrinsicdiff, color = grasslan
   theme_classic()+
   theme(legend.position = "none",
         axis.title.y.left = element_blank())
-# cc <- scales::seq_gradient_pal("sky blue", "dark blue", "Lab")(seq(0,1,length.out=6))
-# library(rcolorutils)
-# plotCol(nearRcolor("steelblue", "rgb", dist=50))
 
 
-#### figure together ####
 # extract common legend:
 # Create user-defined function, which extracts legends from ggplots
 extract_legend <- function(my_ggp) {
