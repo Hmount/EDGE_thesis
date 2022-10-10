@@ -61,21 +61,21 @@ anova(modt)
 summary(mod_srl<-lm(intrinsicdiff~SRL.y*grassland_type + SLA.x + TLP.x , data=trtdata)) #*close 20%
 anova(mod_srl)
 summary(mod_rd<-lm(intrinsicdiff~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 24%
-anova(modt)
+anova(mod_rd)
 
 
 #now response to neighbors in drought
 summary(modt<-lm(chrdiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 22%
-anova(modt)
+anova(modt) #grassland+SLA
 summary(mod_ln<-lm(chrdiff~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #** 36%
 anova(mod_ln) #SLA.x + grassland*leafN
 summary(modt<-lm(chrdiff~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #** 22%
-anova(modt)
+anova(modt)#grassland+SLA.x
 summary(modt<-lm(chrdiff~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #nah?
 anova(modt)
-summary(modt<-lm(chrdiff~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #*** 35% (wow)
-anova(modt)
-summary(mod_sla<-lm(chrdiff~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #** 22%
+summary(modt<-lm(chrdiff~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #*** 35% 
+anova(modt)#grassland+SLA.x
+summary(mod_sla<-lm(chrdiff~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #close
 anova(mod_sla)#grassland+SLA.x
 summary(modt<-lm(chrdiff~height.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #close 13%
 anova(modt)
@@ -90,27 +90,50 @@ anova(modt)
 
 
 #now response to neighbors in ambient
-summary(modt<-lm(condiff~leafarea.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(condiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(mod_ln<-lm(condiff~leafN.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #* 26%
+summary(mod_ln<-lm(condiff~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 26%
 anova(mod_ln) #SLA.x + grassland"leafN
-summary(modt<-lm(condiff~LDMC.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(condiff~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(condiff~LTD.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah
+summary(modt<-lm(condiff~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(condiff~TLP_tran*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah?
+summary(modt<-lm(condiff~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(mod_sla<-lm(condiff~SLA.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #** nah
-summary(modt<-lm(condiff~height.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(mod_sla<-lm(condiff~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(mod_sla)
+summary(modt<-lm(condiff~height.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(mod_rtd<-lm(condiff~RTD.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah
-summary(modt<-lm(condiff~rootN.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(mod_rtd<-lm(condiff~RTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+summary(modt<-lm(condiff~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
-summary(modt<-lm(condiff~SRL.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #na
+summary(modt<-lm(condiff~SRL.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #na
 anova(modt)
-summary(modt<-lm(condiff~rootdiam.y*grassland_type + SLA.x + TLP.x + meancov_local, data=CWM_sitedata1)) #nah
+summary(modt<-lm(condiff~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #nah
 anova(modt)
 
+
+summary(modt<-lm(invasiondiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt)
+summary(mod_ln<-lm(invasiondiff~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 26%
+anova(mod_ln) #SLA.x + grassland"leafN
+summary(modt<-lm(invasiondiff~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt)
+summary(modt<-lm(invasiondiff~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt)
+summary(modt<-lm(invasiondiff~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt)
+summary(mod_sla<-lm(invasiondiff~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(mod_sla)
+summary(modt<-lm(invasiondiff~height.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt)
+summary(mod_rtd<-lm(invasiondiff~RTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+summary(modt<-lm(invasiondiff~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt)
+summary(modt<-lm(invasiondiff~SRL.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #na
+anova(modt)
+summary(modt<-lm(invasiondiff~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #nah
+anova(modt)
 
 #### figures ####
 # response = response to drought
@@ -259,3 +282,103 @@ traitfig
 
 #export
 ggsave(traitfig, filename = "traitfig.png", dpi=300, height = 5.8,width =8.5)
+
+
+
+#######################################################################################
+### find difference between CWM and focal traits
+test <- trtdata %>% mutate(traitdiff = TLP.x-TLP_tran)
+#plot
+ggplot(test, aes(y=chrdiff, x=traitdiff))+#, color=grassland_type))+ 
+  geom_point()+
+  geom_smooth(method="lm")
+### pop responses as a function of trait difference
+summary(lm(chrdiff~traitdiff, test))
+
+
+
+trait PCA
+```{r}
+library(factoextra)
+
+subdfPCA <- trtdata %>% select(species, height.y,SLA.y, LTD.y, LDMC.y, leafarea.y)
+subdfPCA$trtcnt <- rowSums(!is.na(subdfPCA[,c(2:6)])) #count for each row w/ traits filled in
+#subset data for just species with all traits present
+subdfPCA <- subdfPCA %>% filter(trtcnt >= 5) #filter for 58 spp with more than 5 traits
+subdfPCA <- na.omit(subdfPCA)
+subdfPCA <- subdfPCA %>% select(species, height.y,SLA.y, LTD.y, LDMC.y, leafarea.y)
+
+colSums(!is.na(subdfPCA[,c(2:11)]))  
+
+
+#subdfPCA$species_site <- paste(subdfPCA$species, subdfPCA$grassland_type)
+unique(subdfPCA$species)
+#library(stringr)
+subdfPCA$species = str_replace(subdfPCA$species,"Pascopyrumsmithii","Pascopyrum smithii")
+subdfPCA$species = str_replace(subdfPCA$species,"Boutelouagracilis","Bouteloua gracilis")
+subdfPCA$species = str_replace(subdfPCA$species,"Koeleriapyramidata","Koeleria pyramidata")
+subdfPCA$species = str_replace(subdfPCA$species,"Lepidiumdensiflorum","Lepidium densiflorum")
+subdfPCA$species = str_replace(subdfPCA$species,"Phloxhoodii","Phlox hoodii")
+subdfPCA$species = str_replace(subdfPCA$species,"Sphaeralceacoccinea","Phlox hoodii")
+subdfPCA$species = str_replace(subdfPCA$species,"Stipacomata","Phlox hoodii")
+subdfPCA$species = str_replace(subdfPCA$species,"Tragopogondubius","Phlox hoodii")
+subdfPCA$species = str_replace(subdfPCA$species,"Vulpiaoctoflora","Vulpia octoflora")
+subdfPCA$species = str_replace(subdfPCA$species,"Gutierreziasarothrae","Gutierrezia sarothrae")
+subdfPCA$species = str_replace(subdfPCA$species,"Liatrispunctata","Liatris punctata")
+
+
+subdfPCA <- subdfPCA %>% select(species, height.y, rootdiam.y, SRL.y, RTD.y, 
+                                rootN.y, SLA.y, LTD.y, LDMC.y, leafarea.y, leafN.y, TLP_tran)
+
+subdfPCA <- na.omit(subdfPCA)
+
+
+#PCA
+my.PCA <- prcomp(subdfPCA[,-1], scale = TRUE)
+
+#screeplot
+fviz_eig(my.PCA)
+
+#just species 
+fviz_pca_ind(my.PCA)
+
+groups <- as.factor(subdfPCA$lifespan[1:20])
+fviz_pca_ind(my.PCA,
+             #col.ind = groups, # color by groups
+             palette = c("#00AFBB",  "#FC4E07"),
+             addEllipses = TRUE, # Concentration ellipses
+             ellipse.type = "confidence",
+             legend.title = "Groups",
+             repel = TRUE
+)
+fviz_pca_ind(my.PCA, label="none", habillage=na.omit(subdfPCA$species))
+
+
+#just traits
+fviz_pca_var(my.PCA)
+
+#biplot
+fviz_pca_biplot(my.PCA, repel=T)
+pcaplot #
+  fviz_pca_biplot(my.PCA, repel=T,habillage=subdfPCA$species, legend.title ="Species")+scale_shape_manual(values=c(19,19,19,19,19,19,19,19,19,19,19))
+
+#export
+ggsave(pcaplot, filename = "pcaplot.png", dpi=300, height = 4,width =6)
+
+write.csv(my.PCA$rotation[,c(1,2)], "PCAloading.csv")
+#save csv to copy from
+
+
+```
+allsub <- all %>% filter(species %in% )
+library(FD)
+fdisp(as.matrix(subdfPCA), )
+
+
+ggplot(trtdata, aes(x=leafN.x, y=grassland_type))+
+  geom_boxplot()
+summary(aov(trtdata$leafN.x~trtdata$grassland_type))
+
+ggplot(trtdata, aes(x=SLA.y, y=grassland_type))+
+  geom_boxplot()
+summary(aov(trtdata$SLA.y~trtdata$grassland_type))
