@@ -8,6 +8,8 @@ CWM_sitedata <- read.csv("data/CWM_sitedata.csv") #trait data
 trtdata<-CWM_sitedata[,c(1:13,27:37,39,41:48)] #just variables I will use
 trtdata[,c(3:11,13,16:25,33)]<-log(trtdata[,c(3:11,13,16:25,33)]) #log focal and CWM traits 
 trtdata[,12]<-log(abs(trtdata[,12])) #abs then log for TLP.x
+trtdata <- trtdata %>% mutate(TLP_tran_fig = TLP_tran*-1,
+                              TLP.x_fig = TLP.x*-1)  #make neg. to interpret
 
 
 #### basic stats and relationships ####
@@ -34,6 +36,197 @@ summary(lm(intrinsicdiff~SLA.x, trtdata))
 
 
 #### modelling ####
+# use multivariate linear model to see if responses are a function of focal traits* grassland + community CWM SLA and TLP
+# run MOANOVA with significant model objects to test for significance of predictors to response interaction
+
+#models:
+summary(mod_la<-lm(cbind(intrinsicdiff, chrdiff)~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
+anova(modt) #trait, trait*grassland, CWM SLA
+Anova(mod_la) #trait, trait*grassland, CWM SLA, CWM TLP
+summary(mod_ln<-lm(cbind(intrinsicdiff, chrdiff)~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
+anova(modt) #trait, trait*grassland, CWM SLA
+Anova(mod_ln) #trait*grassland
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt) #nah
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt) #nah
+summary(mod_tlp<-lm(cbind(intrinsicdiff, chrdiff)~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
+anova(modt) #grassland, CWM SLA
+Anova(mod_tlp) #trait, CWM SLA
+summary(mod_sla<-lm(cbind(intrinsicdiff, chrdiff)~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
+anova(modt)# trait*grassland, grassland, CWM SLA, CWM TLP
+Anova(mod_sla) #grassland, CWM SLA, CWM TLP
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~height.y*grassland_type + SLA.x + TLP.x,data=trtdata)) #no
+anova(modt) #close
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~RTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt) #no
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt) #no
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~SRL.y*grassland_type + SLA.x + TLP.x , data=trtdata)) #close
+anova(modt) #close
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+anova(modt) #no
+
+library("corrplot")
+test <- trtdata %>% dplyr::select(c(leafN.y,SLA.x,SLA.y,TLP.x_fig,TLP_tran_fig,leafarea.y))
+M<-cor(test, use = "pairwise.complete.obs")
+head(round(M,2))
+
+# visualizing correlogram
+# as circle
+corrplot(M, method="circle")
+
+
+#### figures ####
+# model multivariate response relationships (how?)
+
+library(heplots)
+heplot(mod_la)
+heplot(mod_ln)
+heplot(mod_tlp)
+heplot(mod_sla)
+
+glance.mlm(mod_la)
+
+library(candisc)
+ct <- candisc(mod_sla)
+??candisc::heplot(ct)
+plot(ct, ellipse = T)
+
+#plot predictions from models for each response at each grassland 
+ggplot(trtdata, aes(x=leafarea.y, y=intrinsicdiff, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  facet_wrap(~grassland_type, scales = "free")
+ggplot(trtdata, aes(x=SLA.x, y=chrdiff))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(chrdiff~SLA.x, trtdata))
+library(plotly)
+plot_ly(x=trtdata$SLA.x, y=trtdata$instrinsicdiff, z=trtdata$leafarea.y, type="scatter3d")+
+ # geom_point()+
+  facet_wrap(~grassland_type)
+
+library(scatterplot3d)
+scatterplot3d(x=trtdata$SLA.x, y=trtdata$instrinsicdiff, z=trtdata$leafarea.y)
+
+ggplot(trtdata, aes(x=SLA.x y=intrinsicdiff))
+
+predict$predict <- 
+
+nd <- data.frame(intrinsicdiff = c(0:100), chrdiff = c(0:100))
+p <- predict(mod_la, nd)
+p
+predictionEllipse <- function(mod, newdata, level = 0.95, ggplot = TRUE){
+  # labels
+  lev_lbl <- paste0(level * 100, "%")
+  resps <- colnames(mod$coefficients)
+  title <- paste(lev_lbl, "confidence ellipse for", resps[1], "and", resps[2])
+  
+  # prediction
+  p <- predict(mod, newdata)
+  
+  # center of ellipse
+  cent <- c(p[1,1],p[1,2])
+  
+  # shape of ellipse
+  Z <- model.matrix(mod)
+  Y <- mod$model[[1]]
+  n <- nrow(Y)
+  m <- ncol(Y)
+  r <- ncol(Z) - 1
+  S <- crossprod(resid(mod))/(n-r-1)
+  
+  # radius of circle generating the ellipse
+  # see Johnson and Wichern (2007), p. 399
+  tt <- terms(mod)
+  Terms <- delete.response(tt)
+  mf <- model.frame(Terms, newdata, na.action = na.pass, 
+                    xlev = mod$xlevels)
+  z0 <- model.matrix(Terms, mf, contrasts.arg = mod$contrasts)
+  rad <- sqrt((m*(n-r-1)/(n-r-m))*qf(level,m,n-r-m)*z0%*%solve(t(Z)%*%Z) %*% t(z0))
+  
+  # generate ellipse using ellipse function in car package
+  ell_points <- car::ellipse(center = c(cent), shape = S, radius = c(rad), draw = FALSE)
+  
+  # ggplot2 plot
+  if(ggplot){
+    require(ggplot2, quietly = TRUE)
+    ell_points_df <- as.data.frame(ell_points)
+    ggplot(ell_points_df, aes(x, y)) +
+      geom_path() +
+      geom_point(aes(x = TOT, y = AMI), data = data.frame(p)) +
+      labs(x = resps[1], y = resps[2], 
+           title = title)
+  } else {
+    # base R plot
+    plot(ell_points, type = "l", xlab = resps[1], ylab = resps[2], main = title)
+    points(x = cent[1], y = cent[2])
+  }
+}
+predictionEllipse(mod_la,trtdata)
+
+
+
+#testing figures
+library(visreg)
+
+#la
+m1<-lm(chrdiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)
+
+m2<-lm(intrinsicdiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)
+
+
+
+visreg(m2, xvar="leafarea.y", by="grassland_type", rug=F, 
+       partial=F,xlab= "log(leaf area)", ylab=" ", 
+       line=list(col="black"), gg=T)
+
+visreg(m2, xvar="leafarea.y", by="grassland_type", rug=F, 
+                partial=F,xlab= "log(leaf area)", ylab=" ", 
+                line=list(col="black"), gg=T)+
+  geom_rug(sides="b")+
+  theme(axis.title.y.left=element_blank())+
+  #ylim(-2,2) +
+  coord_cartesian(ylim = c(-3, 4))+
+  theme_classic()
+
+visreg(m1, xvar="TLP.x", rug=F, partial=F,
+                           cond=list(grassland_type="Southern Mixed"),
+                           xlab= "log(community weighted mean SLA)", 
+                           ylab=" ", gg=T, line=list(col="black"), band=T)+
+  geom_rug(sides="b")+
+  coord_cartesian(ylim = c(-3, 3))+
+  theme_classic()
+
+
+visreg(m2, xvar="TLP.x", rug=F, partial=F,
+       by = "grassland_type",
+       xlab= "log(community weighted mean SLA)", 
+       ylab=" ", gg=T, line=list(col="black"), band=T)+
+  geom_rug(sides="b")+
+  coord_cartesian(ylim = c(-3, 3))+
+  theme_classic()
+
+##for drought significant traits
+latraitfig <- ggarrange(lafig, lacwmfig, nrow=1, ncol=2, common.legend = T,
+                        widths = c(2,1.5))
+latraitfig <- annotate_figure(latraitfig,left = "Response to drought")
+latraitfig
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # model responses as a function of focal traits* grassland + community CWM SLA and TLP
 # considered including + total relative cover, but I am looking at pop. level diffs not 
 # specific times/cover so it would either be redundant with grassland or difference in
@@ -93,7 +286,7 @@ anova(modt)
 summary(modt<-lm(condiff~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
 summary(mod_ln<-lm(condiff~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #* 26%
-anova(mod_ln) #SLA.x + grassland"leafN
+anova(mod_ln) #trait*grassland
 summary(modt<-lm(condiff~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt)
 summary(modt<-lm(condiff~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
