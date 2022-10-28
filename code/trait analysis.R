@@ -42,10 +42,10 @@ summary(lm(intrinsicdiff~SLA.x, trtdata))
 #models:
 summary(mod_la<-lm(cbind(intrinsicdiff, chrdiff)~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
 anova(modt) #trait, trait*grassland, CWM SLA
-Anova(mod_la) #trait, trait*grassland, CWM SLA, CWM TLP
+car::Anova(mod_la) #trait, trait*grassland, CWM SLA, CWM TLP
 summary(mod_ln<-lm(cbind(intrinsicdiff, chrdiff)~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
-anova(modt) #trait, trait*grassland, CWM SLA
-Anova(mod_ln) #trait*grassland
+anova(mod_ln) #trait, trait*grassland, CWM SLA
+car::Anova(mod_ln) #trait*grassland
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt) #nah
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
@@ -66,6 +66,7 @@ summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~SRL.y*grassland_type + SLA.x + TL
 anova(modt) #close
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 anova(modt) #no
+car::Anova(modt)
 
 library("corrplot")
 test <- trtdata %>% dplyr::select(c(leafN.y,SLA.x,SLA.y,TLP.x_fig,TLP_tran_fig,leafarea.y))
@@ -76,6 +77,15 @@ head(round(M,2))
 # as circle
 corrplot(M, method="circle")
 
+
+##trying linear models no CWM
+summary(mod_la<-lm(chrdiff~leafarea.y*grassland_type + leafN.y*grassland_type + rootdiam.y*grassland_type, data=trtdata)) #**
+anova(mod_la)
+summary(mod_la1<-lm(intrinsicdiff~leafarea.y*grassland_type + leafN.y*grassland_type + rootdiam.y*grassland_type, data=trtdata)) #**
+anova(mod_la1)
+
+summary(mod_la1<-lm(intrinsicdiff~leafN.y*grassland_type, data=trtdata)) #**
+anova(mod_la1)
 
 #### figures ####
 # model multivariate response relationships (how?)

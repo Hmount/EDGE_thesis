@@ -238,3 +238,16 @@ summaryfig
 
 #export
 ggsave(summaryfig, filename = "figures/summaryfig.png", dpi=300, height = 8,width =9)
+
+
+#### year differences in cover ####
+allsum$year <- as.factor(allsum$year)
+supsum <- ggplot(allsum, aes(x=year, y=totalcov, fill=trt))+
+  geom_boxplot()+
+  scale_fill_manual(values=c("darkred", "darkcyan"), labels=c("Extreme drought", "Ambient precipitation"))+
+  theme_classic()+
+  labs(x="Year", y = "Cover", fill= "Treatment")+
+  theme(legend.position="bottom",
+        axis.text.x = element_text(angle = 20, hjust = 1))+
+  facet_wrap(~grassland_type, ncol=2, scales="fixed")
+ggsave(supsum, filename = "figures/supsum.png", dpi=300, height = 6,width =5)
