@@ -51,12 +51,12 @@ anova(intcon,intcon2_fig)
 
 ### neighbors response in drought conditions: 
 intchr <- lm(chrdiff~intrinsicdiff, weights=weight2, NEWallsite[-106,]) #new main finding
-summary(intchr) #trade-off
+anova(intchr) #trade-off
 sqrt(summary(intchr)$adj.r.squared)#calculate r
 
 #run second model w/ grassland
 intchr2 <- lm(chrdiff~intrinsicdiff*grassland_type, weights=weight2, NEWallsite[-106,]) #old finding 
-summary(intchr2) 
+anova(intchr2) 
 #compare w/ anova
 anova(intchr,intchr2)
 

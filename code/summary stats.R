@@ -196,7 +196,8 @@ allothermeans <- all %>%
   summarize(meanother = mean(other)) %>% ungroup 
 covergrassland <- full_join(NEWallsite, allothermeans, by=c("grassland_type", "species"))#merge dataframes
 #make a model
-summary(lm(condiff~meanother, covergrassland)) 
+summary(m1<-lm(condiff~meanother, covergrassland)) 
+anova(m1)
 #plot:
 concov <- ggplot(covergrassland,aes(x=meanother, y=condiff, color=grassland_type))+
   geom_point()+
@@ -213,7 +214,8 @@ allothermeans <- all %>%
   summarize(meanother = mean(other)) %>% ungroup 
 covergrassland <- full_join(NEWallsite, allothermeans, by=c("grassland_type", "species"))
 #make a model
-summary(lm(chrdiff~meanother, covergrassland)) 
+summary(m2 <- lm(chrdiff~meanother, covergrassland)) 
+anova(m2)
 #plot:
 chrcov <- ggplot(covergrassland,aes(x=meanother, y=chrdiff, color=grassland_type))+
   geom_point()+

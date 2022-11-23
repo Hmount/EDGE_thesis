@@ -46,7 +46,7 @@ sqrt(summary(intcon)$adj.r.squared)#calculate r
 intcon_fig <- ggplot(NEWallsite, aes(y=condiff,x=intrinsicdiff))+
   geom_point() +
   #scale_color_manual(values=c("red", "pink", "tan", "sky blue", "dark blue"))+
-  geom_smooth(method="lm", se=T, color="black")+
+  #geom_smooth(method="lm", se=T, color="black")+
   geom_hline(yintercept=0, linetype="dashed")+
   geom_vline(xintercept=0, linetype="dashed")+
   #geom_text(aes(label=species),hjust=0, vjust=0) +
@@ -60,7 +60,7 @@ summary(intcon2_fig)
 anova(intcon,intcon2_fig)
 #plot by grassland type
 intcon2_fig <- ggplot(NEWallsite,aes(y=condiff,x=intrinsicdiff, color = grassland_type)) +
-  geom_point(size=1)+
+  geom_point(alpha=.5, shape=16)+
   geom_smooth(method = "lm", se = F) +
   geom_hline(yintercept=0, linetype="dashed")+
   geom_vline(xintercept=0, linetype="dashed")+
@@ -152,13 +152,15 @@ tradeoffcombo
 #export
 ggsave(tradeoffcombo, filename = "figures/tradeoffcombo.png", dpi=300, height = 7,width =8)
 
+
+
 ####supplemental
 ##ANOVA of each response ~ grassland
 summary(aov(intrinsicdiff ~ grassland_type, NEWallsite)) #no difference
 #boxplot response to drought
 boxd <- ggplot(NEWallsite,aes(x=intrinsicdiff, y=grassland_type, fill = grassland_type)) +
   geom_boxplot()+
-  scale_fill_manual(values=c("red", "pink", "tan", "sky blue", "dark blue"))+
+  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
   labs(y=" ",x="Response to drought", fill="Grassland")+
   theme_classic()+
   theme(legend.position = "none",
@@ -186,7 +188,7 @@ tukeylabel<-merge(sum_labels,yvalue) #merge dataframes
 #boxplot response to neighbors in ambient
 boxna <- ggplot(NEWallsite,aes(x=condiff, y=grassland_type, fill = grassland_type)) +
   geom_boxplot()+
-  scale_fill_manual(values=c("red", "pink", "tan", "sky blue", "dark blue"))+
+  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
   labs(y=" ",x="Response to neighbors in ambient", fill="Grassland")+
   geom_text(data = tukeylabel, aes(y = grassland_type, x = condiff, label = Letters), 
             hjust=-3.5, vjust=-.5 )+
@@ -198,7 +200,7 @@ summary(aov(chrdiff ~ grassland_type, NEWallsite)) #no difference
 #boxplot response to neighbors in drought
 boxnd <- ggplot(NEWallsite,aes(x=chrdiff, y=grassland_type, fill = grassland_type)) +
   geom_boxplot()+
-  scale_fill_manual(values=c("red", "pink", "tan", "sky blue", "dark blue"))+
+  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
   labs(y=" ",x="Response to neighbors in drought", fill="Grassland")+
   theme_classic()+
   theme(legend.position = "none",
@@ -207,8 +209,8 @@ boxnd <- ggplot(NEWallsite,aes(x=chrdiff, y=grassland_type, fill = grassland_typ
 
 bplots <- ggarrange(boxd, boxnd, boxna, nrow=1, ncol=3,
                     common.legend = T, legend = "bottom",labels = c("a","b","c"))
-bplots<-annotate_figure(bplots,left = "Grassland")
+bplots<-annotate_figure(bplots,left = "                  Grassland")
 bplots
 
 #export
-ggsave(bplots, filename = "bplots.png", dpi=300, height = 3,width =8)
+ggsave(bplots, filename = "figures/bplots.png", dpi=300, height = 3,width =8)
