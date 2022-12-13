@@ -4,6 +4,7 @@
 library(tidyverse)
 library(ggpubr)
 library(stringr)
+library(factoextra)
 
 ## data
 NEWallsite <- read.csv("data/allsite_new.csv") #data for Figure 3, 4, S3
@@ -427,6 +428,42 @@ tradeoffcombo
 
 #export
 ggsave(tradeoffcombo, filename = "figures/tradeoffcombo.png", dpi=300, height = 7,width =8)
+
+
+#### Figure 5; ####
+# plot species that appear on multiple grasslands to see how popualtion differ in responses
+#subset species that have response estimates from multiple grasslands
+multiples <- as.data.frame(table(NEWallsite$species))
+multiples <- multiples%>%filter(Freq>=2) #get spp w/ 2+ observations
+multiples #check
+allmultiples <- NEWallsite %>% filter(species%in%multiples$Var1) #subset
+
+subBG <- allmultiples %>% filter(species=="Boutelouagracilis")
+subPT <- allmultiples %>% filter(species=="Psoraleatenuiflora")
+subAE <- allmultiples %>% filter(species=="Asterericoides")
+subspp <- allmultiples %>% mutate(Species = ifelse(species %in% "Boutelouagracilis", "Bouteloua gracilis",
+                                                   ifelse(species %in% "Psoraleatenuiflora", "Psoralea tenuiflora",
+                                                          ifelse(species %in% "Asterericoides", "Aster ericoides", "Other"))))
+
+
+repeatspecies <- ggplot(subspp, aes(y=chrdiff,x=intrinsicdiff, group=species, color=Species))+
+  geom_smooth(method="lm", se=F)+
+  #geom_smooth(data= subBG, method="lm", se=F, color="blue")+
+  #geom_smooth(data= subPT, method="lm", se=F, color="green")+
+  #geom_smooth(data= subAE, method="lm", se=F, color="red")+
+  scale_color_manual(name="Species", values=c("Aster ericoides"= "red",
+                                              "Bouteloua gracilis" ="blue",
+                                              "Psoralea tenuiflora" = "green",
+                                              "Other"="black"),
+                     guide=guide_legend(label.theme = element_text(face="italic", size=10)))+
+  geom_hline(yintercept=0, linetype="dotdash")+
+  geom_vline(xintercept=0, linetype="dotdash")+
+  labs(y="Response to neighbors in drought", x = "Response to drought", color="Species")+
+  theme_classic()+
+  theme(legend.position = c(.86,.86))
+
+#export
+ggsave(repeatspecies, filename = "figures/repeatspecies.png", dpi=300, height = 5,width =8)
 
 
 

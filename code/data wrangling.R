@@ -1,10 +1,8 @@
 #### data wrangling ####
-# Take EDGE data, clean, and calculate annual population growth/ lambda (Dave did this). For each 
+# Take EDGE data, clean, and calculate annual population growth/ lambda (DHA wrote this). For each 
 # grassland calculate population growth rates in different conditions. Combine into main dataframe
-# and clean to make neat and usable downstream in analysis. Add trait data for main dataframe.
-
-# last edited 10/6/22 by Hailey Mount
-# edited to be more concise and now leaving Sevietta sites separated
+# and clean to make neat and usable downstream in analysis. Add trait data for master trait data.
+# Create Figure S1 of population cover in relation to intra- and inter-specific cover.
 
 #### data ####
 # read CSV from Dave code to calculate lambda
@@ -12,6 +10,7 @@ cover <- read.csv("data/cover.csv")
 
 #library loading
 library(tidyverse)
+library(gridExtra)
 
 #### calculating growth rates ####
 # For each site the loop subsets and cleans, runs ancova and stores results, and create figures
@@ -28,6 +27,8 @@ CHY <- cover %>%
 spp =  unique(CHY$species) # list unique spp in CHY dataset
 ##ANCOVA 
 ancova = list()
+csc = list()
+coc = list()
 ##create dataframe to for ancova outputs
 NEWalldat <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA,weight=NA)
 ##loop for running ancova on each species and storing and manipulating outputs
@@ -53,6 +54,17 @@ for (l in 1:length(spp)){
   NEWalldat[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4]) #find growth rate when cover intra = 0 and inter=mean in ambient
   NEWalldat[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #find growth rate when cover intra = 0 and inter=mean in drought (non-zero betas)
   NEWalldat[l,6] <- summary(ancova[[l]])$sigma #se for weighting estimates
+  # create a figure for each species with intra- and inter-specific cover (for Figure S1)
+  csc[[l]] <- ggplot(CHYsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none",
+                                 axis.title.y = element_blank(),
+                                 axis.title.x = element_blank(),
+                                 plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
+  coc[[l]] <- ggplot(CHYsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", 
+                                 axis.title.y = element_blank(), 
+                                 axis.title.x = element_blank(), 
+                                 plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
 ##add columns to calculate the difference in LDGR btwn con and chr
 NEWalldat$intrinsicdiff = NEWalldat$intrinsicLDGRchr - NEWalldat$intrinsicLDGRcon
@@ -100,6 +112,11 @@ for (l in 1:length(spp)){
   NEWallHYS[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallHYS[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + + (mcr*coef(ancova[[l]])[6])
   NEWallHYS[l,6] <- summary(ancova[[l]])$sigma
+  # create a figure for each species with intra- and inter-specific cover (for Figure S1)
+  csh[[l]] <- ggplot(HYSsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
+  coh[[l]] <- ggplot(HYSsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
 ##add columns to calculate the difference in LDGR btwn con and chr
 NEWallHYS$intrinsicdiff = NEWallHYS$intrinsicLDGRchr - NEWallHYS$intrinsicLDGRcon
@@ -146,6 +163,11 @@ for (l in 1:length(spp)){
   NEWallKNZ[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallKNZ[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallKNZ[l,6] <- summary(ancova[[l]])$sigma
+  # create a figure for each species with intra- and inter-specific cover (for Figure S1)
+  csk[[l]] <- ggplot(KNZsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
+  cok[[l]] <- ggplot(KNZsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
 ##add columns to calculate the difference in LDGR btwn con and chr
 NEWallKNZ$intrinsicdiff = NEWallKNZ$intrinsicLDGRchr - NEWallKNZ$intrinsicLDGRcon
@@ -193,6 +215,11 @@ for (l in 1:length(spp)){
   NEWallSGS[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallSGS[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallSGS[l,6] <- summary(ancova[[l]])$sigma
+  # create a figure for each species with intra- and inter-specific cover (for Figure S1)
+  css[[l]] <- ggplot(SGSsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
+  cos[[l]] <- ggplot(SGSsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
 ##add columns to calculate the difference in LDGR btwn con and chr
 NEWallSGS$intrinsicdiff = NEWallSGS$intrinsicLDGRchr - NEWallSGS$intrinsicLDGRcon
@@ -267,6 +294,11 @@ for (l in 1:length(spp)){
   NEWallSBL[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallSBL[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallSBL[l,6] <- summary(ancova[[l]])$sigma
+  # create a figure for each species with intra- and inter-specific cover (for Figure S1)
+  cssb[[l]] <- ggplot(SBLsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
+  cosb[[l]] <- ggplot(SBLsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
 ##add columns to calculate the difference in LDGR btwn con and chr
 NEWallSBL$intrinsicdiff = NEWallSBL$intrinsicLDGRchr - NEWallSBL$intrinsicLDGRcon 
@@ -346,36 +378,35 @@ for (l in 1:length(spp)){
   NEWallSBK[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallSBK[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallSBK[l,6] <- summary(ancova[[l]])$sigma
+  # create a figure for each species with intra- and inter-specific cover (for Figure S1)
+  cssbk[[l]] <- ggplot(SBKsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
+  cosbk[[l]] <- ggplot(SBKsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
+    facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
 ##add columns to calculate the difference in LDGR btwn con and chr
 NEWallSBK$intrinsicdiff = NEWallSBK$intrinsicLDGRchr - NEWallSBK$intrinsicLDGRcon
 NEWallSBK$invasiondiff = NEWallSBK$invasionLDGRchr - NEWallSBK$invasionLDGRcon 
 
 
-#### Bind all site data together ####
+## Bind all site data together
 all <- bind_rows(CHY, HYS, KNZ, SGS, SBL, SBK) ##all raw site data
 write.csv(all, "data/allraw.csv", row.names = F)
 
 NEWalldata <- bind_rows(NEWalldat, NEWallHYS, NEWallKNZ, NEWallSGS, NEWallSBL, NEWallSBK, .id = "source") ##all calculated site data
 
-#### find response to neighbors ####
+## find response to neighbors
 NEWalldata$condiff = NEWalldata$invasionLDGRcon - NEWalldata$intrinsicLDGRcon #in ambient
 NEWalldata$chrdiff = NEWalldata$invasionLDGRchr - NEWalldata$intrinsicLDGRchr #in drought
 
 write.csv(NEWalldata, file='data/alldata.csv', row.names = F) #make csv
 
+## Figure S1 shows the relationships modelled above, see 'figurs.R' script.
 
-################################################################################################
+
 #### Adding trait data and editing dataframe ####
-#load in previous version master data for trait data and combine with calculated site data
-#*original master trait datasheet lost, but final CSV from original analysis still exists with that data in it, so that is just read in here. See OG analysis rmd for how it was created.*
-
-##also read in master trait list with valus from TRY, DB, AS, ST
-all_previous <- read.csv("data/allsp.csv", 
-                         header = TRUE, 
-                         fill =TRUE, na.strings = c("NA", " ", ""))
-MasterTrait <- subset(all_previous[,1:17])
-#write.csv(MasterTrait, file='MasterTrait.csv', row.names = F) #make csv
+#load in master trait data with values from TRY, DB, AS, ST and 
+MasterTrait <- read.csv("data/MasterTrait.csv")
 
 ##filter down to site level
 CHYmastertrait <- MasterTrait %>%
@@ -428,10 +459,12 @@ SBKtrait <- merge(SBKmastertrait, NEWallSBK, by.x = "Species", by.y = "species",
 
 ##recombine all sites 
 NEWallsite <- bind_rows(CHYtrait, HYStrait, KNZtrait, SGStrait, SBLtrait, SBKtrait) #make dataframe
-#NEWallsite[,19:22] <- round(NEWallsite[,19:22], digits = 6) #reduce decimal places?
+#NEWallsite[,19:22] <- round(NEWallsite[,19:22], digits = 6) #reduce decimal places if wanted
 
-#adjust weights so more certain have higher number
+#adjust weights so more certain estimates have higher number/certainty
 NEWallsite$weight2 <- 1/NEWallsite$weight
+
+
 
 #### clean ####
 ##add grassland type as column
@@ -464,8 +497,8 @@ NEWallsite <- NEWallsite %>%
 
 #make TLP positive so it can be logged with everything else
 NEWallsite <- NEWallsite %>% mutate(TLP_tran = abs(TLP))
-#make negative again for figures
-NEWallsite <- NEWallsite %>% mutate(TLP_tran2 = log(TLP_tran)*-1)  #make neg. to interpret
+#make negative again for any figures/ interpretation 
+NEWallsite <- NEWallsite %>% mutate(TLP_tran2 = log(TLP_tran)*-1) 
 
 
 #relevel to view grassland_type facets along precipitation gradient 

@@ -1,6 +1,6 @@
 #### traits analysis ####
 
-#### data and packages + clean ####
+#### data and packages + cleaning ####
 library(tidyverse)
 
 CWM_sitedata <- read.csv("data/CWM_sitedata.csv") #trait data
@@ -39,7 +39,6 @@ summary(lm(intrinsicdiff~SLA.x, trtdata))
 # use multivariate linear model to see if responses are a function of focal traits* grassland + community CWM SLA and TLP
 # run MOANOVA with significant model objects to test for significance of predictors to response interaction
 
-#models:
 summary(mod_la<-lm(cbind(intrinsicdiff, chrdiff)~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
 car::Anova(mod_la) #trait, trait*grassland, CWM SLA, CWM TLP
 summary(mod_ln<-lm(cbind(intrinsicdiff, chrdiff)~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
@@ -62,113 +61,3 @@ summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~SRL.y*grassland_type + SLA.x + TL
 car::Anova(modt) #trait, grassland, SLA
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 car::Anova(modt) #nah
-
-library("corrplot")
-test <- trtdata %>% dplyr::select(c(leafN.y,SLA.x,SLA.y,TLP.x_fig,TLP_tran_fig,leafarea.y))
-M<-cor(test, use = "pairwise.complete.obs")
-head(round(M,2))
-
-# visualizing correlogram
-# as circle
-corrplot(M, method="circle")
-
-
-
-
-#######################################################################################
-### find difference between CWM and focal traits
-test <- trtdata %>% mutate(traitdiff = TLP.x-TLP_tran)
-#plot
-ggplot(test, aes(y=chrdiff, x=traitdiff))+#, color=grassland_type))+ 
-  geom_point()+
-  geom_smooth(method="lm")
-### pop responses as a function of trait difference
-summary(lm(chrdiff~traitdiff, test))
-
-
-
-trait PCA
-```{r}
-library(factoextra)
-
-subdfPCA <- trtdata %>% select(species, height.y,SLA.y, LTD.y, LDMC.y, leafarea.y)
-subdfPCA$trtcnt <- rowSums(!is.na(subdfPCA[,c(2:6)])) #count for each row w/ traits filled in
-#subset data for just species with all traits present
-subdfPCA <- subdfPCA %>% filter(trtcnt >= 5) #filter for 58 spp with more than 5 traits
-subdfPCA <- na.omit(subdfPCA)
-subdfPCA <- subdfPCA %>% select(species, height.y,SLA.y, LTD.y, LDMC.y, leafarea.y)
-
-colSums(!is.na(subdfPCA[,c(2:11)]))  
-
-
-#subdfPCA$species_site <- paste(subdfPCA$species, subdfPCA$grassland_type)
-unique(subdfPCA$species)
-#library(stringr)
-subdfPCA$species = str_replace(subdfPCA$species,"Pascopyrumsmithii","Pascopyrum smithii")
-subdfPCA$species = str_replace(subdfPCA$species,"Boutelouagracilis","Bouteloua gracilis")
-subdfPCA$species = str_replace(subdfPCA$species,"Koeleriapyramidata","Koeleria pyramidata")
-subdfPCA$species = str_replace(subdfPCA$species,"Lepidiumdensiflorum","Lepidium densiflorum")
-subdfPCA$species = str_replace(subdfPCA$species,"Phloxhoodii","Phlox hoodii")
-subdfPCA$species = str_replace(subdfPCA$species,"Sphaeralceacoccinea","Phlox hoodii")
-subdfPCA$species = str_replace(subdfPCA$species,"Stipacomata","Phlox hoodii")
-subdfPCA$species = str_replace(subdfPCA$species,"Tragopogondubius","Phlox hoodii")
-subdfPCA$species = str_replace(subdfPCA$species,"Vulpiaoctoflora","Vulpia octoflora")
-subdfPCA$species = str_replace(subdfPCA$species,"Gutierreziasarothrae","Gutierrezia sarothrae")
-subdfPCA$species = str_replace(subdfPCA$species,"Liatrispunctata","Liatris punctata")
-
-
-subdfPCA <- subdfPCA %>% select(species, height.y, rootdiam.y, SRL.y, RTD.y, 
-                                rootN.y, SLA.y, LTD.y, LDMC.y, leafarea.y, leafN.y, TLP_tran)
-
-subdfPCA <- na.omit(subdfPCA)
-
-
-#PCA
-my.PCA <- prcomp(subdfPCA[,-1], scale = TRUE)
-
-#screeplot
-fviz_eig(my.PCA)
-
-#just species 
-fviz_pca_ind(my.PCA)
-
-groups <- as.factor(subdfPCA$lifespan[1:20])
-fviz_pca_ind(my.PCA,
-             #col.ind = groups, # color by groups
-             palette = c("#00AFBB",  "#FC4E07"),
-             addEllipses = TRUE, # Concentration ellipses
-             ellipse.type = "confidence",
-             legend.title = "Groups",
-             repel = TRUE
-)
-fviz_pca_ind(my.PCA, label="none", habillage=na.omit(subdfPCA$species))
-
-
-#just traits
-fviz_pca_var(my.PCA)
-
-#biplot
-fviz_pca_biplot(my.PCA, repel=T)
-pcaplot #
-  fviz_pca_biplot(my.PCA, repel=T,habillage=subdfPCA$species, legend.title ="Species")+scale_shape_manual(values=c(19,19,19,19,19,19,19,19,19,19,19))
-
-#export
-ggsave(pcaplot, filename = "pcaplot.png", dpi=300, height = 4,width =6)
-
-write.csv(my.PCA$rotation[,c(1,2)], "PCAloading.csv")
-#save csv to copy from
-
-
-```
-allsub <- all %>% filter(species %in% )
-library(FD)
-fdisp(as.matrix(subdfPCA), )
-
-
-ggplot(trtdata, aes(x=leafN.x, y=grassland_type))+
-  geom_boxplot()
-summary(aov(trtdata$leafN.x~trtdata$grassland_type))
-
-ggplot(trtdata, aes(x=SLA.y, y=grassland_type))+
-  geom_boxplot()
-summary(aov(trtdata$SLA.y~trtdata$grassland_type))

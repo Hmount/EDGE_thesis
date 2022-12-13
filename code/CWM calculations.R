@@ -1,5 +1,5 @@
 #### calculate CWM ####
-# CWM for each popualtion is average trait weighted by nieghbor abundance (which is a 
+# CWM for each population is average trait weighted by neighbor abundance (which is a 
 # subset of the community) not including the trait value of the focal species. 
 
 library(tidyverse)
@@ -40,11 +40,9 @@ MasterTraitNew <- MasterTraitNew %>% mutate(TLP_tran = abs(TLP))
 #make negative again for figures
 MasterTraitNew <- MasterTraitNew %>% mutate(TLP_tran2 = log(TLP_tran)*-1)  #make neg. to interpret
 
-#just species-site for cover, now trying with including year, trt, and plot for accurate cover per subplot
-
-#find relative coverage of site with trait coverage
+#find relative coverage of each subplot with traits
 allnewsum0 <- allnew %>% group_by(grassland_type, species, year,trt,plot) %>% #group and order variables 
-  summarise(abscov = sum(cover)) #sum absolute cover of each species/ grassland/ year/ trt/ plot (local cover)
+  summarise(abscov = sum(cover)) #sum absolute cover of each species/ grassland/ year/ trt/ plot (quadrat/subplot cover)
 #average for populations
 allnewsum <- allnewsum0 %>% group_by(grassland_type, species) %>% #group and order variables 
   summarise(meanabscov = mean(abscov))
@@ -62,14 +60,13 @@ awt1 <- awt %>%
          cov_LDMC = sum(meanabscov[!is.na(LDMC)]),
          cov_leafarea = sum(meanabscov[!is.na(leafarea)]),
          cov_rootdiam = sum(meanabscov[!is.na(rootdiam)]),
-         cov_TLP = sum(meanabscov[!is.na(TLP)]), #why was this subtracted?
+         cov_TLP = sum(meanabscov[!is.na(TLP)]),
          cov_rootN = sum(meanabscov[!is.na(rootN)]),
          cov_leafN = sum(meanabscov[!is.na(leafN)]),
          cov_totalsum = sum(meanabscov)
   ) 
 
-#find relative cover community cover with trait X - focal spp in each grassland, 
-#if >75% can calculate CWM
+#find relative cover community cover with trait X - focal spp in each grassland
 awt1 <- awt1 %>% 
   group_by(grassland_type, species) %>%
   mutate(relcov_height = ((cov_height-meanabscov)/cov_totalsum) * 100,
@@ -85,8 +82,9 @@ awt1 <- awt1 %>%
   )
 
 
-#functcomp function only does not work with intraspecific variation, run each 
-#model on grassland individually with a loop
+# functcomp function does not work with intraspecific variation, so a model for each 
+# grassland is made individually with a loop 
+# (five are looped, then tallgrass is done alone because it had a different number of traits)
 awt1.5 <- awt1 %>% filter(grassland_type!="Tallgrass") %>% #subset out tallgrass
   filter(grassland_type!="Southern Shortgrass") #and southern shortgrass/sev blue
 gland <- unique(awt1.5$grassland_type) #create grassland list
@@ -128,7 +126,8 @@ for (j in 1:length(spp)){
 }
 #merge dataframes 
 CWMs2 <- merge(CWMsite, awt1[,c(1,2,3,34:43)], by=c("grassland_type", "species")) 
-#filter out CWM values for spp-site whose relative cover for that trait is less than 80%
+
+#filter out CWM values for spp-site whose relative cover for that trait is less than 75%
 #do this for each trait and recombine dataframes to fill NA where CWM is inappropriate for % cover
 CWMs2$height <- replace(CWMs2$height, CWMs2$relcov_height < 75, NA)
 CWMs2$SLA <- replace(CWMs2$SLA, CWMs2$relcov_SLA < 75, NA)
@@ -159,13 +158,13 @@ CWM_sitedata <- CWM_sitedata %>%
 write.csv(CWM_sitedata, file='data/CWM_sitedata.csv', row.names = F) #make csv
 
 
-#determine trait coverage per grassland
-test <- CWM_sitedata %>%
+#code to determine coverage of each trait per grassland (summarized below)
+CWM_sitedata %>%
   group_by(grassland_type) %>%
-  summarise(total_non_na = sum(!is.na(leafarea.x)))
-#all) SLA, TLP,
-#3/5) SRL, leafN, rootdiam, height, LDMC
-#2/5) rootN, LTD, leafarea
-# one or none) RTD
+  summarise(total_non_na = sum(!is.na(leafN.x)))
+# all six = SLA, TLP,
+# three = SRL, leafN, rootdiam, height, LDMC
+# two = rootN, LTD, leafarea
+# one = RTD
 
 
