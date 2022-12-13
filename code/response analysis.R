@@ -2,8 +2,9 @@
 # testing for a trade-off in responses to drought and neighbors in different conditions
 
 # last edited 10/8/22 by Hailey Mount
-# edited order for clarity and now use MA as the main analysis type, r as the stat I
-# report, ANOVA's to show lack of grassland importance, and 
+# edited order for clarity and checked OLS results against Major axis (MA) as the analysis 
+# same results. r as the stat I report for correlation, ANOVA's to show lack of difference
+# between grassland types.
 
 #### data and packages ####
 library(tidyverse)
@@ -62,7 +63,7 @@ anova(intchr,intchr2)
 
 
 #### repeat with Standard Major Axis regression ####
-# robert suggested to use MA regression instead of OLS to avoid causal relationships 
+# RJG suggested to use MA regression instead of OLS to avoid causal relationships 
 
 library(tidyverse)
 library(smatr) #for major axis regression
@@ -70,7 +71,8 @@ library(smatr) #for major axis regression
 alldat <- read.csv("allsite_new.csv")
 
 # re-run model of response to neighbors and response to drought as major axis regression
-test <- sma(chrdiff~intrinsicdiff,NEWallsite[-106,]) # weights=weight2, )
+#uncertainty is incorporated. cannot use weights because uncertainty is needed for both sides.
+test <- sma(chrdiff~intrinsicdiff,NEWallsite[-106,]) # weights=weight2, ) 
 summary.sma(test)
 sqrt(test$r2[[1]]) #correlation
 plot(test)

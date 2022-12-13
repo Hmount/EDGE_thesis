@@ -1,0 +1,2215 @@
+"grassland_type","year","trt","plot","subplot","totalcov"
+"Desert",2012,"chr",3,"a",21
+"Desert",2012,"chr",3,"b",21.95
+"Desert",2012,"chr",3,"c",27.2
+"Desert",2012,"chr",3,"d",27.3
+"Desert",2012,"chr",5,"a",25.3
+"Desert",2012,"chr",5,"b",28.7
+"Desert",2012,"chr",5,"c",23.85
+"Desert",2012,"chr",5,"d",34.35
+"Desert",2012,"chr",9,"a",31.3
+"Desert",2012,"chr",9,"b",23.65
+"Desert",2012,"chr",9,"c",22.1
+"Desert",2012,"chr",9,"d",25.1
+"Desert",2012,"chr",11,"a",22.2
+"Desert",2012,"chr",11,"b",21.95
+"Desert",2012,"chr",11,"c",26.5
+"Desert",2012,"chr",11,"d",18.85
+"Desert",2012,"chr",14,"a",24.3
+"Desert",2012,"chr",14,"b",15.95
+"Desert",2012,"chr",14,"c",16.65
+"Desert",2012,"chr",14,"d",30.3
+"Desert",2012,"chr",18,"a",30.4
+"Desert",2012,"chr",18,"b",21.45
+"Desert",2012,"chr",18,"c",38
+"Desert",2012,"chr",18,"d",39.45
+"Desert",2012,"chr",20,"a",29.75
+"Desert",2012,"chr",20,"b",32.9
+"Desert",2012,"chr",20,"c",23.85
+"Desert",2012,"chr",20,"d",32.25
+"Desert",2012,"chr",24,"a",17.25
+"Desert",2012,"chr",24,"b",24.6
+"Desert",2012,"chr",24,"c",27.65
+"Desert",2012,"chr",24,"d",32.5
+"Desert",2012,"chr",27,"a",23.25
+"Desert",2012,"chr",27,"b",23.25
+"Desert",2012,"chr",27,"c",30
+"Desert",2012,"chr",27,"d",18.3
+"Desert",2012,"chr",31,"a",16.85
+"Desert",2012,"chr",31,"b",22.35
+"Desert",2012,"chr",31,"c",15.3
+"Desert",2012,"chr",31,"d",22.2
+"Desert",2012,"con",1,"a",25.2
+"Desert",2012,"con",1,"b",19.15
+"Desert",2012,"con",1,"c",21.2
+"Desert",2012,"con",1,"d",21.2
+"Desert",2012,"con",4,"a",17.95
+"Desert",2012,"con",4,"b",24.4
+"Desert",2012,"con",4,"c",23.9
+"Desert",2012,"con",4,"d",20.6
+"Desert",2012,"con",6,"a",30.85
+"Desert",2012,"con",6,"b",29.9
+"Desert",2012,"con",6,"c",31.05
+"Desert",2012,"con",6,"d",26.15
+"Desert",2012,"con",10,"a",27.7
+"Desert",2012,"con",10,"b",22.3
+"Desert",2012,"con",10,"c",23.65
+"Desert",2012,"con",10,"d",25
+"Desert",2012,"con",13,"a",19.55
+"Desert",2012,"con",13,"b",25.9
+"Desert",2012,"con",13,"c",31.85
+"Desert",2012,"con",13,"d",25.2
+"Desert",2012,"con",16,"a",31.05
+"Desert",2012,"con",16,"b",33.35
+"Desert",2012,"con",16,"c",24.6
+"Desert",2012,"con",16,"d",28.35
+"Desert",2012,"con",19,"a",17.05
+"Desert",2012,"con",19,"b",21
+"Desert",2012,"con",19,"c",34.05
+"Desert",2012,"con",19,"d",28
+"Desert",2012,"con",23,"a",25.45
+"Desert",2012,"con",23,"b",17.35
+"Desert",2012,"con",23,"c",27.85
+"Desert",2012,"con",23,"d",22.45
+"Desert",2012,"con",26,"a",31
+"Desert",2012,"con",26,"b",37.35
+"Desert",2012,"con",26,"c",28.9
+"Desert",2012,"con",26,"d",27.25
+"Desert",2012,"con",30,"a",16.85
+"Desert",2012,"con",30,"b",17.8
+"Desert",2012,"con",30,"c",32.45
+"Desert",2012,"con",30,"d",23.3
+"Desert",2013,"chr",3,"a",25.65
+"Desert",2013,"chr",3,"b",17.5
+"Desert",2013,"chr",3,"c",22.65
+"Desert",2013,"chr",3,"d",19.95
+"Desert",2013,"chr",5,"a",23.6
+"Desert",2013,"chr",5,"b",20.2
+"Desert",2013,"chr",5,"c",15.9
+"Desert",2013,"chr",5,"d",26.69
+"Desert",2013,"chr",9,"a",25.55
+"Desert",2013,"chr",9,"b",17.6
+"Desert",2013,"chr",9,"c",16.85
+"Desert",2013,"chr",9,"d",19.8
+"Desert",2013,"chr",11,"a",22.25
+"Desert",2013,"chr",11,"b",28.1
+"Desert",2013,"chr",11,"c",27.2
+"Desert",2013,"chr",11,"d",17.55
+"Desert",2013,"chr",14,"a",24.6
+"Desert",2013,"chr",14,"b",18
+"Desert",2013,"chr",14,"c",20.9
+"Desert",2013,"chr",14,"d",21
+"Desert",2013,"chr",18,"a",43.35
+"Desert",2013,"chr",18,"b",23
+"Desert",2013,"chr",18,"c",21.3
+"Desert",2013,"chr",18,"d",24.6
+"Desert",2013,"chr",20,"a",39.4
+"Desert",2013,"chr",20,"b",34.55
+"Desert",2013,"chr",20,"c",33.75
+"Desert",2013,"chr",20,"d",40.55
+"Desert",2013,"chr",24,"a",22.65
+"Desert",2013,"chr",24,"b",20.15
+"Desert",2013,"chr",24,"c",24.1
+"Desert",2013,"chr",24,"d",28.95
+"Desert",2013,"chr",27,"a",92.75
+"Desert",2013,"chr",27,"b",23.35
+"Desert",2013,"chr",27,"c",27.55
+"Desert",2013,"chr",27,"d",18.75
+"Desert",2013,"chr",31,"a",26.85
+"Desert",2013,"chr",31,"b",23.7
+"Desert",2013,"chr",31,"c",21.45
+"Desert",2013,"chr",31,"d",22.4
+"Desert",2013,"con",1,"a",28.6
+"Desert",2013,"con",1,"b",18.1
+"Desert",2013,"con",1,"c",21.8
+"Desert",2013,"con",1,"d",25.75
+"Desert",2013,"con",4,"a",34.55
+"Desert",2013,"con",4,"b",29.55
+"Desert",2013,"con",4,"c",49.95
+"Desert",2013,"con",4,"d",41.55
+"Desert",2013,"con",6,"a",33.65
+"Desert",2013,"con",6,"b",30.15
+"Desert",2013,"con",6,"c",22.6
+"Desert",2013,"con",6,"d",29.65
+"Desert",2013,"con",10,"a",26.95
+"Desert",2013,"con",10,"b",23.75
+"Desert",2013,"con",10,"c",27.2
+"Desert",2013,"con",10,"d",23.3
+"Desert",2013,"con",13,"a",24.45
+"Desert",2013,"con",13,"b",25.3
+"Desert",2013,"con",13,"c",58.6
+"Desert",2013,"con",13,"d",43.8
+"Desert",2013,"con",16,"a",32.75
+"Desert",2013,"con",16,"b",27.85
+"Desert",2013,"con",16,"c",31.8
+"Desert",2013,"con",16,"d",28.55
+"Desert",2013,"con",19,"a",40.1
+"Desert",2013,"con",19,"b",25.3
+"Desert",2013,"con",19,"c",33.65
+"Desert",2013,"con",19,"d",21.25
+"Desert",2013,"con",23,"a",32.2
+"Desert",2013,"con",23,"b",33.35
+"Desert",2013,"con",23,"c",41.5
+"Desert",2013,"con",23,"d",34.95
+"Desert",2013,"con",26,"a",38.6
+"Desert",2013,"con",26,"b",39.6
+"Desert",2013,"con",26,"c",40.45
+"Desert",2013,"con",26,"d",43.25
+"Desert",2013,"con",30,"a",44.75
+"Desert",2013,"con",30,"b",32.85
+"Desert",2013,"con",30,"c",55.3
+"Desert",2013,"con",30,"d",39.3
+"Desert",2014,"chr",3,"a",17.9
+"Desert",2014,"chr",3,"b",16.36
+"Desert",2014,"chr",3,"c",25.36
+"Desert",2014,"chr",3,"d",12.48
+"Desert",2014,"chr",5,"a",18.1
+"Desert",2014,"chr",5,"b",12.5
+"Desert",2014,"chr",5,"c",13
+"Desert",2014,"chr",5,"d",20.4
+"Desert",2014,"chr",9,"a",30.55
+"Desert",2014,"chr",9,"b",8.45
+"Desert",2014,"chr",9,"c",8.65
+"Desert",2014,"chr",9,"d",14.5
+"Desert",2014,"chr",11,"a",32.46
+"Desert",2014,"chr",11,"b",9.05
+"Desert",2014,"chr",11,"c",54.1
+"Desert",2014,"chr",11,"d",35.45
+"Desert",2014,"chr",14,"a",14
+"Desert",2014,"chr",14,"b",16.1
+"Desert",2014,"chr",14,"c",12.8
+"Desert",2014,"chr",14,"d",14.1
+"Desert",2014,"chr",18,"a",8.35
+"Desert",2014,"chr",18,"b",4.2
+"Desert",2014,"chr",18,"c",11.7
+"Desert",2014,"chr",18,"d",8.6
+"Desert",2014,"chr",20,"a",20.25
+"Desert",2014,"chr",20,"b",13.8
+"Desert",2014,"chr",20,"c",22.65
+"Desert",2014,"chr",20,"d",14.2
+"Desert",2014,"chr",24,"a",7
+"Desert",2014,"chr",24,"b",6.5
+"Desert",2014,"chr",24,"c",17.9
+"Desert",2014,"chr",24,"d",5.85
+"Desert",2014,"chr",27,"a",7.2
+"Desert",2014,"chr",27,"b",12.3
+"Desert",2014,"chr",27,"c",32.55
+"Desert",2014,"chr",27,"d",26.4
+"Desert",2014,"chr",31,"a",7.5
+"Desert",2014,"chr",31,"b",17.6
+"Desert",2014,"chr",31,"c",22.1
+"Desert",2014,"chr",31,"d",12.45
+"Desert",2014,"con",1,"a",21.26
+"Desert",2014,"con",1,"b",16.15
+"Desert",2014,"con",1,"c",34.88
+"Desert",2014,"con",1,"d",30.83
+"Desert",2014,"con",4,"a",23.11
+"Desert",2014,"con",4,"b",23.75
+"Desert",2014,"con",4,"c",31.1
+"Desert",2014,"con",4,"d",23.4
+"Desert",2014,"con",6,"a",42.45
+"Desert",2014,"con",6,"b",22.2
+"Desert",2014,"con",6,"c",27.95
+"Desert",2014,"con",6,"d",33.91
+"Desert",2014,"con",10,"a",32.65
+"Desert",2014,"con",10,"b",24.9
+"Desert",2014,"con",10,"c",29
+"Desert",2014,"con",10,"d",28
+"Desert",2014,"con",13,"a",23.8
+"Desert",2014,"con",13,"b",31.15
+"Desert",2014,"con",13,"c",43
+"Desert",2014,"con",13,"d",23.95
+"Desert",2014,"con",16,"a",23.4
+"Desert",2014,"con",16,"b",24.75
+"Desert",2014,"con",16,"c",33.15
+"Desert",2014,"con",16,"d",24.5
+"Desert",2014,"con",19,"a",22.8
+"Desert",2014,"con",19,"b",28.5
+"Desert",2014,"con",19,"c",47.55
+"Desert",2014,"con",19,"d",29.8
+"Desert",2014,"con",23,"a",35.1
+"Desert",2014,"con",23,"b",25
+"Desert",2014,"con",23,"c",25.5
+"Desert",2014,"con",23,"d",23.6
+"Desert",2014,"con",26,"a",18.05
+"Desert",2014,"con",26,"b",19.95
+"Desert",2014,"con",26,"c",51.5
+"Desert",2014,"con",26,"d",32.55
+"Desert",2014,"con",30,"a",25.98
+"Desert",2014,"con",30,"b",20.95
+"Desert",2014,"con",30,"c",55.75
+"Desert",2014,"con",30,"d",30.09
+"Desert",2015,"chr",3,"a",10.65
+"Desert",2015,"chr",3,"b",8.89
+"Desert",2015,"chr",3,"c",9.13
+"Desert",2015,"chr",3,"d",5.99
+"Desert",2015,"chr",5,"a",15.4
+"Desert",2015,"chr",5,"b",12.15
+"Desert",2015,"chr",5,"c",7.75
+"Desert",2015,"chr",5,"d",12.48
+"Desert",2015,"chr",9,"a",12.99
+"Desert",2015,"chr",9,"b",7.95
+"Desert",2015,"chr",9,"c",12.85
+"Desert",2015,"chr",9,"d",6.4
+"Desert",2015,"chr",11,"a",11.1
+"Desert",2015,"chr",11,"b",11.2
+"Desert",2015,"chr",11,"c",16.4
+"Desert",2015,"chr",11,"d",13.28
+"Desert",2015,"chr",14,"a",15.3
+"Desert",2015,"chr",14,"b",10.2
+"Desert",2015,"chr",14,"c",14.15
+"Desert",2015,"chr",14,"d",8.92
+"Desert",2015,"chr",18,"a",9.1
+"Desert",2015,"chr",18,"b",9.84
+"Desert",2015,"chr",18,"c",12.55
+"Desert",2015,"chr",18,"d",9.48
+"Desert",2015,"chr",20,"a",16.65
+"Desert",2015,"chr",20,"b",14.21
+"Desert",2015,"chr",20,"c",13.5
+"Desert",2015,"chr",20,"d",11.83
+"Desert",2015,"chr",24,"a",10.35
+"Desert",2015,"chr",24,"b",7.5
+"Desert",2015,"chr",24,"c",8.58
+"Desert",2015,"chr",24,"d",8.31
+"Desert",2015,"chr",27,"a",11
+"Desert",2015,"chr",27,"b",23.45
+"Desert",2015,"chr",27,"c",12.3
+"Desert",2015,"chr",27,"d",10.6
+"Desert",2015,"chr",31,"a",14.85
+"Desert",2015,"chr",31,"b",11.85
+"Desert",2015,"chr",31,"c",9.35
+"Desert",2015,"chr",31,"d",6.85
+"Desert",2015,"con",1,"a",26.75
+"Desert",2015,"con",1,"b",20.75
+"Desert",2015,"con",1,"c",38.19
+"Desert",2015,"con",1,"d",31.5
+"Desert",2015,"con",4,"a",29.65
+"Desert",2015,"con",4,"b",32.7
+"Desert",2015,"con",4,"c",36.51
+"Desert",2015,"con",4,"d",30.15
+"Desert",2015,"con",6,"a",31
+"Desert",2015,"con",6,"b",26.1
+"Desert",2015,"con",6,"c",34.02
+"Desert",2015,"con",6,"d",34.3
+"Desert",2015,"con",10,"a",26.3
+"Desert",2015,"con",10,"b",30.06
+"Desert",2015,"con",10,"c",31.41
+"Desert",2015,"con",10,"d",29
+"Desert",2015,"con",13,"a",21.6
+"Desert",2015,"con",13,"b",33.45
+"Desert",2015,"con",13,"c",42.32
+"Desert",2015,"con",13,"d",18
+"Desert",2015,"con",16,"a",38.05
+"Desert",2015,"con",16,"b",32.55
+"Desert",2015,"con",16,"c",38.55
+"Desert",2015,"con",16,"d",27.55
+"Desert",2015,"con",19,"a",19.55
+"Desert",2015,"con",19,"b",53.91
+"Desert",2015,"con",19,"c",34.15
+"Desert",2015,"con",19,"d",24.2
+"Desert",2015,"con",23,"a",33.9
+"Desert",2015,"con",23,"b",30.05
+"Desert",2015,"con",23,"c",38.4
+"Desert",2015,"con",23,"d",30.5
+"Desert",2015,"con",26,"a",26.57
+"Desert",2015,"con",26,"b",21.3
+"Desert",2015,"con",26,"c",45.4
+"Desert",2015,"con",26,"d",38.5
+"Desert",2015,"con",30,"a",25.3
+"Desert",2015,"con",30,"b",33.15
+"Desert",2015,"con",30,"c",59.54
+"Desert",2015,"con",30,"d",36.6
+"Desert",2016,"chr",3,"a",14.5
+"Desert",2016,"chr",3,"b",21.45
+"Desert",2016,"chr",3,"c",23.6
+"Desert",2016,"chr",3,"d",19.6
+"Desert",2016,"chr",5,"a",20.55
+"Desert",2016,"chr",5,"b",16.9
+"Desert",2016,"chr",5,"c",14
+"Desert",2016,"chr",5,"d",11.55
+"Desert",2016,"chr",9,"a",16.7
+"Desert",2016,"chr",9,"b",15.95
+"Desert",2016,"chr",9,"c",24.45
+"Desert",2016,"chr",9,"d",14.75
+"Desert",2016,"chr",11,"a",14.5
+"Desert",2016,"chr",11,"b",16.92
+"Desert",2016,"chr",11,"c",19.35
+"Desert",2016,"chr",11,"d",11.5
+"Desert",2016,"chr",14,"a",23.2
+"Desert",2016,"chr",14,"b",16.95
+"Desert",2016,"chr",14,"c",21.55
+"Desert",2016,"chr",14,"d",27.78
+"Desert",2016,"chr",18,"a",21.7
+"Desert",2016,"chr",18,"b",22.95
+"Desert",2016,"chr",18,"c",30.2
+"Desert",2016,"chr",18,"d",15.28
+"Desert",2016,"chr",20,"a",25.75
+"Desert",2016,"chr",20,"b",29
+"Desert",2016,"chr",20,"c",24.95
+"Desert",2016,"chr",20,"d",24.6
+"Desert",2016,"chr",24,"a",20.52
+"Desert",2016,"chr",24,"b",15.1
+"Desert",2016,"chr",24,"c",24.37
+"Desert",2016,"chr",24,"d",17.33
+"Desert",2016,"chr",27,"a",19.45
+"Desert",2016,"chr",27,"b",17.05
+"Desert",2016,"chr",27,"c",28.5
+"Desert",2016,"chr",27,"d",18.62
+"Desert",2016,"chr",31,"a",27.36
+"Desert",2016,"chr",31,"b",13.05
+"Desert",2016,"chr",31,"c",17.2
+"Desert",2016,"chr",31,"d",24.25
+"Desert",2016,"con",1,"a",37.3
+"Desert",2016,"con",1,"b",25.67
+"Desert",2016,"con",1,"c",38.97
+"Desert",2016,"con",1,"d",36.91
+"Desert",2016,"con",4,"a",37.15
+"Desert",2016,"con",4,"b",38
+"Desert",2016,"con",4,"c",37.75
+"Desert",2016,"con",4,"d",35.8
+"Desert",2016,"con",6,"a",38.72
+"Desert",2016,"con",6,"b",35.1
+"Desert",2016,"con",6,"c",44.15
+"Desert",2016,"con",6,"d",39.56
+"Desert",2016,"con",10,"a",34.2
+"Desert",2016,"con",10,"b",35.71
+"Desert",2016,"con",10,"c",42.65
+"Desert",2016,"con",10,"d",37.5
+"Desert",2016,"con",13,"a",31.55
+"Desert",2016,"con",13,"b",37.55
+"Desert",2016,"con",13,"c",90.15
+"Desert",2016,"con",13,"d",42.65
+"Desert",2016,"con",16,"a",37.75
+"Desert",2016,"con",16,"b",36.1
+"Desert",2016,"con",16,"c",48.6
+"Desert",2016,"con",16,"d",34.5
+"Desert",2016,"con",19,"a",29.4
+"Desert",2016,"con",19,"b",32.85
+"Desert",2016,"con",19,"c",49.22
+"Desert",2016,"con",19,"d",30.05
+"Desert",2016,"con",23,"a",86.97
+"Desert",2016,"con",23,"b",54.4
+"Desert",2016,"con",23,"c",53.44
+"Desert",2016,"con",23,"d",55.98
+"Desert",2016,"con",26,"a",49.98
+"Desert",2016,"con",26,"b",57.42
+"Desert",2016,"con",26,"c",66.3
+"Desert",2016,"con",26,"d",63.9
+"Desert",2016,"con",30,"a",79.22
+"Desert",2016,"con",30,"b",65.66
+"Desert",2016,"con",30,"c",116.14
+"Desert",2016,"con",30,"d",58.1
+"Southern Shortgrass",2012,"chr",2,"a",4.4
+"Southern Shortgrass",2012,"chr",2,"b",1
+"Southern Shortgrass",2012,"chr",2,"c",5.5
+"Southern Shortgrass",2012,"chr",2,"d",3
+"Southern Shortgrass",2012,"chr",3,"a",5.25
+"Southern Shortgrass",2012,"chr",3,"d",1
+"Southern Shortgrass",2012,"chr",6,"a",6.7
+"Southern Shortgrass",2012,"chr",6,"b",1
+"Southern Shortgrass",2012,"chr",6,"c",2
+"Southern Shortgrass",2012,"chr",6,"d",2.35
+"Southern Shortgrass",2012,"chr",16,"b",3
+"Southern Shortgrass",2012,"chr",16,"d",1
+"Southern Shortgrass",2012,"chr",19,"a",2
+"Southern Shortgrass",2012,"chr",19,"b",1
+"Southern Shortgrass",2012,"chr",22,"a",4
+"Southern Shortgrass",2012,"chr",22,"b",3
+"Southern Shortgrass",2012,"chr",22,"c",1
+"Southern Shortgrass",2012,"chr",24,"a",4
+"Southern Shortgrass",2012,"chr",24,"b",5
+"Southern Shortgrass",2012,"chr",24,"c",2.5
+"Southern Shortgrass",2012,"chr",26,"a",6
+"Southern Shortgrass",2012,"chr",26,"b",1.5
+"Southern Shortgrass",2012,"chr",26,"d",1
+"Southern Shortgrass",2012,"chr",28,"b",1
+"Southern Shortgrass",2012,"chr",28,"c",4.25
+"Southern Shortgrass",2012,"chr",28,"d",3.35
+"Southern Shortgrass",2012,"con",1,"a",6
+"Southern Shortgrass",2012,"con",1,"b",4
+"Southern Shortgrass",2012,"con",1,"c",9
+"Southern Shortgrass",2012,"con",1,"d",8
+"Southern Shortgrass",2012,"con",4,"a",1
+"Southern Shortgrass",2012,"con",4,"b",3
+"Southern Shortgrass",2012,"con",4,"c",2.5
+"Southern Shortgrass",2012,"con",4,"d",5
+"Southern Shortgrass",2012,"con",7,"a",6.25
+"Southern Shortgrass",2012,"con",7,"b",5
+"Southern Shortgrass",2012,"con",7,"c",2
+"Southern Shortgrass",2012,"con",7,"d",5
+"Southern Shortgrass",2012,"con",11,"a",3.01
+"Southern Shortgrass",2012,"con",11,"b",2
+"Southern Shortgrass",2012,"con",11,"c",1
+"Southern Shortgrass",2012,"con",11,"d",1
+"Southern Shortgrass",2012,"con",15,"a",3
+"Southern Shortgrass",2012,"con",15,"b",6
+"Southern Shortgrass",2012,"con",15,"c",2.1
+"Southern Shortgrass",2012,"con",15,"d",4.6
+"Southern Shortgrass",2012,"con",17,"a",4.5
+"Southern Shortgrass",2012,"con",17,"b",3
+"Southern Shortgrass",2012,"con",17,"c",1
+"Southern Shortgrass",2012,"con",17,"d",1
+"Southern Shortgrass",2012,"con",18,"a",1
+"Southern Shortgrass",2012,"con",18,"b",1
+"Southern Shortgrass",2012,"con",18,"c",2
+"Southern Shortgrass",2012,"con",18,"d",2
+"Southern Shortgrass",2012,"con",21,"b",3.9
+"Southern Shortgrass",2012,"con",21,"c",1
+"Southern Shortgrass",2012,"con",21,"d",2
+"Southern Shortgrass",2012,"con",23,"b",1.2
+"Southern Shortgrass",2012,"con",23,"c",3
+"Southern Shortgrass",2012,"con",23,"d",8.05
+"Southern Shortgrass",2012,"con",27,"a",1
+"Southern Shortgrass",2012,"con",27,"b",2.1
+"Southern Shortgrass",2012,"con",27,"c",2
+"Southern Shortgrass",2012,"con",27,"d",1
+"Southern Shortgrass",2013,"chr",2,"a",3.4
+"Southern Shortgrass",2013,"chr",2,"c",1
+"Southern Shortgrass",2013,"chr",3,"a",4.6
+"Southern Shortgrass",2013,"chr",6,"a",2.87
+"Southern Shortgrass",2013,"chr",10,"c",1
+"Southern Shortgrass",2013,"chr",16,"b",1
+"Southern Shortgrass",2013,"chr",19,"a",1
+"Southern Shortgrass",2013,"chr",19,"b",1
+"Southern Shortgrass",2013,"chr",22,"a",1
+"Southern Shortgrass",2013,"chr",24,"b",1
+"Southern Shortgrass",2013,"chr",26,"a",1
+"Southern Shortgrass",2013,"chr",28,"d",1
+"Southern Shortgrass",2013,"con",1,"c",5.9
+"Southern Shortgrass",2013,"con",1,"d",3
+"Southern Shortgrass",2013,"con",4,"a",20.2
+"Southern Shortgrass",2013,"con",4,"b",2
+"Southern Shortgrass",2013,"con",4,"c",2
+"Southern Shortgrass",2013,"con",4,"d",9.75
+"Southern Shortgrass",2013,"con",7,"a",12
+"Southern Shortgrass",2013,"con",7,"b",6
+"Southern Shortgrass",2013,"con",7,"d",1
+"Southern Shortgrass",2013,"con",11,"a",1
+"Southern Shortgrass",2013,"con",11,"b",1.6
+"Southern Shortgrass",2013,"con",11,"c",4
+"Southern Shortgrass",2013,"con",11,"d",1
+"Southern Shortgrass",2013,"con",15,"a",1.5
+"Southern Shortgrass",2013,"con",15,"b",3.1
+"Southern Shortgrass",2013,"con",15,"c",1.35
+"Southern Shortgrass",2013,"con",15,"d",4.5
+"Southern Shortgrass",2013,"con",17,"a",2.6
+"Southern Shortgrass",2013,"con",17,"b",3.25
+"Southern Shortgrass",2013,"con",18,"b",1
+"Southern Shortgrass",2013,"con",21,"b",2
+"Southern Shortgrass",2013,"con",21,"d",1
+"Southern Shortgrass",2013,"con",23,"c",1
+"Southern Shortgrass",2013,"con",23,"d",5.45
+"Southern Shortgrass",2013,"con",27,"b",5
+"Southern Shortgrass",2013,"con",27,"d",1
+"Southern Shortgrass",2014,"chr",2,"a",1
+"Southern Shortgrass",2014,"chr",2,"c",1
+"Southern Shortgrass",2014,"chr",3,"a",1
+"Southern Shortgrass",2014,"chr",6,"a",2
+"Southern Shortgrass",2014,"chr",10,"c",1
+"Southern Shortgrass",2014,"chr",16,"a",1
+"Southern Shortgrass",2014,"chr",19,"a",1
+"Southern Shortgrass",2014,"chr",19,"b",1
+"Southern Shortgrass",2014,"chr",24,"a",1
+"Southern Shortgrass",2014,"chr",24,"b",1
+"Southern Shortgrass",2014,"chr",24,"d",1
+"Southern Shortgrass",2014,"con",1,"c",5.75
+"Southern Shortgrass",2014,"con",1,"d",2
+"Southern Shortgrass",2014,"con",4,"a",3.15
+"Southern Shortgrass",2014,"con",4,"b",2
+"Southern Shortgrass",2014,"con",4,"c",2
+"Southern Shortgrass",2014,"con",4,"d",8
+"Southern Shortgrass",2014,"con",7,"a",4
+"Southern Shortgrass",2014,"con",7,"b",4.5
+"Southern Shortgrass",2014,"con",7,"c",3
+"Southern Shortgrass",2014,"con",7,"d",1
+"Southern Shortgrass",2014,"con",11,"a",5.3
+"Southern Shortgrass",2014,"con",11,"b",2
+"Southern Shortgrass",2014,"con",11,"c",2.25
+"Southern Shortgrass",2014,"con",11,"d",1
+"Southern Shortgrass",2014,"con",15,"a",2.5
+"Southern Shortgrass",2014,"con",15,"b",2.51
+"Southern Shortgrass",2014,"con",15,"c",2
+"Southern Shortgrass",2014,"con",15,"d",7
+"Southern Shortgrass",2014,"con",17,"a",3
+"Southern Shortgrass",2014,"con",17,"b",3.75
+"Southern Shortgrass",2014,"con",17,"d",1
+"Southern Shortgrass",2014,"con",18,"a",1
+"Southern Shortgrass",2014,"con",18,"b",1
+"Southern Shortgrass",2014,"con",18,"c",5
+"Southern Shortgrass",2014,"con",18,"d",1
+"Southern Shortgrass",2014,"con",21,"b",3
+"Southern Shortgrass",2014,"con",21,"c",2
+"Southern Shortgrass",2014,"con",21,"d",1
+"Southern Shortgrass",2014,"con",23,"d",8.26
+"Southern Shortgrass",2014,"con",27,"b",5
+"Southern Shortgrass",2014,"con",27,"c",1
+"Southern Shortgrass",2014,"con",27,"d",2
+"Southern Shortgrass",2015,"chr",2,"a",3
+"Southern Shortgrass",2015,"chr",2,"b",3
+"Southern Shortgrass",2015,"chr",2,"c",3
+"Southern Shortgrass",2015,"chr",3,"a",3.36
+"Southern Shortgrass",2015,"chr",3,"b",1
+"Southern Shortgrass",2015,"chr",3,"c",1
+"Southern Shortgrass",2015,"chr",3,"d",1
+"Southern Shortgrass",2015,"chr",6,"a",4.08
+"Southern Shortgrass",2015,"chr",6,"b",1
+"Southern Shortgrass",2015,"chr",6,"c",1
+"Southern Shortgrass",2015,"chr",10,"a",3
+"Southern Shortgrass",2015,"chr",10,"b",2
+"Southern Shortgrass",2015,"chr",10,"c",2
+"Southern Shortgrass",2015,"chr",10,"d",4
+"Southern Shortgrass",2015,"chr",16,"a",1
+"Southern Shortgrass",2015,"chr",16,"b",2
+"Southern Shortgrass",2015,"chr",16,"c",1
+"Southern Shortgrass",2015,"chr",16,"d",3
+"Southern Shortgrass",2015,"chr",19,"b",2
+"Southern Shortgrass",2015,"chr",19,"c",1
+"Southern Shortgrass",2015,"chr",22,"a",2
+"Southern Shortgrass",2015,"chr",22,"b",1
+"Southern Shortgrass",2015,"chr",24,"a",3.25
+"Southern Shortgrass",2015,"chr",24,"b",4
+"Southern Shortgrass",2015,"chr",24,"c",1
+"Southern Shortgrass",2015,"chr",24,"d",3
+"Southern Shortgrass",2015,"chr",26,"a",3
+"Southern Shortgrass",2015,"chr",26,"b",2
+"Southern Shortgrass",2015,"chr",26,"c",1
+"Southern Shortgrass",2015,"chr",26,"d",1
+"Southern Shortgrass",2015,"chr",28,"a",2
+"Southern Shortgrass",2015,"chr",28,"b",1
+"Southern Shortgrass",2015,"chr",28,"c",1
+"Southern Shortgrass",2015,"con",1,"a",8
+"Southern Shortgrass",2015,"con",1,"b",3.6
+"Southern Shortgrass",2015,"con",1,"c",23
+"Southern Shortgrass",2015,"con",1,"d",13.56
+"Southern Shortgrass",2015,"con",4,"a",2.5
+"Southern Shortgrass",2015,"con",4,"b",2
+"Southern Shortgrass",2015,"con",4,"c",2
+"Southern Shortgrass",2015,"con",4,"d",8.25
+"Southern Shortgrass",2015,"con",7,"a",6
+"Southern Shortgrass",2015,"con",7,"b",6.5
+"Southern Shortgrass",2015,"con",7,"c",3
+"Southern Shortgrass",2015,"con",7,"d",3
+"Southern Shortgrass",2015,"con",11,"a",5
+"Southern Shortgrass",2015,"con",11,"b",2
+"Southern Shortgrass",2015,"con",11,"c",3.5
+"Southern Shortgrass",2015,"con",11,"d",3
+"Southern Shortgrass",2015,"con",15,"a",3.75
+"Southern Shortgrass",2015,"con",15,"b",4.05
+"Southern Shortgrass",2015,"con",15,"c",2
+"Southern Shortgrass",2015,"con",15,"d",5.5
+"Southern Shortgrass",2015,"con",17,"a",3
+"Southern Shortgrass",2015,"con",17,"b",4
+"Southern Shortgrass",2015,"con",17,"d",2
+"Southern Shortgrass",2015,"con",18,"a",4.5
+"Southern Shortgrass",2015,"con",18,"b",3
+"Southern Shortgrass",2015,"con",18,"c",4
+"Southern Shortgrass",2015,"con",18,"d",1
+"Southern Shortgrass",2015,"con",21,"b",3
+"Southern Shortgrass",2015,"con",21,"c",1
+"Southern Shortgrass",2015,"con",21,"d",2
+"Southern Shortgrass",2015,"con",23,"a",1
+"Southern Shortgrass",2015,"con",23,"c",3
+"Southern Shortgrass",2015,"con",23,"d",7.66
+"Southern Shortgrass",2015,"con",27,"b",4
+"Southern Shortgrass",2015,"con",27,"c",4.08
+"Southern Shortgrass",2015,"con",27,"d",3
+"Southern Shortgrass",2016,"chr",2,"a",20.31
+"Southern Shortgrass",2016,"chr",2,"b",8.35
+"Southern Shortgrass",2016,"chr",2,"c",18.05
+"Southern Shortgrass",2016,"chr",2,"d",8.5
+"Southern Shortgrass",2016,"chr",3,"a",17.15
+"Southern Shortgrass",2016,"chr",3,"b",4
+"Southern Shortgrass",2016,"chr",3,"c",16.5
+"Southern Shortgrass",2016,"chr",3,"d",14.75
+"Southern Shortgrass",2016,"chr",6,"a",26.6
+"Southern Shortgrass",2016,"chr",6,"b",22.39
+"Southern Shortgrass",2016,"chr",6,"c",7.1
+"Southern Shortgrass",2016,"chr",6,"d",7.39
+"Southern Shortgrass",2016,"chr",10,"a",14.2
+"Southern Shortgrass",2016,"chr",10,"b",16.4
+"Southern Shortgrass",2016,"chr",10,"c",6.28
+"Southern Shortgrass",2016,"chr",10,"d",3
+"Southern Shortgrass",2016,"chr",16,"a",18.1
+"Southern Shortgrass",2016,"chr",16,"b",19.4
+"Southern Shortgrass",2016,"chr",16,"c",2
+"Southern Shortgrass",2016,"chr",16,"d",3.6
+"Southern Shortgrass",2016,"chr",19,"a",23
+"Southern Shortgrass",2016,"chr",19,"b",4.6
+"Southern Shortgrass",2016,"chr",19,"c",3
+"Southern Shortgrass",2016,"chr",19,"d",14.32
+"Southern Shortgrass",2016,"chr",22,"a",3
+"Southern Shortgrass",2016,"chr",22,"b",12.55
+"Southern Shortgrass",2016,"chr",22,"c",3.5
+"Southern Shortgrass",2016,"chr",22,"d",1
+"Southern Shortgrass",2016,"chr",24,"a",16.15
+"Southern Shortgrass",2016,"chr",24,"b",8.91
+"Southern Shortgrass",2016,"chr",24,"c",14.27
+"Southern Shortgrass",2016,"chr",24,"d",7.82
+"Southern Shortgrass",2016,"chr",26,"a",4.2
+"Southern Shortgrass",2016,"chr",26,"b",3
+"Southern Shortgrass",2016,"chr",26,"c",2.25
+"Southern Shortgrass",2016,"chr",26,"d",1.55
+"Southern Shortgrass",2016,"chr",28,"a",22.05
+"Southern Shortgrass",2016,"chr",28,"b",2.33
+"Southern Shortgrass",2016,"chr",28,"c",3.66
+"Southern Shortgrass",2016,"chr",28,"d",3.6
+"Southern Shortgrass",2016,"con",1,"a",18
+"Southern Shortgrass",2016,"con",1,"b",4
+"Southern Shortgrass",2016,"con",1,"c",24
+"Southern Shortgrass",2016,"con",1,"d",13
+"Southern Shortgrass",2016,"con",4,"a",5.7
+"Southern Shortgrass",2016,"con",4,"b",5.2
+"Southern Shortgrass",2016,"con",4,"c",6.3
+"Southern Shortgrass",2016,"con",4,"d",12.75
+"Southern Shortgrass",2016,"con",7,"a",18.45
+"Southern Shortgrass",2016,"con",7,"b",10.66
+"Southern Shortgrass",2016,"con",7,"c",5.76
+"Southern Shortgrass",2016,"con",7,"d",6.05
+"Southern Shortgrass",2016,"con",11,"a",14.3
+"Southern Shortgrass",2016,"con",11,"b",6.34
+"Southern Shortgrass",2016,"con",11,"c",7
+"Southern Shortgrass",2016,"con",11,"d",8.9
+"Southern Shortgrass",2016,"con",15,"a",5.3
+"Southern Shortgrass",2016,"con",15,"b",6.1
+"Southern Shortgrass",2016,"con",15,"c",4.5
+"Southern Shortgrass",2016,"con",15,"d",5.75
+"Southern Shortgrass",2016,"con",17,"a",3.75
+"Southern Shortgrass",2016,"con",17,"b",6.5
+"Southern Shortgrass",2016,"con",17,"c",3.3
+"Southern Shortgrass",2016,"con",17,"d",3.82
+"Southern Shortgrass",2016,"con",18,"a",16.66
+"Southern Shortgrass",2016,"con",18,"b",22.9
+"Southern Shortgrass",2016,"con",18,"c",8.16
+"Southern Shortgrass",2016,"con",18,"d",3.54
+"Southern Shortgrass",2016,"con",21,"a",4.56
+"Southern Shortgrass",2016,"con",21,"b",5.13
+"Southern Shortgrass",2016,"con",21,"c",5.76
+"Southern Shortgrass",2016,"con",21,"d",5.23
+"Southern Shortgrass",2016,"con",23,"a",6.29
+"Southern Shortgrass",2016,"con",23,"b",9.67
+"Southern Shortgrass",2016,"con",23,"c",8.6
+"Southern Shortgrass",2016,"con",23,"d",15.25
+"Southern Shortgrass",2016,"con",27,"a",3.3
+"Southern Shortgrass",2016,"con",27,"b",5.64
+"Southern Shortgrass",2016,"con",27,"c",15.37
+"Southern Shortgrass",2016,"con",27,"d",6.75
+"Northern Shortgrass",2012,"chr",2,"a",47
+"Northern Shortgrass",2012,"chr",2,"b",28
+"Northern Shortgrass",2012,"chr",2,"c",21
+"Northern Shortgrass",2012,"chr",2,"d",28
+"Northern Shortgrass",2012,"chr",6,"a",31
+"Northern Shortgrass",2012,"chr",6,"b",32
+"Northern Shortgrass",2012,"chr",6,"c",23
+"Northern Shortgrass",2012,"chr",6,"d",39
+"Northern Shortgrass",2012,"chr",7,"a",45
+"Northern Shortgrass",2012,"chr",7,"b",26
+"Northern Shortgrass",2012,"chr",7,"c",23
+"Northern Shortgrass",2012,"chr",7,"d",39
+"Northern Shortgrass",2012,"chr",12,"a",35
+"Northern Shortgrass",2012,"chr",12,"b",28
+"Northern Shortgrass",2012,"chr",12,"c",25
+"Northern Shortgrass",2012,"chr",12,"d",34
+"Northern Shortgrass",2012,"chr",14,"a",47
+"Northern Shortgrass",2012,"chr",14,"b",25
+"Northern Shortgrass",2012,"chr",14,"c",25
+"Northern Shortgrass",2012,"chr",14,"d",38
+"Northern Shortgrass",2012,"chr",18,"a",32
+"Northern Shortgrass",2012,"chr",18,"b",30
+"Northern Shortgrass",2012,"chr",18,"c",20
+"Northern Shortgrass",2012,"chr",18,"d",31
+"Northern Shortgrass",2012,"chr",21,"a",32
+"Northern Shortgrass",2012,"chr",21,"b",32
+"Northern Shortgrass",2012,"chr",21,"c",24
+"Northern Shortgrass",2012,"chr",21,"d",24
+"Northern Shortgrass",2012,"chr",24,"a",30
+"Northern Shortgrass",2012,"chr",24,"b",26
+"Northern Shortgrass",2012,"chr",24,"c",36
+"Northern Shortgrass",2012,"chr",24,"d",30
+"Northern Shortgrass",2012,"chr",25,"a",35
+"Northern Shortgrass",2012,"chr",25,"b",31
+"Northern Shortgrass",2012,"chr",25,"c",31
+"Northern Shortgrass",2012,"chr",25,"d",38
+"Northern Shortgrass",2012,"chr",29,"a",34
+"Northern Shortgrass",2012,"chr",29,"b",33
+"Northern Shortgrass",2012,"chr",29,"c",31
+"Northern Shortgrass",2012,"chr",29,"d",39
+"Northern Shortgrass",2012,"con",1,"a",25
+"Northern Shortgrass",2012,"con",1,"b",36
+"Northern Shortgrass",2012,"con",1,"c",27
+"Northern Shortgrass",2012,"con",1,"d",33
+"Northern Shortgrass",2012,"con",4,"a",44
+"Northern Shortgrass",2012,"con",4,"b",45
+"Northern Shortgrass",2012,"con",4,"c",51
+"Northern Shortgrass",2012,"con",4,"d",44
+"Northern Shortgrass",2012,"con",8,"a",32
+"Northern Shortgrass",2012,"con",8,"b",31
+"Northern Shortgrass",2012,"con",8,"c",25
+"Northern Shortgrass",2012,"con",8,"d",32
+"Northern Shortgrass",2012,"con",10,"a",30
+"Northern Shortgrass",2012,"con",10,"b",30
+"Northern Shortgrass",2012,"con",10,"c",21
+"Northern Shortgrass",2012,"con",10,"d",24
+"Northern Shortgrass",2012,"con",13,"a",32
+"Northern Shortgrass",2012,"con",13,"b",25
+"Northern Shortgrass",2012,"con",13,"c",26
+"Northern Shortgrass",2012,"con",13,"d",30
+"Northern Shortgrass",2012,"con",16,"a",28
+"Northern Shortgrass",2012,"con",16,"b",32
+"Northern Shortgrass",2012,"con",16,"c",35
+"Northern Shortgrass",2012,"con",16,"d",24
+"Northern Shortgrass",2012,"con",20,"a",28
+"Northern Shortgrass",2012,"con",20,"b",24
+"Northern Shortgrass",2012,"con",20,"c",22
+"Northern Shortgrass",2012,"con",20,"d",42
+"Northern Shortgrass",2012,"con",23,"a",29
+"Northern Shortgrass",2012,"con",23,"b",35
+"Northern Shortgrass",2012,"con",23,"c",30
+"Northern Shortgrass",2012,"con",23,"d",27
+"Northern Shortgrass",2012,"con",27,"a",41
+"Northern Shortgrass",2012,"con",27,"b",33
+"Northern Shortgrass",2012,"con",27,"c",28
+"Northern Shortgrass",2012,"con",27,"d",37
+"Northern Shortgrass",2012,"con",30,"a",36
+"Northern Shortgrass",2012,"con",30,"b",29
+"Northern Shortgrass",2012,"con",30,"c",27
+"Northern Shortgrass",2012,"con",30,"d",34
+"Northern Shortgrass",2013,"chr",2,"a",83
+"Northern Shortgrass",2013,"chr",2,"b",65
+"Northern Shortgrass",2013,"chr",2,"c",58
+"Northern Shortgrass",2013,"chr",2,"d",45
+"Northern Shortgrass",2013,"chr",6,"a",46
+"Northern Shortgrass",2013,"chr",6,"b",92
+"Northern Shortgrass",2013,"chr",6,"c",74
+"Northern Shortgrass",2013,"chr",6,"d",49
+"Northern Shortgrass",2013,"chr",7,"a",51
+"Northern Shortgrass",2013,"chr",7,"b",63
+"Northern Shortgrass",2013,"chr",7,"c",42
+"Northern Shortgrass",2013,"chr",7,"d",60
+"Northern Shortgrass",2013,"chr",12,"a",70
+"Northern Shortgrass",2013,"chr",12,"b",64
+"Northern Shortgrass",2013,"chr",12,"c",62
+"Northern Shortgrass",2013,"chr",12,"d",63
+"Northern Shortgrass",2013,"chr",14,"a",103
+"Northern Shortgrass",2013,"chr",14,"b",73
+"Northern Shortgrass",2013,"chr",14,"c",73
+"Northern Shortgrass",2013,"chr",14,"d",80
+"Northern Shortgrass",2013,"chr",18,"a",78
+"Northern Shortgrass",2013,"chr",18,"b",73
+"Northern Shortgrass",2013,"chr",18,"c",32
+"Northern Shortgrass",2013,"chr",18,"d",40
+"Northern Shortgrass",2013,"chr",21,"a",89
+"Northern Shortgrass",2013,"chr",21,"b",41
+"Northern Shortgrass",2013,"chr",21,"c",54
+"Northern Shortgrass",2013,"chr",21,"d",56
+"Northern Shortgrass",2013,"chr",24,"a",15
+"Northern Shortgrass",2013,"chr",24,"b",59
+"Northern Shortgrass",2013,"chr",24,"c",68
+"Northern Shortgrass",2013,"chr",24,"d",100
+"Northern Shortgrass",2013,"chr",25,"a",56
+"Northern Shortgrass",2013,"chr",25,"b",59
+"Northern Shortgrass",2013,"chr",25,"c",76
+"Northern Shortgrass",2013,"chr",25,"d",43
+"Northern Shortgrass",2013,"chr",29,"a",91
+"Northern Shortgrass",2013,"chr",29,"b",99
+"Northern Shortgrass",2013,"chr",29,"c",92
+"Northern Shortgrass",2013,"chr",29,"d",68
+"Northern Shortgrass",2013,"con",1,"a",56
+"Northern Shortgrass",2013,"con",1,"b",81
+"Northern Shortgrass",2013,"con",1,"c",60
+"Northern Shortgrass",2013,"con",1,"d",64
+"Northern Shortgrass",2013,"con",4,"a",62
+"Northern Shortgrass",2013,"con",4,"b",92
+"Northern Shortgrass",2013,"con",4,"c",74
+"Northern Shortgrass",2013,"con",4,"d",46
+"Northern Shortgrass",2013,"con",8,"a",72
+"Northern Shortgrass",2013,"con",8,"b",92
+"Northern Shortgrass",2013,"con",8,"c",71
+"Northern Shortgrass",2013,"con",8,"d",52
+"Northern Shortgrass",2013,"con",10,"a",57
+"Northern Shortgrass",2013,"con",10,"b",49
+"Northern Shortgrass",2013,"con",10,"c",68
+"Northern Shortgrass",2013,"con",10,"d",74
+"Northern Shortgrass",2013,"con",13,"a",92
+"Northern Shortgrass",2013,"con",13,"b",74
+"Northern Shortgrass",2013,"con",13,"c",90
+"Northern Shortgrass",2013,"con",13,"d",97
+"Northern Shortgrass",2013,"con",16,"a",81
+"Northern Shortgrass",2013,"con",16,"b",72
+"Northern Shortgrass",2013,"con",16,"c",62
+"Northern Shortgrass",2013,"con",16,"d",76
+"Northern Shortgrass",2013,"con",20,"a",50
+"Northern Shortgrass",2013,"con",20,"b",63
+"Northern Shortgrass",2013,"con",20,"c",67
+"Northern Shortgrass",2013,"con",20,"d",69
+"Northern Shortgrass",2013,"con",23,"a",35
+"Northern Shortgrass",2013,"con",23,"b",59
+"Northern Shortgrass",2013,"con",23,"c",91
+"Northern Shortgrass",2013,"con",23,"d",47
+"Northern Shortgrass",2013,"con",27,"a",102
+"Northern Shortgrass",2013,"con",27,"b",57
+"Northern Shortgrass",2013,"con",27,"c",63
+"Northern Shortgrass",2013,"con",27,"d",95
+"Northern Shortgrass",2013,"con",30,"a",92
+"Northern Shortgrass",2013,"con",30,"b",44
+"Northern Shortgrass",2013,"con",30,"c",75
+"Northern Shortgrass",2013,"con",30,"d",88
+"Northern Shortgrass",2014,"chr",2,"a",115
+"Northern Shortgrass",2014,"chr",2,"b",86
+"Northern Shortgrass",2014,"chr",2,"c",89
+"Northern Shortgrass",2014,"chr",2,"d",81
+"Northern Shortgrass",2014,"chr",6,"a",41
+"Northern Shortgrass",2014,"chr",6,"b",82
+"Northern Shortgrass",2014,"chr",6,"c",109
+"Northern Shortgrass",2014,"chr",6,"d",103
+"Northern Shortgrass",2014,"chr",7,"a",78
+"Northern Shortgrass",2014,"chr",7,"b",60
+"Northern Shortgrass",2014,"chr",7,"c",59
+"Northern Shortgrass",2014,"chr",7,"d",73
+"Northern Shortgrass",2014,"chr",12,"a",56
+"Northern Shortgrass",2014,"chr",12,"b",67
+"Northern Shortgrass",2014,"chr",12,"c",44
+"Northern Shortgrass",2014,"chr",12,"d",68
+"Northern Shortgrass",2014,"chr",14,"a",60
+"Northern Shortgrass",2014,"chr",14,"b",74
+"Northern Shortgrass",2014,"chr",14,"c",65
+"Northern Shortgrass",2014,"chr",14,"d",104
+"Northern Shortgrass",2014,"chr",18,"a",53
+"Northern Shortgrass",2014,"chr",18,"b",60
+"Northern Shortgrass",2014,"chr",18,"c",59
+"Northern Shortgrass",2014,"chr",18,"d",53
+"Northern Shortgrass",2014,"chr",21,"a",89
+"Northern Shortgrass",2014,"chr",21,"b",48
+"Northern Shortgrass",2014,"chr",21,"c",79
+"Northern Shortgrass",2014,"chr",21,"d",55
+"Northern Shortgrass",2014,"chr",24,"a",70
+"Northern Shortgrass",2014,"chr",24,"b",92
+"Northern Shortgrass",2014,"chr",24,"c",88
+"Northern Shortgrass",2014,"chr",24,"d",82
+"Northern Shortgrass",2014,"chr",25,"a",65
+"Northern Shortgrass",2014,"chr",25,"b",63
+"Northern Shortgrass",2014,"chr",25,"c",52
+"Northern Shortgrass",2014,"chr",25,"d",92
+"Northern Shortgrass",2014,"chr",29,"a",65
+"Northern Shortgrass",2014,"chr",29,"b",81
+"Northern Shortgrass",2014,"chr",29,"c",74
+"Northern Shortgrass",2014,"chr",29,"d",57
+"Northern Shortgrass",2014,"con",1,"a",78
+"Northern Shortgrass",2014,"con",1,"b",90
+"Northern Shortgrass",2014,"con",1,"c",75
+"Northern Shortgrass",2014,"con",1,"d",46
+"Northern Shortgrass",2014,"con",4,"a",50
+"Northern Shortgrass",2014,"con",4,"b",63
+"Northern Shortgrass",2014,"con",4,"c",58
+"Northern Shortgrass",2014,"con",4,"d",57
+"Northern Shortgrass",2014,"con",8,"a",51
+"Northern Shortgrass",2014,"con",8,"b",106
+"Northern Shortgrass",2014,"con",8,"c",74
+"Northern Shortgrass",2014,"con",8,"d",56
+"Northern Shortgrass",2014,"con",10,"a",75
+"Northern Shortgrass",2014,"con",10,"b",67
+"Northern Shortgrass",2014,"con",10,"c",59
+"Northern Shortgrass",2014,"con",10,"d",56
+"Northern Shortgrass",2014,"con",13,"a",117
+"Northern Shortgrass",2014,"con",13,"b",129
+"Northern Shortgrass",2014,"con",13,"c",115
+"Northern Shortgrass",2014,"con",13,"d",122
+"Northern Shortgrass",2014,"con",16,"a",122
+"Northern Shortgrass",2014,"con",16,"b",134
+"Northern Shortgrass",2014,"con",16,"c",122
+"Northern Shortgrass",2014,"con",16,"d",136
+"Northern Shortgrass",2014,"con",20,"a",67
+"Northern Shortgrass",2014,"con",20,"b",72
+"Northern Shortgrass",2014,"con",20,"c",50
+"Northern Shortgrass",2014,"con",20,"d",43
+"Northern Shortgrass",2014,"con",23,"a",87
+"Northern Shortgrass",2014,"con",23,"b",102
+"Northern Shortgrass",2014,"con",23,"c",93
+"Northern Shortgrass",2014,"con",23,"d",100
+"Northern Shortgrass",2014,"con",27,"a",65
+"Northern Shortgrass",2014,"con",27,"b",86
+"Northern Shortgrass",2014,"con",27,"c",68
+"Northern Shortgrass",2014,"con",27,"d",89
+"Northern Shortgrass",2014,"con",30,"a",93
+"Northern Shortgrass",2014,"con",30,"b",84
+"Northern Shortgrass",2014,"con",30,"c",89
+"Northern Shortgrass",2014,"con",30,"d",83
+"Northern Shortgrass",2015,"chr",2,"a",94
+"Northern Shortgrass",2015,"chr",2,"b",88
+"Northern Shortgrass",2015,"chr",2,"c",148
+"Northern Shortgrass",2015,"chr",2,"d",152
+"Northern Shortgrass",2015,"chr",6,"a",82
+"Northern Shortgrass",2015,"chr",6,"b",133
+"Northern Shortgrass",2015,"chr",6,"c",188
+"Northern Shortgrass",2015,"chr",6,"d",146
+"Northern Shortgrass",2015,"chr",7,"a",88
+"Northern Shortgrass",2015,"chr",7,"b",46
+"Northern Shortgrass",2015,"chr",7,"c",77
+"Northern Shortgrass",2015,"chr",7,"d",92
+"Northern Shortgrass",2015,"chr",12,"a",87
+"Northern Shortgrass",2015,"chr",12,"b",82
+"Northern Shortgrass",2015,"chr",12,"c",65
+"Northern Shortgrass",2015,"chr",12,"d",80
+"Northern Shortgrass",2015,"chr",14,"a",102
+"Northern Shortgrass",2015,"chr",14,"b",81
+"Northern Shortgrass",2015,"chr",14,"c",101
+"Northern Shortgrass",2015,"chr",14,"d",126
+"Northern Shortgrass",2015,"chr",18,"a",69
+"Northern Shortgrass",2015,"chr",18,"b",96
+"Northern Shortgrass",2015,"chr",18,"c",45
+"Northern Shortgrass",2015,"chr",18,"d",62
+"Northern Shortgrass",2015,"chr",21,"a",104
+"Northern Shortgrass",2015,"chr",21,"b",81
+"Northern Shortgrass",2015,"chr",21,"c",95
+"Northern Shortgrass",2015,"chr",21,"d",119
+"Northern Shortgrass",2015,"chr",24,"a",102
+"Northern Shortgrass",2015,"chr",24,"b",148
+"Northern Shortgrass",2015,"chr",24,"c",139
+"Northern Shortgrass",2015,"chr",24,"d",118
+"Northern Shortgrass",2015,"chr",25,"a",82
+"Northern Shortgrass",2015,"chr",25,"b",125
+"Northern Shortgrass",2015,"chr",25,"c",94
+"Northern Shortgrass",2015,"chr",25,"d",124
+"Northern Shortgrass",2015,"chr",29,"a",102
+"Northern Shortgrass",2015,"chr",29,"b",115
+"Northern Shortgrass",2015,"chr",29,"c",100
+"Northern Shortgrass",2015,"chr",29,"d",123
+"Northern Shortgrass",2015,"con",1,"a",71
+"Northern Shortgrass",2015,"con",1,"b",96
+"Northern Shortgrass",2015,"con",1,"c",147
+"Northern Shortgrass",2015,"con",1,"d",97
+"Northern Shortgrass",2015,"con",4,"a",132
+"Northern Shortgrass",2015,"con",4,"b",131
+"Northern Shortgrass",2015,"con",4,"c",177
+"Northern Shortgrass",2015,"con",4,"d",132
+"Northern Shortgrass",2015,"con",8,"a",120
+"Northern Shortgrass",2015,"con",8,"b",137
+"Northern Shortgrass",2015,"con",8,"c",117
+"Northern Shortgrass",2015,"con",8,"d",114
+"Northern Shortgrass",2015,"con",10,"a",85
+"Northern Shortgrass",2015,"con",10,"b",114
+"Northern Shortgrass",2015,"con",10,"c",94
+"Northern Shortgrass",2015,"con",10,"d",109
+"Northern Shortgrass",2015,"con",13,"a",108
+"Northern Shortgrass",2015,"con",13,"b",144
+"Northern Shortgrass",2015,"con",13,"c",148
+"Northern Shortgrass",2015,"con",13,"d",118
+"Northern Shortgrass",2015,"con",16,"a",111
+"Northern Shortgrass",2015,"con",16,"b",108
+"Northern Shortgrass",2015,"con",16,"c",126
+"Northern Shortgrass",2015,"con",16,"d",151
+"Northern Shortgrass",2015,"con",20,"a",122
+"Northern Shortgrass",2015,"con",20,"b",131
+"Northern Shortgrass",2015,"con",20,"c",125
+"Northern Shortgrass",2015,"con",20,"d",125
+"Northern Shortgrass",2015,"con",23,"a",131
+"Northern Shortgrass",2015,"con",23,"b",137
+"Northern Shortgrass",2015,"con",23,"c",120
+"Northern Shortgrass",2015,"con",23,"d",123
+"Northern Shortgrass",2015,"con",27,"a",143
+"Northern Shortgrass",2015,"con",27,"b",136
+"Northern Shortgrass",2015,"con",27,"c",143
+"Northern Shortgrass",2015,"con",27,"d",127
+"Northern Shortgrass",2015,"con",30,"a",109
+"Northern Shortgrass",2015,"con",30,"b",130
+"Northern Shortgrass",2015,"con",30,"c",118
+"Northern Shortgrass",2015,"con",30,"d",109
+"Northern Shortgrass",2016,"chr",2,"a",167
+"Northern Shortgrass",2016,"chr",2,"b",136
+"Northern Shortgrass",2016,"chr",2,"c",123
+"Northern Shortgrass",2016,"chr",2,"d",177
+"Northern Shortgrass",2016,"chr",6,"a",132
+"Northern Shortgrass",2016,"chr",6,"b",126
+"Northern Shortgrass",2016,"chr",6,"c",146
+"Northern Shortgrass",2016,"chr",6,"d",150
+"Northern Shortgrass",2016,"chr",7,"a",109
+"Northern Shortgrass",2016,"chr",7,"b",105
+"Northern Shortgrass",2016,"chr",7,"c",90
+"Northern Shortgrass",2016,"chr",7,"d",101
+"Northern Shortgrass",2016,"chr",12,"a",114
+"Northern Shortgrass",2016,"chr",12,"b",117
+"Northern Shortgrass",2016,"chr",12,"c",170
+"Northern Shortgrass",2016,"chr",12,"d",107
+"Northern Shortgrass",2016,"chr",14,"a",161
+"Northern Shortgrass",2016,"chr",14,"b",160
+"Northern Shortgrass",2016,"chr",14,"c",123
+"Northern Shortgrass",2016,"chr",14,"d",197
+"Northern Shortgrass",2016,"chr",18,"a",94
+"Northern Shortgrass",2016,"chr",18,"b",124
+"Northern Shortgrass",2016,"chr",18,"c",102
+"Northern Shortgrass",2016,"chr",18,"d",109
+"Northern Shortgrass",2016,"chr",21,"a",147
+"Northern Shortgrass",2016,"chr",21,"b",131
+"Northern Shortgrass",2016,"chr",21,"c",135
+"Northern Shortgrass",2016,"chr",21,"d",169
+"Northern Shortgrass",2016,"chr",24,"a",146
+"Northern Shortgrass",2016,"chr",24,"b",94
+"Northern Shortgrass",2016,"chr",24,"c",128
+"Northern Shortgrass",2016,"chr",24,"d",126
+"Northern Shortgrass",2016,"chr",25,"a",102
+"Northern Shortgrass",2016,"chr",25,"b",103
+"Northern Shortgrass",2016,"chr",25,"c",118
+"Northern Shortgrass",2016,"chr",25,"d",120
+"Northern Shortgrass",2016,"chr",29,"a",121
+"Northern Shortgrass",2016,"chr",29,"b",83
+"Northern Shortgrass",2016,"chr",29,"c",99
+"Northern Shortgrass",2016,"chr",29,"d",153
+"Northern Shortgrass",2016,"con",1,"a",195
+"Northern Shortgrass",2016,"con",1,"b",158
+"Northern Shortgrass",2016,"con",1,"c",198
+"Northern Shortgrass",2016,"con",1,"d",179
+"Northern Shortgrass",2016,"con",4,"a",192
+"Northern Shortgrass",2016,"con",4,"b",158
+"Northern Shortgrass",2016,"con",4,"c",208
+"Northern Shortgrass",2016,"con",4,"d",166
+"Northern Shortgrass",2016,"con",8,"a",207
+"Northern Shortgrass",2016,"con",8,"b",175
+"Northern Shortgrass",2016,"con",8,"c",159
+"Northern Shortgrass",2016,"con",8,"d",179
+"Northern Shortgrass",2016,"con",10,"a",181
+"Northern Shortgrass",2016,"con",10,"b",239
+"Northern Shortgrass",2016,"con",10,"c",222
+"Northern Shortgrass",2016,"con",10,"d",231
+"Northern Shortgrass",2016,"con",13,"a",181
+"Northern Shortgrass",2016,"con",13,"b",200
+"Northern Shortgrass",2016,"con",13,"c",136
+"Northern Shortgrass",2016,"con",13,"d",201
+"Northern Shortgrass",2016,"con",16,"a",180
+"Northern Shortgrass",2016,"con",16,"b",97
+"Northern Shortgrass",2016,"con",16,"c",186
+"Northern Shortgrass",2016,"con",16,"d",162
+"Northern Shortgrass",2016,"con",20,"a",184
+"Northern Shortgrass",2016,"con",20,"b",151
+"Northern Shortgrass",2016,"con",20,"c",109
+"Northern Shortgrass",2016,"con",20,"d",145
+"Northern Shortgrass",2016,"con",23,"a",214
+"Northern Shortgrass",2016,"con",23,"b",196
+"Northern Shortgrass",2016,"con",23,"c",158
+"Northern Shortgrass",2016,"con",23,"d",206
+"Northern Shortgrass",2016,"con",27,"a",229
+"Northern Shortgrass",2016,"con",27,"b",194
+"Northern Shortgrass",2016,"con",27,"c",219
+"Northern Shortgrass",2016,"con",27,"d",184
+"Northern Shortgrass",2016,"con",30,"a",188
+"Northern Shortgrass",2016,"con",30,"b",158
+"Northern Shortgrass",2016,"con",30,"c",182
+"Northern Shortgrass",2016,"con",30,"d",142
+"Northern Mixed",2012,"chr",2,"a",51
+"Northern Mixed",2012,"chr",2,"b",43
+"Northern Mixed",2012,"chr",2,"c",61
+"Northern Mixed",2012,"chr",2,"d",46
+"Northern Mixed",2012,"chr",4,"a",53
+"Northern Mixed",2012,"chr",4,"b",56
+"Northern Mixed",2012,"chr",4,"c",45
+"Northern Mixed",2012,"chr",4,"d",45
+"Northern Mixed",2012,"chr",9,"a",58
+"Northern Mixed",2012,"chr",9,"b",52
+"Northern Mixed",2012,"chr",9,"c",68
+"Northern Mixed",2012,"chr",9,"d",59
+"Northern Mixed",2012,"chr",10,"a",48
+"Northern Mixed",2012,"chr",10,"b",54
+"Northern Mixed",2012,"chr",10,"c",66
+"Northern Mixed",2012,"chr",10,"d",59
+"Northern Mixed",2012,"chr",15,"a",57
+"Northern Mixed",2012,"chr",15,"b",53
+"Northern Mixed",2012,"chr",15,"c",50
+"Northern Mixed",2012,"chr",15,"d",55
+"Northern Mixed",2012,"chr",17,"a",54
+"Northern Mixed",2012,"chr",17,"b",45
+"Northern Mixed",2012,"chr",17,"c",52
+"Northern Mixed",2012,"chr",17,"d",62
+"Northern Mixed",2012,"chr",20,"a",69
+"Northern Mixed",2012,"chr",20,"b",63
+"Northern Mixed",2012,"chr",20,"c",78
+"Northern Mixed",2012,"chr",20,"d",62
+"Northern Mixed",2012,"chr",22,"a",106
+"Northern Mixed",2012,"chr",22,"b",86
+"Northern Mixed",2012,"chr",22,"c",59
+"Northern Mixed",2012,"chr",22,"d",65
+"Northern Mixed",2012,"chr",25,"a",70
+"Northern Mixed",2012,"chr",25,"b",58
+"Northern Mixed",2012,"chr",25,"c",68
+"Northern Mixed",2012,"chr",25,"d",64
+"Northern Mixed",2012,"chr",30,"a",59
+"Northern Mixed",2012,"chr",30,"b",57
+"Northern Mixed",2012,"chr",30,"c",54
+"Northern Mixed",2012,"chr",30,"d",61
+"Northern Mixed",2012,"con",3,"a",43
+"Northern Mixed",2012,"con",3,"b",48
+"Northern Mixed",2012,"con",3,"c",55
+"Northern Mixed",2012,"con",3,"d",50
+"Northern Mixed",2012,"con",5,"a",54
+"Northern Mixed",2012,"con",5,"b",36
+"Northern Mixed",2012,"con",5,"c",53
+"Northern Mixed",2012,"con",5,"d",63
+"Northern Mixed",2012,"con",8,"a",49
+"Northern Mixed",2012,"con",8,"b",58
+"Northern Mixed",2012,"con",8,"c",63
+"Northern Mixed",2012,"con",8,"d",60
+"Northern Mixed",2012,"con",12,"a",60
+"Northern Mixed",2012,"con",12,"b",60
+"Northern Mixed",2012,"con",12,"c",64
+"Northern Mixed",2012,"con",12,"d",68
+"Northern Mixed",2012,"con",14,"a",69
+"Northern Mixed",2012,"con",14,"b",60
+"Northern Mixed",2012,"con",14,"c",54
+"Northern Mixed",2012,"con",14,"d",58
+"Northern Mixed",2012,"con",18,"a",60
+"Northern Mixed",2012,"con",18,"b",56
+"Northern Mixed",2012,"con",18,"c",59
+"Northern Mixed",2012,"con",18,"d",70
+"Northern Mixed",2012,"con",21,"a",71
+"Northern Mixed",2012,"con",21,"b",76
+"Northern Mixed",2012,"con",21,"c",70
+"Northern Mixed",2012,"con",21,"d",67
+"Northern Mixed",2012,"con",23,"a",54
+"Northern Mixed",2012,"con",23,"b",61
+"Northern Mixed",2012,"con",23,"c",60
+"Northern Mixed",2012,"con",23,"d",57
+"Northern Mixed",2012,"con",26,"a",67
+"Northern Mixed",2012,"con",26,"b",63
+"Northern Mixed",2012,"con",26,"c",67
+"Northern Mixed",2012,"con",26,"d",64
+"Northern Mixed",2012,"con",29,"a",79
+"Northern Mixed",2012,"con",29,"b",78
+"Northern Mixed",2012,"con",29,"c",59
+"Northern Mixed",2012,"con",29,"d",65
+"Northern Mixed",2013,"chr",2,"a",110
+"Northern Mixed",2013,"chr",2,"b",57
+"Northern Mixed",2013,"chr",2,"c",65
+"Northern Mixed",2013,"chr",2,"d",75
+"Northern Mixed",2013,"chr",4,"a",81
+"Northern Mixed",2013,"chr",4,"b",70
+"Northern Mixed",2013,"chr",4,"c",80
+"Northern Mixed",2013,"chr",4,"d",77
+"Northern Mixed",2013,"chr",9,"a",84
+"Northern Mixed",2013,"chr",9,"b",89
+"Northern Mixed",2013,"chr",9,"c",72
+"Northern Mixed",2013,"chr",9,"d",73
+"Northern Mixed",2013,"chr",10,"a",105
+"Northern Mixed",2013,"chr",10,"b",73
+"Northern Mixed",2013,"chr",10,"c",77
+"Northern Mixed",2013,"chr",10,"d",72
+"Northern Mixed",2013,"chr",15,"a",89
+"Northern Mixed",2013,"chr",15,"b",81
+"Northern Mixed",2013,"chr",15,"c",76
+"Northern Mixed",2013,"chr",15,"d",77
+"Northern Mixed",2013,"chr",17,"a",73
+"Northern Mixed",2013,"chr",17,"b",96
+"Northern Mixed",2013,"chr",17,"c",57
+"Northern Mixed",2013,"chr",17,"d",77
+"Northern Mixed",2013,"chr",20,"a",76
+"Northern Mixed",2013,"chr",20,"b",84
+"Northern Mixed",2013,"chr",20,"c",83
+"Northern Mixed",2013,"chr",20,"d",92
+"Northern Mixed",2013,"chr",22,"a",64
+"Northern Mixed",2013,"chr",22,"b",78
+"Northern Mixed",2013,"chr",22,"c",68
+"Northern Mixed",2013,"chr",22,"d",80
+"Northern Mixed",2013,"chr",25,"a",67
+"Northern Mixed",2013,"chr",25,"b",97
+"Northern Mixed",2013,"chr",25,"c",82
+"Northern Mixed",2013,"chr",25,"d",71
+"Northern Mixed",2013,"chr",30,"a",82
+"Northern Mixed",2013,"chr",30,"b",82
+"Northern Mixed",2013,"chr",30,"c",90
+"Northern Mixed",2013,"chr",30,"d",62
+"Northern Mixed",2013,"con",3,"a",116
+"Northern Mixed",2013,"con",3,"b",73
+"Northern Mixed",2013,"con",3,"c",70
+"Northern Mixed",2013,"con",3,"d",69
+"Northern Mixed",2013,"con",5,"a",114
+"Northern Mixed",2013,"con",5,"b",71
+"Northern Mixed",2013,"con",5,"c",84
+"Northern Mixed",2013,"con",5,"d",79
+"Northern Mixed",2013,"con",8,"a",90
+"Northern Mixed",2013,"con",8,"b",92
+"Northern Mixed",2013,"con",8,"c",89
+"Northern Mixed",2013,"con",8,"d",85
+"Northern Mixed",2013,"con",12,"a",93
+"Northern Mixed",2013,"con",12,"b",101
+"Northern Mixed",2013,"con",12,"c",87
+"Northern Mixed",2013,"con",12,"d",146
+"Northern Mixed",2013,"con",14,"a",100
+"Northern Mixed",2013,"con",14,"b",77
+"Northern Mixed",2013,"con",14,"c",74
+"Northern Mixed",2013,"con",14,"d",81
+"Northern Mixed",2013,"con",18,"a",118
+"Northern Mixed",2013,"con",18,"b",82
+"Northern Mixed",2013,"con",18,"c",82
+"Northern Mixed",2013,"con",18,"d",78
+"Northern Mixed",2013,"con",21,"a",83
+"Northern Mixed",2013,"con",21,"b",82
+"Northern Mixed",2013,"con",21,"c",90
+"Northern Mixed",2013,"con",21,"d",78
+"Northern Mixed",2013,"con",23,"a",76
+"Northern Mixed",2013,"con",23,"b",90
+"Northern Mixed",2013,"con",23,"c",76
+"Northern Mixed",2013,"con",23,"d",92
+"Northern Mixed",2013,"con",26,"a",86
+"Northern Mixed",2013,"con",26,"b",105
+"Northern Mixed",2013,"con",26,"c",100
+"Northern Mixed",2013,"con",26,"d",70
+"Northern Mixed",2013,"con",29,"a",92
+"Northern Mixed",2013,"con",29,"b",57
+"Northern Mixed",2013,"con",29,"c",73
+"Northern Mixed",2013,"con",29,"d",60
+"Northern Mixed",2014,"chr",2,"a",103
+"Northern Mixed",2014,"chr",2,"b",101
+"Northern Mixed",2014,"chr",2,"c",113
+"Northern Mixed",2014,"chr",2,"d",125
+"Northern Mixed",2014,"chr",4,"a",124
+"Northern Mixed",2014,"chr",4,"b",177
+"Northern Mixed",2014,"chr",4,"c",141
+"Northern Mixed",2014,"chr",4,"d",131
+"Northern Mixed",2014,"chr",9,"a",113
+"Northern Mixed",2014,"chr",9,"b",136
+"Northern Mixed",2014,"chr",9,"c",149
+"Northern Mixed",2014,"chr",9,"d",112
+"Northern Mixed",2014,"chr",10,"a",92
+"Northern Mixed",2014,"chr",10,"b",72
+"Northern Mixed",2014,"chr",10,"c",89
+"Northern Mixed",2014,"chr",10,"d",88
+"Northern Mixed",2014,"chr",15,"a",160
+"Northern Mixed",2014,"chr",15,"b",205
+"Northern Mixed",2014,"chr",15,"c",145
+"Northern Mixed",2014,"chr",15,"d",137
+"Northern Mixed",2014,"chr",17,"a",118
+"Northern Mixed",2014,"chr",17,"b",99
+"Northern Mixed",2014,"chr",17,"c",126
+"Northern Mixed",2014,"chr",17,"d",91
+"Northern Mixed",2014,"chr",20,"a",115
+"Northern Mixed",2014,"chr",20,"b",110
+"Northern Mixed",2014,"chr",20,"c",109
+"Northern Mixed",2014,"chr",20,"d",106
+"Northern Mixed",2014,"chr",22,"a",94
+"Northern Mixed",2014,"chr",22,"b",92
+"Northern Mixed",2014,"chr",22,"c",89
+"Northern Mixed",2014,"chr",22,"d",92
+"Northern Mixed",2014,"chr",25,"a",105
+"Northern Mixed",2014,"chr",25,"b",101
+"Northern Mixed",2014,"chr",25,"c",98
+"Northern Mixed",2014,"chr",25,"d",104
+"Northern Mixed",2014,"chr",30,"a",117
+"Northern Mixed",2014,"chr",30,"b",129
+"Northern Mixed",2014,"chr",30,"c",121
+"Northern Mixed",2014,"chr",30,"d",130
+"Northern Mixed",2014,"con",3,"a",119
+"Northern Mixed",2014,"con",3,"b",119
+"Northern Mixed",2014,"con",3,"c",109
+"Northern Mixed",2014,"con",3,"d",121
+"Northern Mixed",2014,"con",5,"a",160
+"Northern Mixed",2014,"con",5,"b",117
+"Northern Mixed",2014,"con",5,"c",114
+"Northern Mixed",2014,"con",5,"d",107
+"Northern Mixed",2014,"con",8,"a",139
+"Northern Mixed",2014,"con",8,"b",120
+"Northern Mixed",2014,"con",8,"c",137
+"Northern Mixed",2014,"con",8,"d",130
+"Northern Mixed",2014,"con",12,"a",115
+"Northern Mixed",2014,"con",12,"b",142
+"Northern Mixed",2014,"con",12,"c",114
+"Northern Mixed",2014,"con",12,"d",138
+"Northern Mixed",2014,"con",14,"a",137
+"Northern Mixed",2014,"con",14,"b",141
+"Northern Mixed",2014,"con",14,"c",99
+"Northern Mixed",2014,"con",14,"d",111
+"Northern Mixed",2014,"con",18,"a",163
+"Northern Mixed",2014,"con",18,"b",144
+"Northern Mixed",2014,"con",18,"c",123
+"Northern Mixed",2014,"con",18,"d",121
+"Northern Mixed",2014,"con",21,"a",103
+"Northern Mixed",2014,"con",21,"b",104
+"Northern Mixed",2014,"con",21,"c",77
+"Northern Mixed",2014,"con",21,"d",109
+"Northern Mixed",2014,"con",23,"a",111
+"Northern Mixed",2014,"con",23,"b",105
+"Northern Mixed",2014,"con",23,"c",99
+"Northern Mixed",2014,"con",23,"d",113
+"Northern Mixed",2014,"con",26,"a",73
+"Northern Mixed",2014,"con",26,"b",86
+"Northern Mixed",2014,"con",26,"c",86
+"Northern Mixed",2014,"con",26,"d",96
+"Northern Mixed",2014,"con",29,"a",103
+"Northern Mixed",2014,"con",29,"b",119
+"Northern Mixed",2014,"con",29,"c",121
+"Northern Mixed",2014,"con",29,"d",132
+"Northern Mixed",2015,"chr",2,"a",113
+"Northern Mixed",2015,"chr",2,"b",103
+"Northern Mixed",2015,"chr",2,"c",102
+"Northern Mixed",2015,"chr",2,"d",152
+"Northern Mixed",2015,"chr",4,"a",128
+"Northern Mixed",2015,"chr",4,"b",208
+"Northern Mixed",2015,"chr",4,"c",151
+"Northern Mixed",2015,"chr",4,"d",162
+"Northern Mixed",2015,"chr",9,"a",252
+"Northern Mixed",2015,"chr",9,"b",214
+"Northern Mixed",2015,"chr",9,"c",183
+"Northern Mixed",2015,"chr",9,"d",162
+"Northern Mixed",2015,"chr",10,"a",153
+"Northern Mixed",2015,"chr",10,"b",125
+"Northern Mixed",2015,"chr",10,"c",120
+"Northern Mixed",2015,"chr",10,"d",113
+"Northern Mixed",2015,"chr",15,"a",189
+"Northern Mixed",2015,"chr",15,"b",184
+"Northern Mixed",2015,"chr",15,"c",192
+"Northern Mixed",2015,"chr",15,"d",158
+"Northern Mixed",2015,"chr",17,"a",207
+"Northern Mixed",2015,"chr",17,"b",233
+"Northern Mixed",2015,"chr",17,"c",194
+"Northern Mixed",2015,"chr",17,"d",187
+"Northern Mixed",2015,"chr",20,"a",156
+"Northern Mixed",2015,"chr",20,"b",134
+"Northern Mixed",2015,"chr",20,"c",171
+"Northern Mixed",2015,"chr",20,"d",128
+"Northern Mixed",2015,"chr",22,"a",177
+"Northern Mixed",2015,"chr",22,"b",193
+"Northern Mixed",2015,"chr",22,"c",171
+"Northern Mixed",2015,"chr",22,"d",177
+"Northern Mixed",2015,"chr",25,"a",226
+"Northern Mixed",2015,"chr",25,"b",163
+"Northern Mixed",2015,"chr",25,"c",198
+"Northern Mixed",2015,"chr",25,"d",173
+"Northern Mixed",2015,"chr",30,"a",194
+"Northern Mixed",2015,"chr",30,"b",170
+"Northern Mixed",2015,"chr",30,"c",182
+"Northern Mixed",2015,"chr",30,"d",203
+"Northern Mixed",2015,"con",3,"a",91
+"Northern Mixed",2015,"con",3,"b",132
+"Northern Mixed",2015,"con",3,"c",88
+"Northern Mixed",2015,"con",3,"d",112
+"Northern Mixed",2015,"con",5,"a",119
+"Northern Mixed",2015,"con",5,"b",127
+"Northern Mixed",2015,"con",5,"c",137
+"Northern Mixed",2015,"con",5,"d",108
+"Northern Mixed",2015,"con",8,"a",135
+"Northern Mixed",2015,"con",8,"b",146
+"Northern Mixed",2015,"con",8,"c",144
+"Northern Mixed",2015,"con",8,"d",101
+"Northern Mixed",2015,"con",12,"a",187
+"Northern Mixed",2015,"con",12,"b",128
+"Northern Mixed",2015,"con",12,"c",160
+"Northern Mixed",2015,"con",12,"d",141
+"Northern Mixed",2015,"con",14,"a",123
+"Northern Mixed",2015,"con",14,"b",120
+"Northern Mixed",2015,"con",14,"c",173
+"Northern Mixed",2015,"con",14,"d",143
+"Northern Mixed",2015,"con",18,"a",224
+"Northern Mixed",2015,"con",18,"b",187
+"Northern Mixed",2015,"con",18,"c",185
+"Northern Mixed",2015,"con",18,"d",205
+"Northern Mixed",2015,"con",21,"a",145
+"Northern Mixed",2015,"con",21,"b",141
+"Northern Mixed",2015,"con",21,"c",208
+"Northern Mixed",2015,"con",21,"d",143
+"Northern Mixed",2015,"con",23,"a",149
+"Northern Mixed",2015,"con",23,"b",155
+"Northern Mixed",2015,"con",23,"c",107
+"Northern Mixed",2015,"con",23,"d",102
+"Northern Mixed",2015,"con",26,"a",106
+"Northern Mixed",2015,"con",26,"b",160
+"Northern Mixed",2015,"con",26,"c",150
+"Northern Mixed",2015,"con",26,"d",115
+"Northern Mixed",2015,"con",29,"a",159
+"Northern Mixed",2015,"con",29,"b",127
+"Northern Mixed",2015,"con",29,"c",153
+"Northern Mixed",2015,"con",29,"d",95
+"Northern Mixed",2016,"chr",2,"a",112
+"Northern Mixed",2016,"chr",2,"b",137
+"Northern Mixed",2016,"chr",2,"c",180
+"Northern Mixed",2016,"chr",2,"d",145
+"Northern Mixed",2016,"chr",4,"a",218
+"Northern Mixed",2016,"chr",4,"b",167
+"Northern Mixed",2016,"chr",4,"c",174
+"Northern Mixed",2016,"chr",4,"d",180
+"Northern Mixed",2016,"chr",9,"a",160
+"Northern Mixed",2016,"chr",9,"b",160
+"Northern Mixed",2016,"chr",9,"c",167
+"Northern Mixed",2016,"chr",9,"d",124
+"Northern Mixed",2016,"chr",10,"a",145
+"Northern Mixed",2016,"chr",10,"b",149
+"Northern Mixed",2016,"chr",10,"c",144
+"Northern Mixed",2016,"chr",10,"d",182
+"Northern Mixed",2016,"chr",15,"a",156
+"Northern Mixed",2016,"chr",15,"b",195
+"Northern Mixed",2016,"chr",15,"c",177
+"Northern Mixed",2016,"chr",15,"d",187
+"Northern Mixed",2016,"chr",17,"a",175
+"Northern Mixed",2016,"chr",17,"b",209
+"Northern Mixed",2016,"chr",17,"c",185
+"Northern Mixed",2016,"chr",17,"d",171
+"Northern Mixed",2016,"chr",20,"a",173
+"Northern Mixed",2016,"chr",20,"b",182
+"Northern Mixed",2016,"chr",20,"c",169
+"Northern Mixed",2016,"chr",20,"d",192
+"Northern Mixed",2016,"chr",22,"a",135
+"Northern Mixed",2016,"chr",22,"b",152
+"Northern Mixed",2016,"chr",22,"c",160
+"Northern Mixed",2016,"chr",22,"d",168
+"Northern Mixed",2016,"chr",25,"a",184
+"Northern Mixed",2016,"chr",25,"b",164
+"Northern Mixed",2016,"chr",25,"c",178
+"Northern Mixed",2016,"chr",25,"d",198
+"Northern Mixed",2016,"chr",30,"a",149
+"Northern Mixed",2016,"chr",30,"b",165
+"Northern Mixed",2016,"chr",30,"c",161
+"Northern Mixed",2016,"chr",30,"d",186
+"Northern Mixed",2016,"con",3,"a",126
+"Northern Mixed",2016,"con",3,"b",167
+"Northern Mixed",2016,"con",3,"c",171
+"Northern Mixed",2016,"con",3,"d",183
+"Northern Mixed",2016,"con",5,"a",104
+"Northern Mixed",2016,"con",5,"b",114
+"Northern Mixed",2016,"con",5,"c",154
+"Northern Mixed",2016,"con",5,"d",126
+"Northern Mixed",2016,"con",8,"a",167
+"Northern Mixed",2016,"con",8,"b",221
+"Northern Mixed",2016,"con",8,"c",164
+"Northern Mixed",2016,"con",8,"d",168
+"Northern Mixed",2016,"con",12,"a",150
+"Northern Mixed",2016,"con",12,"b",162
+"Northern Mixed",2016,"con",12,"c",177
+"Northern Mixed",2016,"con",12,"d",172
+"Northern Mixed",2016,"con",14,"a",144
+"Northern Mixed",2016,"con",14,"b",142
+"Northern Mixed",2016,"con",14,"c",126
+"Northern Mixed",2016,"con",14,"d",175
+"Northern Mixed",2016,"con",18,"a",188
+"Northern Mixed",2016,"con",18,"b",193
+"Northern Mixed",2016,"con",18,"c",203
+"Northern Mixed",2016,"con",18,"d",195
+"Northern Mixed",2016,"con",21,"a",152
+"Northern Mixed",2016,"con",21,"b",148
+"Northern Mixed",2016,"con",21,"c",171
+"Northern Mixed",2016,"con",21,"d",183
+"Northern Mixed",2016,"con",23,"a",169
+"Northern Mixed",2016,"con",23,"b",184
+"Northern Mixed",2016,"con",23,"c",175
+"Northern Mixed",2016,"con",23,"d",192
+"Northern Mixed",2016,"con",26,"a",187
+"Northern Mixed",2016,"con",26,"b",169
+"Northern Mixed",2016,"con",26,"c",156
+"Northern Mixed",2016,"con",26,"d",214
+"Northern Mixed",2016,"con",29,"a",216
+"Northern Mixed",2016,"con",29,"b",205
+"Northern Mixed",2016,"con",29,"c",228
+"Northern Mixed",2016,"con",29,"d",221
+"Southern Mixed",2012,"chr",1,"a",142
+"Southern Mixed",2012,"chr",1,"b",155
+"Southern Mixed",2012,"chr",1,"c",146
+"Southern Mixed",2012,"chr",1,"d",142
+"Southern Mixed",2012,"chr",5,"a",105
+"Southern Mixed",2012,"chr",5,"b",108
+"Southern Mixed",2012,"chr",5,"c",82
+"Southern Mixed",2012,"chr",5,"d",91
+"Southern Mixed",2012,"chr",8,"a",110
+"Southern Mixed",2012,"chr",8,"b",104
+"Southern Mixed",2012,"chr",8,"c",104
+"Southern Mixed",2012,"chr",8,"d",96
+"Southern Mixed",2012,"chr",12,"a",116
+"Southern Mixed",2012,"chr",12,"b",117
+"Southern Mixed",2012,"chr",12,"c",95
+"Southern Mixed",2012,"chr",12,"d",78
+"Southern Mixed",2012,"chr",13,"a",108
+"Southern Mixed",2012,"chr",13,"b",111
+"Southern Mixed",2012,"chr",13,"c",129
+"Southern Mixed",2012,"chr",13,"d",103
+"Southern Mixed",2012,"chr",18,"a",150
+"Southern Mixed",2012,"chr",18,"b",115
+"Southern Mixed",2012,"chr",18,"c",97
+"Southern Mixed",2012,"chr",18,"d",125
+"Southern Mixed",2012,"chr",21,"a",99
+"Southern Mixed",2012,"chr",21,"b",83
+"Southern Mixed",2012,"chr",21,"c",92
+"Southern Mixed",2012,"chr",21,"d",107
+"Southern Mixed",2012,"chr",23,"a",119
+"Southern Mixed",2012,"chr",23,"b",99
+"Southern Mixed",2012,"chr",23,"c",98
+"Southern Mixed",2012,"chr",23,"d",136
+"Southern Mixed",2012,"chr",27,"a",189
+"Southern Mixed",2012,"chr",27,"b",107
+"Southern Mixed",2012,"chr",27,"c",154
+"Southern Mixed",2012,"chr",27,"d",136
+"Southern Mixed",2012,"chr",28,"a",118
+"Southern Mixed",2012,"chr",28,"b",76
+"Southern Mixed",2012,"chr",28,"c",101
+"Southern Mixed",2012,"chr",28,"d",109
+"Southern Mixed",2012,"con",3,"a",172
+"Southern Mixed",2012,"con",3,"b",158
+"Southern Mixed",2012,"con",3,"c",157
+"Southern Mixed",2012,"con",3,"d",126
+"Southern Mixed",2012,"con",6,"a",147
+"Southern Mixed",2012,"con",6,"b",159
+"Southern Mixed",2012,"con",6,"c",175
+"Southern Mixed",2012,"con",6,"d",128
+"Southern Mixed",2012,"con",7,"a",98
+"Southern Mixed",2012,"con",7,"b",106
+"Southern Mixed",2012,"con",7,"c",113
+"Southern Mixed",2012,"con",7,"d",81
+"Southern Mixed",2012,"con",10,"a",111
+"Southern Mixed",2012,"con",10,"b",125
+"Southern Mixed",2012,"con",10,"c",104
+"Southern Mixed",2012,"con",10,"d",104
+"Southern Mixed",2012,"con",15,"a",145
+"Southern Mixed",2012,"con",15,"b",183
+"Southern Mixed",2012,"con",15,"c",107
+"Southern Mixed",2012,"con",15,"d",136
+"Southern Mixed",2012,"con",17,"a",127
+"Southern Mixed",2012,"con",17,"b",89
+"Southern Mixed",2012,"con",17,"c",94
+"Southern Mixed",2012,"con",17,"d",92
+"Southern Mixed",2012,"con",20,"a",127
+"Southern Mixed",2012,"con",20,"b",80
+"Southern Mixed",2012,"con",20,"c",87
+"Southern Mixed",2012,"con",20,"d",92
+"Southern Mixed",2012,"con",22,"a",115
+"Southern Mixed",2012,"con",22,"b",139
+"Southern Mixed",2012,"con",22,"c",82
+"Southern Mixed",2012,"con",22,"d",102
+"Southern Mixed",2012,"con",26,"a",174
+"Southern Mixed",2012,"con",26,"b",203
+"Southern Mixed",2012,"con",26,"c",171
+"Southern Mixed",2012,"con",26,"d",154
+"Southern Mixed",2012,"con",29,"a",95
+"Southern Mixed",2012,"con",29,"b",97
+"Southern Mixed",2012,"con",29,"c",114
+"Southern Mixed",2012,"con",29,"d",84
+"Southern Mixed",2013,"chr",1,"a",216
+"Southern Mixed",2013,"chr",1,"b",242
+"Southern Mixed",2013,"chr",1,"c",210
+"Southern Mixed",2013,"chr",1,"d",235
+"Southern Mixed",2013,"chr",5,"a",162
+"Southern Mixed",2013,"chr",5,"b",215
+"Southern Mixed",2013,"chr",5,"c",154
+"Southern Mixed",2013,"chr",5,"d",155
+"Southern Mixed",2013,"chr",8,"a",182
+"Southern Mixed",2013,"chr",8,"b",228.5
+"Southern Mixed",2013,"chr",8,"c",176
+"Southern Mixed",2013,"chr",8,"d",216
+"Southern Mixed",2013,"chr",12,"a",190
+"Southern Mixed",2013,"chr",12,"b",188
+"Southern Mixed",2013,"chr",12,"c",141
+"Southern Mixed",2013,"chr",12,"d",169
+"Southern Mixed",2013,"chr",13,"a",115
+"Southern Mixed",2013,"chr",13,"b",213
+"Southern Mixed",2013,"chr",13,"c",233
+"Southern Mixed",2013,"chr",13,"d",168
+"Southern Mixed",2013,"chr",18,"a",215
+"Southern Mixed",2013,"chr",18,"b",287
+"Southern Mixed",2013,"chr",18,"c",192
+"Southern Mixed",2013,"chr",18,"d",251
+"Southern Mixed",2013,"chr",21,"a",173
+"Southern Mixed",2013,"chr",21,"b",191
+"Southern Mixed",2013,"chr",21,"c",195
+"Southern Mixed",2013,"chr",21,"d",218
+"Southern Mixed",2013,"chr",23,"a",202
+"Southern Mixed",2013,"chr",23,"b",344
+"Southern Mixed",2013,"chr",23,"c",264
+"Southern Mixed",2013,"chr",23,"d",293
+"Southern Mixed",2013,"chr",27,"a",249
+"Southern Mixed",2013,"chr",27,"b",278
+"Southern Mixed",2013,"chr",27,"c",319
+"Southern Mixed",2013,"chr",27,"d",244
+"Southern Mixed",2013,"chr",28,"a",165
+"Southern Mixed",2013,"chr",28,"b",87
+"Southern Mixed",2013,"chr",28,"c",142.5
+"Southern Mixed",2013,"chr",28,"d",121
+"Southern Mixed",2013,"con",3,"a",227
+"Southern Mixed",2013,"con",3,"b",180
+"Southern Mixed",2013,"con",3,"c",199
+"Southern Mixed",2013,"con",3,"d",155
+"Southern Mixed",2013,"con",6,"a",230
+"Southern Mixed",2013,"con",6,"b",212
+"Southern Mixed",2013,"con",6,"c",241
+"Southern Mixed",2013,"con",6,"d",219
+"Southern Mixed",2013,"con",7,"a",209
+"Southern Mixed",2013,"con",7,"b",217
+"Southern Mixed",2013,"con",7,"c",150
+"Southern Mixed",2013,"con",7,"d",229
+"Southern Mixed",2013,"con",10,"a",182
+"Southern Mixed",2013,"con",10,"b",195
+"Southern Mixed",2013,"con",10,"c",132
+"Southern Mixed",2013,"con",10,"d",169
+"Southern Mixed",2013,"con",15,"a",185
+"Southern Mixed",2013,"con",15,"b",246
+"Southern Mixed",2013,"con",15,"c",253
+"Southern Mixed",2013,"con",15,"d",167
+"Southern Mixed",2013,"con",17,"a",174
+"Southern Mixed",2013,"con",17,"b",187
+"Southern Mixed",2013,"con",17,"c",213
+"Southern Mixed",2013,"con",17,"d",101
+"Southern Mixed",2013,"con",20,"a",142
+"Southern Mixed",2013,"con",20,"b",176
+"Southern Mixed",2013,"con",20,"c",155
+"Southern Mixed",2013,"con",20,"d",143
+"Southern Mixed",2013,"con",22,"a",230
+"Southern Mixed",2013,"con",22,"b",285
+"Southern Mixed",2013,"con",22,"c",189
+"Southern Mixed",2013,"con",22,"d",218
+"Southern Mixed",2013,"con",26,"a",288
+"Southern Mixed",2013,"con",26,"b",236
+"Southern Mixed",2013,"con",26,"c",215
+"Southern Mixed",2013,"con",26,"d",231
+"Southern Mixed",2013,"con",29,"a",179
+"Southern Mixed",2013,"con",29,"b",228
+"Southern Mixed",2013,"con",29,"c",201
+"Southern Mixed",2013,"con",29,"d",188
+"Southern Mixed",2014,"chr",1,"a",86
+"Southern Mixed",2014,"chr",1,"b",77
+"Southern Mixed",2014,"chr",1,"c",118
+"Southern Mixed",2014,"chr",1,"d",127
+"Southern Mixed",2014,"chr",5,"a",104
+"Southern Mixed",2014,"chr",5,"b",81
+"Southern Mixed",2014,"chr",5,"c",98
+"Southern Mixed",2014,"chr",5,"d",104
+"Southern Mixed",2014,"chr",8,"a",53
+"Southern Mixed",2014,"chr",8,"b",86
+"Southern Mixed",2014,"chr",8,"c",66
+"Southern Mixed",2014,"chr",8,"d",136
+"Southern Mixed",2014,"chr",12,"a",76
+"Southern Mixed",2014,"chr",12,"b",92
+"Southern Mixed",2014,"chr",12,"c",64
+"Southern Mixed",2014,"chr",12,"d",99
+"Southern Mixed",2014,"chr",13,"a",109
+"Southern Mixed",2014,"chr",13,"b",66
+"Southern Mixed",2014,"chr",13,"c",83
+"Southern Mixed",2014,"chr",13,"d",83
+"Southern Mixed",2014,"chr",18,"a",89
+"Southern Mixed",2014,"chr",18,"b",110
+"Southern Mixed",2014,"chr",18,"c",101
+"Southern Mixed",2014,"chr",18,"d",101
+"Southern Mixed",2014,"chr",21,"a",92
+"Southern Mixed",2014,"chr",21,"b",113
+"Southern Mixed",2014,"chr",21,"c",100
+"Southern Mixed",2014,"chr",21,"d",124
+"Southern Mixed",2014,"chr",23,"a",32
+"Southern Mixed",2014,"chr",23,"b",92
+"Southern Mixed",2014,"chr",23,"c",121
+"Southern Mixed",2014,"chr",23,"d",108
+"Southern Mixed",2014,"chr",27,"a",73
+"Southern Mixed",2014,"chr",27,"b",74
+"Southern Mixed",2014,"chr",27,"c",55
+"Southern Mixed",2014,"chr",27,"d",59
+"Southern Mixed",2014,"chr",28,"a",86
+"Southern Mixed",2014,"chr",28,"b",54
+"Southern Mixed",2014,"chr",28,"c",130
+"Southern Mixed",2014,"chr",28,"d",117
+"Southern Mixed",2014,"con",3,"a",124
+"Southern Mixed",2014,"con",3,"b",107
+"Southern Mixed",2014,"con",3,"c",83
+"Southern Mixed",2014,"con",3,"d",100
+"Southern Mixed",2014,"con",6,"a",130
+"Southern Mixed",2014,"con",6,"b",94
+"Southern Mixed",2014,"con",6,"c",124
+"Southern Mixed",2014,"con",6,"d",84
+"Southern Mixed",2014,"con",7,"a",101
+"Southern Mixed",2014,"con",7,"b",82
+"Southern Mixed",2014,"con",7,"c",79
+"Southern Mixed",2014,"con",7,"d",120
+"Southern Mixed",2014,"con",10,"a",79
+"Southern Mixed",2014,"con",10,"b",91
+"Southern Mixed",2014,"con",10,"c",112
+"Southern Mixed",2014,"con",10,"d",101
+"Southern Mixed",2014,"con",15,"a",121
+"Southern Mixed",2014,"con",15,"b",129
+"Southern Mixed",2014,"con",15,"c",148
+"Southern Mixed",2014,"con",15,"d",104
+"Southern Mixed",2014,"con",17,"a",137
+"Southern Mixed",2014,"con",17,"b",144
+"Southern Mixed",2014,"con",17,"c",106
+"Southern Mixed",2014,"con",17,"d",158
+"Southern Mixed",2014,"con",20,"a",100
+"Southern Mixed",2014,"con",20,"b",85
+"Southern Mixed",2014,"con",20,"c",86
+"Southern Mixed",2014,"con",20,"d",87
+"Southern Mixed",2014,"con",22,"a",94
+"Southern Mixed",2014,"con",22,"b",126
+"Southern Mixed",2014,"con",22,"c",98
+"Southern Mixed",2014,"con",22,"d",122
+"Southern Mixed",2014,"con",26,"a",110
+"Southern Mixed",2014,"con",26,"b",89
+"Southern Mixed",2014,"con",26,"c",47
+"Southern Mixed",2014,"con",26,"d",73
+"Southern Mixed",2014,"con",29,"a",129
+"Southern Mixed",2014,"con",29,"b",108
+"Southern Mixed",2014,"con",29,"c",121
+"Southern Mixed",2014,"con",29,"d",134
+"Southern Mixed",2015,"chr",1,"a",97
+"Southern Mixed",2015,"chr",1,"b",120
+"Southern Mixed",2015,"chr",1,"c",122
+"Southern Mixed",2015,"chr",1,"d",120
+"Southern Mixed",2015,"chr",5,"a",93
+"Southern Mixed",2015,"chr",5,"b",128
+"Southern Mixed",2015,"chr",5,"c",98
+"Southern Mixed",2015,"chr",5,"d",88
+"Southern Mixed",2015,"chr",8,"a",100
+"Southern Mixed",2015,"chr",8,"b",85
+"Southern Mixed",2015,"chr",8,"c",92
+"Southern Mixed",2015,"chr",8,"d",92
+"Southern Mixed",2015,"chr",12,"a",110
+"Southern Mixed",2015,"chr",12,"b",94
+"Southern Mixed",2015,"chr",12,"c",119
+"Southern Mixed",2015,"chr",12,"d",107
+"Southern Mixed",2015,"chr",13,"a",115
+"Southern Mixed",2015,"chr",13,"b",126
+"Southern Mixed",2015,"chr",13,"c",124
+"Southern Mixed",2015,"chr",13,"d",116
+"Southern Mixed",2015,"chr",18,"a",83
+"Southern Mixed",2015,"chr",18,"b",123
+"Southern Mixed",2015,"chr",18,"c",107
+"Southern Mixed",2015,"chr",18,"d",101
+"Southern Mixed",2015,"chr",21,"a",112
+"Southern Mixed",2015,"chr",21,"b",127
+"Southern Mixed",2015,"chr",21,"c",104
+"Southern Mixed",2015,"chr",21,"d",94
+"Southern Mixed",2015,"chr",23,"a",121
+"Southern Mixed",2015,"chr",23,"b",123
+"Southern Mixed",2015,"chr",23,"c",103
+"Southern Mixed",2015,"chr",23,"d",147
+"Southern Mixed",2015,"chr",27,"a",79
+"Southern Mixed",2015,"chr",27,"b",91
+"Southern Mixed",2015,"chr",27,"c",92
+"Southern Mixed",2015,"chr",27,"d",87
+"Southern Mixed",2015,"chr",28,"a",116
+"Southern Mixed",2015,"chr",28,"b",67
+"Southern Mixed",2015,"chr",28,"c",127
+"Southern Mixed",2015,"chr",28,"d",107
+"Southern Mixed",2015,"con",3,"a",121
+"Southern Mixed",2015,"con",3,"b",108
+"Southern Mixed",2015,"con",3,"c",119
+"Southern Mixed",2015,"con",3,"d",109
+"Southern Mixed",2015,"con",6,"a",122
+"Southern Mixed",2015,"con",6,"b",114
+"Southern Mixed",2015,"con",6,"c",136
+"Southern Mixed",2015,"con",6,"d",114
+"Southern Mixed",2015,"con",7,"a",122
+"Southern Mixed",2015,"con",7,"b",138
+"Southern Mixed",2015,"con",7,"c",131
+"Southern Mixed",2015,"con",7,"d",92
+"Southern Mixed",2015,"con",10,"a",126
+"Southern Mixed",2015,"con",10,"b",178
+"Southern Mixed",2015,"con",10,"c",175
+"Southern Mixed",2015,"con",10,"d",154
+"Southern Mixed",2015,"con",15,"a",146
+"Southern Mixed",2015,"con",15,"b",115
+"Southern Mixed",2015,"con",15,"c",114
+"Southern Mixed",2015,"con",15,"d",139
+"Southern Mixed",2015,"con",17,"a",123
+"Southern Mixed",2015,"con",17,"b",127
+"Southern Mixed",2015,"con",17,"c",144
+"Southern Mixed",2015,"con",17,"d",143
+"Southern Mixed",2015,"con",20,"a",128
+"Southern Mixed",2015,"con",20,"b",153
+"Southern Mixed",2015,"con",20,"c",126
+"Southern Mixed",2015,"con",20,"d",118
+"Southern Mixed",2015,"con",22,"a",106
+"Southern Mixed",2015,"con",22,"b",144
+"Southern Mixed",2015,"con",22,"c",125
+"Southern Mixed",2015,"con",22,"d",133
+"Southern Mixed",2015,"con",26,"a",81
+"Southern Mixed",2015,"con",26,"b",72
+"Southern Mixed",2015,"con",26,"c",70
+"Southern Mixed",2015,"con",26,"d",69
+"Southern Mixed",2015,"con",29,"a",147
+"Southern Mixed",2015,"con",29,"b",128
+"Southern Mixed",2015,"con",29,"c",139
+"Southern Mixed",2015,"con",29,"d",140
+"Southern Mixed",2016,"chr",1,"a",299
+"Southern Mixed",2016,"chr",1,"b",211
+"Southern Mixed",2016,"chr",1,"c",189
+"Southern Mixed",2016,"chr",1,"d",207
+"Southern Mixed",2016,"chr",5,"a",161
+"Southern Mixed",2016,"chr",5,"b",131
+"Southern Mixed",2016,"chr",5,"c",130
+"Southern Mixed",2016,"chr",5,"d",137
+"Southern Mixed",2016,"chr",8,"a",157
+"Southern Mixed",2016,"chr",8,"b",149
+"Southern Mixed",2016,"chr",8,"c",204
+"Southern Mixed",2016,"chr",8,"d",183
+"Southern Mixed",2016,"chr",12,"a",188
+"Southern Mixed",2016,"chr",12,"b",175
+"Southern Mixed",2016,"chr",12,"c",265
+"Southern Mixed",2016,"chr",12,"d",152
+"Southern Mixed",2016,"chr",13,"a",144
+"Southern Mixed",2016,"chr",13,"b",180
+"Southern Mixed",2016,"chr",13,"c",384
+"Southern Mixed",2016,"chr",13,"d",169
+"Southern Mixed",2016,"chr",18,"a",172
+"Southern Mixed",2016,"chr",18,"b",170
+"Southern Mixed",2016,"chr",18,"c",238
+"Southern Mixed",2016,"chr",18,"d",175
+"Southern Mixed",2016,"chr",21,"a",239
+"Southern Mixed",2016,"chr",21,"b",221
+"Southern Mixed",2016,"chr",21,"c",142
+"Southern Mixed",2016,"chr",21,"d",149
+"Southern Mixed",2016,"chr",23,"a",181
+"Southern Mixed",2016,"chr",23,"b",203
+"Southern Mixed",2016,"chr",23,"c",200
+"Southern Mixed",2016,"chr",23,"d",163
+"Southern Mixed",2016,"chr",27,"a",226
+"Southern Mixed",2016,"chr",27,"b",198
+"Southern Mixed",2016,"chr",27,"c",230
+"Southern Mixed",2016,"chr",27,"d",229
+"Southern Mixed",2016,"chr",28,"a",132
+"Southern Mixed",2016,"chr",28,"b",91
+"Southern Mixed",2016,"chr",28,"c",162
+"Southern Mixed",2016,"chr",28,"d",149
+"Southern Mixed",2016,"con",3,"a",197
+"Southern Mixed",2016,"con",3,"b",182
+"Southern Mixed",2016,"con",3,"c",163
+"Southern Mixed",2016,"con",3,"d",163
+"Southern Mixed",2016,"con",6,"a",234
+"Southern Mixed",2016,"con",6,"b",215
+"Southern Mixed",2016,"con",6,"c",203
+"Southern Mixed",2016,"con",6,"d",205
+"Southern Mixed",2016,"con",7,"a",187
+"Southern Mixed",2016,"con",7,"b",262
+"Southern Mixed",2016,"con",7,"c",171
+"Southern Mixed",2016,"con",7,"d",210
+"Southern Mixed",2016,"con",10,"a",199
+"Southern Mixed",2016,"con",10,"b",258
+"Southern Mixed",2016,"con",10,"c",217
+"Southern Mixed",2016,"con",10,"d",233
+"Southern Mixed",2016,"con",15,"a",206
+"Southern Mixed",2016,"con",15,"b",159
+"Southern Mixed",2016,"con",15,"c",191
+"Southern Mixed",2016,"con",15,"d",209
+"Southern Mixed",2016,"con",17,"a",174
+"Southern Mixed",2016,"con",17,"b",198
+"Southern Mixed",2016,"con",17,"c",256
+"Southern Mixed",2016,"con",17,"d",179
+"Southern Mixed",2016,"con",20,"a",198
+"Southern Mixed",2016,"con",20,"b",176
+"Southern Mixed",2016,"con",20,"c",176
+"Southern Mixed",2016,"con",20,"d",125
+"Southern Mixed",2016,"con",22,"a",185
+"Southern Mixed",2016,"con",22,"b",191
+"Southern Mixed",2016,"con",22,"c",248
+"Southern Mixed",2016,"con",22,"d",226
+"Southern Mixed",2016,"con",26,"a",175
+"Southern Mixed",2016,"con",26,"b",142
+"Southern Mixed",2016,"con",26,"c",200
+"Southern Mixed",2016,"con",26,"d",201
+"Southern Mixed",2016,"con",29,"a",244
+"Southern Mixed",2016,"con",29,"b",117
+"Southern Mixed",2016,"con",29,"c",194
+"Southern Mixed",2016,"con",29,"d",193
+"Tallgrass",2013,"chr",2,"a",138
+"Tallgrass",2013,"chr",2,"b",124
+"Tallgrass",2013,"chr",2,"c",127
+"Tallgrass",2013,"chr",2,"d",193
+"Tallgrass",2013,"chr",6,"a",129
+"Tallgrass",2013,"chr",6,"b",129
+"Tallgrass",2013,"chr",6,"c",110
+"Tallgrass",2013,"chr",6,"d",132
+"Tallgrass",2013,"chr",7,"a",134
+"Tallgrass",2013,"chr",7,"b",144
+"Tallgrass",2013,"chr",7,"c",148
+"Tallgrass",2013,"chr",7,"d",137
+"Tallgrass",2013,"chr",10,"a",120
+"Tallgrass",2013,"chr",10,"b",122
+"Tallgrass",2013,"chr",10,"c",152
+"Tallgrass",2013,"chr",10,"d",113
+"Tallgrass",2013,"chr",13,"a",195
+"Tallgrass",2013,"chr",13,"b",143
+"Tallgrass",2013,"chr",13,"c",183
+"Tallgrass",2013,"chr",13,"d",174
+"Tallgrass",2013,"chr",17,"a",161
+"Tallgrass",2013,"chr",17,"b",126
+"Tallgrass",2013,"chr",17,"c",157
+"Tallgrass",2013,"chr",17,"d",171
+"Tallgrass",2013,"chr",20,"a",181
+"Tallgrass",2013,"chr",20,"b",139
+"Tallgrass",2013,"chr",20,"c",187
+"Tallgrass",2013,"chr",20,"d",187
+"Tallgrass",2013,"chr",24,"a",191
+"Tallgrass",2013,"chr",24,"b",170
+"Tallgrass",2013,"chr",24,"c",162
+"Tallgrass",2013,"chr",24,"d",170
+"Tallgrass",2013,"chr",26,"a",162
+"Tallgrass",2013,"chr",26,"b",115
+"Tallgrass",2013,"chr",26,"c",101
+"Tallgrass",2013,"chr",26,"d",126
+"Tallgrass",2013,"chr",28,"a",144
+"Tallgrass",2013,"chr",28,"b",131
+"Tallgrass",2013,"chr",28,"c",145
+"Tallgrass",2013,"chr",28,"d",156
+"Tallgrass",2013,"con",3,"a",113
+"Tallgrass",2013,"con",3,"b",75
+"Tallgrass",2013,"con",3,"c",164
+"Tallgrass",2013,"con",3,"d",143
+"Tallgrass",2013,"con",4,"a",140
+"Tallgrass",2013,"con",4,"b",121
+"Tallgrass",2013,"con",4,"c",131
+"Tallgrass",2013,"con",4,"d",140
+"Tallgrass",2013,"con",9,"a",160
+"Tallgrass",2013,"con",9,"b",152
+"Tallgrass",2013,"con",9,"c",146
+"Tallgrass",2013,"con",9,"d",140
+"Tallgrass",2013,"con",12,"a",149
+"Tallgrass",2013,"con",12,"b",171
+"Tallgrass",2013,"con",12,"c",135
+"Tallgrass",2013,"con",12,"d",152
+"Tallgrass",2013,"con",14,"a",136
+"Tallgrass",2013,"con",14,"b",116
+"Tallgrass",2013,"con",14,"c",210
+"Tallgrass",2013,"con",14,"d",191
+"Tallgrass",2013,"con",16,"a",168
+"Tallgrass",2013,"con",16,"b",164
+"Tallgrass",2013,"con",16,"c",190
+"Tallgrass",2013,"con",16,"d",177
+"Tallgrass",2013,"con",19,"a",156
+"Tallgrass",2013,"con",19,"b",120
+"Tallgrass",2013,"con",19,"c",146
+"Tallgrass",2013,"con",19,"d",134
+"Tallgrass",2013,"con",23,"a",132
+"Tallgrass",2013,"con",23,"b",129
+"Tallgrass",2013,"con",23,"c",177
+"Tallgrass",2013,"con",23,"d",162
+"Tallgrass",2013,"con",27,"a",187
+"Tallgrass",2013,"con",27,"b",131
+"Tallgrass",2013,"con",27,"c",252
+"Tallgrass",2013,"con",27,"d",144
+"Tallgrass",2013,"con",30,"a",159
+"Tallgrass",2013,"con",30,"b",112
+"Tallgrass",2013,"con",30,"c",131
+"Tallgrass",2013,"con",30,"d",171
+"Tallgrass",2014,"chr",2,"a",159
+"Tallgrass",2014,"chr",2,"b",174
+"Tallgrass",2014,"chr",2,"c",176
+"Tallgrass",2014,"chr",2,"d",158
+"Tallgrass",2014,"chr",6,"a",130
+"Tallgrass",2014,"chr",6,"b",129
+"Tallgrass",2014,"chr",6,"c",134
+"Tallgrass",2014,"chr",6,"d",141
+"Tallgrass",2014,"chr",7,"a",154
+"Tallgrass",2014,"chr",7,"b",164
+"Tallgrass",2014,"chr",7,"c",129
+"Tallgrass",2014,"chr",7,"d",168
+"Tallgrass",2014,"chr",10,"a",142
+"Tallgrass",2014,"chr",10,"b",136
+"Tallgrass",2014,"chr",10,"c",116
+"Tallgrass",2014,"chr",10,"d",192
+"Tallgrass",2014,"chr",13,"a",163
+"Tallgrass",2014,"chr",13,"b",131
+"Tallgrass",2014,"chr",13,"c",143
+"Tallgrass",2014,"chr",13,"d",148
+"Tallgrass",2014,"chr",17,"a",143
+"Tallgrass",2014,"chr",17,"b",133
+"Tallgrass",2014,"chr",17,"c",149
+"Tallgrass",2014,"chr",17,"d",136
+"Tallgrass",2014,"chr",20,"a",172
+"Tallgrass",2014,"chr",20,"b",141
+"Tallgrass",2014,"chr",20,"c",174
+"Tallgrass",2014,"chr",20,"d",134
+"Tallgrass",2014,"chr",24,"a",195
+"Tallgrass",2014,"chr",24,"b",198
+"Tallgrass",2014,"chr",24,"c",193
+"Tallgrass",2014,"chr",24,"d",165
+"Tallgrass",2014,"chr",26,"a",127
+"Tallgrass",2014,"chr",26,"b",161
+"Tallgrass",2014,"chr",26,"c",107
+"Tallgrass",2014,"chr",26,"d",163
+"Tallgrass",2014,"chr",28,"a",151
+"Tallgrass",2014,"chr",28,"b",128
+"Tallgrass",2014,"chr",28,"c",133
+"Tallgrass",2014,"chr",28,"d",180
+"Tallgrass",2014,"con",3,"a",108
+"Tallgrass",2014,"con",3,"b",109
+"Tallgrass",2014,"con",3,"c",159
+"Tallgrass",2014,"con",3,"d",136
+"Tallgrass",2014,"con",4,"a",152
+"Tallgrass",2014,"con",4,"b",160
+"Tallgrass",2014,"con",4,"c",155
+"Tallgrass",2014,"con",4,"d",163
+"Tallgrass",2014,"con",9,"a",181
+"Tallgrass",2014,"con",9,"b",147
+"Tallgrass",2014,"con",9,"c",161
+"Tallgrass",2014,"con",9,"d",145
+"Tallgrass",2014,"con",12,"a",175
+"Tallgrass",2014,"con",12,"b",143
+"Tallgrass",2014,"con",12,"c",123
+"Tallgrass",2014,"con",12,"d",147
+"Tallgrass",2014,"con",14,"a",131
+"Tallgrass",2014,"con",14,"b",125
+"Tallgrass",2014,"con",14,"c",164
+"Tallgrass",2014,"con",14,"d",180
+"Tallgrass",2014,"con",16,"a",150
+"Tallgrass",2014,"con",16,"b",158
+"Tallgrass",2014,"con",16,"c",182
+"Tallgrass",2014,"con",16,"d",169
+"Tallgrass",2014,"con",19,"a",122
+"Tallgrass",2014,"con",19,"b",144
+"Tallgrass",2014,"con",19,"c",148
+"Tallgrass",2014,"con",19,"d",138
+"Tallgrass",2014,"con",23,"a",123
+"Tallgrass",2014,"con",23,"b",144
+"Tallgrass",2014,"con",23,"c",167
+"Tallgrass",2014,"con",23,"d",169
+"Tallgrass",2014,"con",27,"a",219
+"Tallgrass",2014,"con",27,"b",202
+"Tallgrass",2014,"con",27,"c",233
+"Tallgrass",2014,"con",27,"d",174
+"Tallgrass",2014,"con",30,"a",156
+"Tallgrass",2014,"con",30,"b",140
+"Tallgrass",2014,"con",30,"c",158
+"Tallgrass",2014,"con",30,"d",159
+"Tallgrass",2015,"chr",2,"a",183
+"Tallgrass",2015,"chr",2,"b",138
+"Tallgrass",2015,"chr",2,"c",168
+"Tallgrass",2015,"chr",2,"d",140
+"Tallgrass",2015,"chr",6,"a",136
+"Tallgrass",2015,"chr",6,"b",134
+"Tallgrass",2015,"chr",6,"c",137
+"Tallgrass",2015,"chr",6,"d",161
+"Tallgrass",2015,"chr",7,"a",124
+"Tallgrass",2015,"chr",7,"b",144
+"Tallgrass",2015,"chr",7,"c",150
+"Tallgrass",2015,"chr",7,"d",171
+"Tallgrass",2015,"chr",10,"a",131
+"Tallgrass",2015,"chr",10,"b",150
+"Tallgrass",2015,"chr",10,"c",145
+"Tallgrass",2015,"chr",10,"d",139
+"Tallgrass",2015,"chr",13,"a",174
+"Tallgrass",2015,"chr",13,"b",149
+"Tallgrass",2015,"chr",13,"c",148
+"Tallgrass",2015,"chr",13,"d",176
+"Tallgrass",2015,"chr",17,"a",137
+"Tallgrass",2015,"chr",17,"b",158
+"Tallgrass",2015,"chr",17,"c",134
+"Tallgrass",2015,"chr",17,"d",159
+"Tallgrass",2015,"chr",20,"a",177
+"Tallgrass",2015,"chr",20,"b",212
+"Tallgrass",2015,"chr",20,"c",153
+"Tallgrass",2015,"chr",20,"d",170
+"Tallgrass",2015,"chr",24,"a",179
+"Tallgrass",2015,"chr",24,"b",216
+"Tallgrass",2015,"chr",24,"c",198
+"Tallgrass",2015,"chr",24,"d",189
+"Tallgrass",2015,"chr",26,"a",151
+"Tallgrass",2015,"chr",26,"b",138
+"Tallgrass",2015,"chr",26,"c",146
+"Tallgrass",2015,"chr",26,"d",152
+"Tallgrass",2015,"chr",28,"a",149
+"Tallgrass",2015,"chr",28,"b",147
+"Tallgrass",2015,"chr",28,"c",132
+"Tallgrass",2015,"chr",28,"d",143
+"Tallgrass",2015,"con",3,"a",64
+"Tallgrass",2015,"con",3,"b",58
+"Tallgrass",2015,"con",3,"c",152
+"Tallgrass",2015,"con",3,"d",144
+"Tallgrass",2015,"con",4,"a",155
+"Tallgrass",2015,"con",4,"b",185
+"Tallgrass",2015,"con",4,"c",153
+"Tallgrass",2015,"con",4,"d",154
+"Tallgrass",2015,"con",9,"a",173
+"Tallgrass",2015,"con",9,"b",178
+"Tallgrass",2015,"con",9,"c",163
+"Tallgrass",2015,"con",9,"d",178
+"Tallgrass",2015,"con",12,"a",158
+"Tallgrass",2015,"con",12,"b",142
+"Tallgrass",2015,"con",12,"c",147
+"Tallgrass",2015,"con",12,"d",201
+"Tallgrass",2015,"con",14,"a",164
+"Tallgrass",2015,"con",14,"b",136
+"Tallgrass",2015,"con",14,"c",151
+"Tallgrass",2015,"con",14,"d",183
+"Tallgrass",2015,"con",16,"a",147
+"Tallgrass",2015,"con",16,"b",156
+"Tallgrass",2015,"con",16,"c",164
+"Tallgrass",2015,"con",16,"d",176
+"Tallgrass",2015,"con",19,"a",164
+"Tallgrass",2015,"con",19,"b",152
+"Tallgrass",2015,"con",19,"c",144
+"Tallgrass",2015,"con",19,"d",156
+"Tallgrass",2015,"con",23,"a",160
+"Tallgrass",2015,"con",23,"b",149
+"Tallgrass",2015,"con",23,"c",181
+"Tallgrass",2015,"con",23,"d",112
+"Tallgrass",2015,"con",27,"a",182
+"Tallgrass",2015,"con",27,"b",161
+"Tallgrass",2015,"con",27,"c",183
+"Tallgrass",2015,"con",27,"d",183
+"Tallgrass",2015,"con",30,"a",153
+"Tallgrass",2015,"con",30,"b",144
+"Tallgrass",2015,"con",30,"c",152
+"Tallgrass",2015,"con",30,"d",196
+"Tallgrass",2016,"chr",2,"a",168
+"Tallgrass",2016,"chr",2,"b",128
+"Tallgrass",2016,"chr",2,"c",158
+"Tallgrass",2016,"chr",2,"d",190
+"Tallgrass",2016,"chr",6,"a",146
+"Tallgrass",2016,"chr",6,"b",127
+"Tallgrass",2016,"chr",6,"c",167
+"Tallgrass",2016,"chr",6,"d",233
+"Tallgrass",2016,"chr",7,"a",137
+"Tallgrass",2016,"chr",7,"b",192
+"Tallgrass",2016,"chr",7,"c",176
+"Tallgrass",2016,"chr",7,"d",159
+"Tallgrass",2016,"chr",10,"a",166
+"Tallgrass",2016,"chr",10,"b",173
+"Tallgrass",2016,"chr",10,"c",195
+"Tallgrass",2016,"chr",10,"d",183
+"Tallgrass",2016,"chr",13,"a",172
+"Tallgrass",2016,"chr",13,"b",207
+"Tallgrass",2016,"chr",13,"c",170
+"Tallgrass",2016,"chr",13,"d",178
+"Tallgrass",2016,"chr",17,"a",143
+"Tallgrass",2016,"chr",17,"b",176
+"Tallgrass",2016,"chr",17,"c",189
+"Tallgrass",2016,"chr",17,"d",155
+"Tallgrass",2016,"chr",20,"a",168
+"Tallgrass",2016,"chr",20,"b",138
+"Tallgrass",2016,"chr",20,"c",164
+"Tallgrass",2016,"chr",20,"d",188
+"Tallgrass",2016,"chr",24,"a",171
+"Tallgrass",2016,"chr",24,"b",185
+"Tallgrass",2016,"chr",24,"c",184
+"Tallgrass",2016,"chr",24,"d",201
+"Tallgrass",2016,"chr",26,"a",152
+"Tallgrass",2016,"chr",26,"b",149
+"Tallgrass",2016,"chr",26,"c",165
+"Tallgrass",2016,"chr",26,"d",181
+"Tallgrass",2016,"chr",28,"a",164
+"Tallgrass",2016,"chr",28,"b",120
+"Tallgrass",2016,"chr",28,"c",162
+"Tallgrass",2016,"chr",28,"d",172
+"Tallgrass",2016,"con",3,"a",120
+"Tallgrass",2016,"con",3,"b",62
+"Tallgrass",2016,"con",3,"c",158
+"Tallgrass",2016,"con",3,"d",150
+"Tallgrass",2016,"con",4,"a",160
+"Tallgrass",2016,"con",4,"b",167
+"Tallgrass",2016,"con",4,"c",147
+"Tallgrass",2016,"con",4,"d",202
+"Tallgrass",2016,"con",9,"a",235
+"Tallgrass",2016,"con",9,"b",241
+"Tallgrass",2016,"con",9,"c",225
+"Tallgrass",2016,"con",9,"d",272
+"Tallgrass",2016,"con",12,"a",192
+"Tallgrass",2016,"con",12,"b",276
+"Tallgrass",2016,"con",12,"c",174
+"Tallgrass",2016,"con",12,"d",214
+"Tallgrass",2016,"con",14,"a",188
+"Tallgrass",2016,"con",14,"b",195
+"Tallgrass",2016,"con",14,"c",211
+"Tallgrass",2016,"con",14,"d",222
+"Tallgrass",2016,"con",16,"a",193
+"Tallgrass",2016,"con",16,"b",172
+"Tallgrass",2016,"con",16,"c",181
+"Tallgrass",2016,"con",16,"d",171
+"Tallgrass",2016,"con",19,"a",142
+"Tallgrass",2016,"con",19,"b",181
+"Tallgrass",2016,"con",19,"c",190
+"Tallgrass",2016,"con",19,"d",176
+"Tallgrass",2016,"con",23,"a",143
+"Tallgrass",2016,"con",23,"b",163
+"Tallgrass",2016,"con",23,"c",240
+"Tallgrass",2016,"con",23,"d",157
+"Tallgrass",2016,"con",27,"a",283
+"Tallgrass",2016,"con",27,"b",283
+"Tallgrass",2016,"con",27,"c",336
+"Tallgrass",2016,"con",27,"d",248
+"Tallgrass",2016,"con",30,"a",181
+"Tallgrass",2016,"con",30,"b",199
+"Tallgrass",2016,"con",30,"c",162
+"Tallgrass",2016,"con",30,"d",186
