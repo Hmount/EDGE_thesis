@@ -40,24 +40,26 @@ summary(lm(intrinsicdiff~SLA.x, trtdata))
 # run MOANOVA with significant model objects to test for significance of predictors to response interaction
 
 summary(mod_la<-lm(cbind(intrinsicdiff, chrdiff)~leafarea.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
-car::Anova(mod_la) #trait, trait*grassland, CWM SLA, CWM TLP
+car::Anova(mod_la) 
 summary(mod_ln<-lm(cbind(intrinsicdiff, chrdiff)~leafN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
-car::Anova(mod_ln) #trait*grassland
+car::Anova(mod_ln) 
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~LDMC.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 car::Anova(modt) #nothin
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~LTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
-car::Anova(modt) # not working???
-summary(mod_tlp<-lm(cbind(intrinsicdiff, chrdiff)~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
-car::Anova(mod_tlp) #trait, CWM SLA
+car::Anova(modt) # not enough sites, exclude from analysis
 summary(mod_sla<-lm(cbind(intrinsicdiff, chrdiff)~SLA.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
 car::Anova(mod_sla)
+summary(mod_tlp<-lm(cbind(intrinsicdiff, chrdiff)~TLP_tran*grassland_type + SLA.x + TLP.x, data=trtdata)) #**
+car::Anova(mod_tlp) 
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~height.y*grassland_type + SLA.x + TLP.x,data=trtdata)) #no
 car::Anova(modt)
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~RTD.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
-car::Anova(modt) #not working???
-summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
-car::Anova(modt) #no
+car::Anova(modt) # not enough sites, exclude from analysis
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~SRL.y*grassland_type + SLA.x + TLP.x , data=trtdata)) #close
-car::Anova(modt) #trait, grassland, SLA
+car::Anova(modt) 
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootdiam.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
-car::Anova(modt) #nah
+car::Anova(modt) 
+summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
+car::Anova(modt) 
+
+

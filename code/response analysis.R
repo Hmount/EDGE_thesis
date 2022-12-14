@@ -55,9 +55,12 @@ anova(intchr2)
 #compare w/ anova
 anova(intchr,intchr2)
 
-
-#### repeat with Standard Major Axis regression ####
-# RJG suggested to use MA regression instead of OLS to avoid causal relationships 
+#### Supporting information ####
+#### re-do analysis with Standard Major Axis regression ####
+# RJG suggested to use SMA regression instead of OLS to avoid causal relationships. While SMA accounts
+# for uncertainty in our measurements of both variables, I was able to give specific measuremnts of 
+# uncertainty using OLS and the SE of previous models. For this benefit, and because the final results
+# are qualitativley similar, we report with OLS.
 library(tidyverse)
 library(smatr) #for major axis regression
 
@@ -74,8 +77,7 @@ test1 <- sma(chrdiff~intrinsicdiff+grassland_type,NEWallsite[-106,])
 anova(test,test1)
 
 
-#### supplemental ####
-##ANOVA of each response ~ grassland
+#### ANOVA of each response ~ grassland ####
 ### population responses to drought in different grasslands:
 summary(aov(intrinsicdiff ~ grassland_type, NEWallsite)) #no difference
 
