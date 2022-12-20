@@ -35,7 +35,7 @@ ggplot(trtdata, aes(x=SLA.x, y=intrinsicdiff))+
 summary(lm(intrinsicdiff~SLA.x, trtdata))
 
 
-#### modelling ####
+#### modelling; traits as predictors of population responses ####
 # use multivariate linear model to see if responses are a function of focal traits* grassland + community CWM SLA and TLP
 # run MOANOVA with significant model objects to test for significance of predictors to response interaction
 
@@ -62,4 +62,33 @@ car::Anova(modt)
 summary(modt<-lm(cbind(intrinsicdiff, chrdiff)~rootN.y*grassland_type + SLA.x + TLP.x, data=trtdata)) #no
 car::Anova(modt) 
 
+#### Supporting info; variation in traits ####
+# traits vary much more strongly between species than within
+# Because MANOVA show little explanatory power of traits, and traits only significantly differ 
+# interspecifically, intraspecific variation cannot account for pop. differences.
+# this suggests that the same traits/ species responds differently based on local biotic and abiotic conditions.
+# (see Table S3)
 
+# Caveat: while we attempted to account for intra variation as much as possible, there were limits to
+# the trait data we could obtain and our results cannot conclusively dismiss the effects of 
+# intraspeciifc traits variation on differences in population responses of the same species. 
+
+data <- CWM_sitedata %>% filter()
+data <- read.csv("data/MasterTrait.csv")
+multiples <- as.data.frame(table(data$Species))
+multiples <- multiples%>%filter(Freq>=2) #get spp w/ 2+ observations
+multiples #check
+allmultiples <- data %>% filter(Species%in%multiples$Var1) #subset
+
+#test for variation in each trait between and across populations
+anova(lm(log(SLA..cm2.g..cm2.g.1.)~Species, data=allmultiples))
+anova(lm(log(Leaf.area..cm2.)~Species, data=allmultiples))
+anova(lm(log(Leaf.N....)~Species, data=allmultiples))
+anova(lm(log(Leaf.tissue.density..gcm.3.)~Species, data=allmultiples))
+anova(lm(log(LDMC..g.g.)~Species, data=allmultiples))
+anova(lm(log(abs(tugor.loss.point))~Species, data=allmultiples))
+anova(lm(log(max.height.mm.)~Species, data=allmultiples))
+anova(lm(log(SRL..m.g.)~Species, data=allmultiples))
+anova(lm(log(Root.N..)~Species, data=allmultiples))
+anova(lm(log(Root.tissue.density.gcm.3.)~Species, data=allmultiples))
+anova(lm(log(allmultiples$Root.diameter..mm.)~Species, data=allmultiples))
