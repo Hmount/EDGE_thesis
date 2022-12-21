@@ -139,7 +139,7 @@ conceptfig<-annotate_figure(conceptfig,left =text_grob("Response to neighbors", 
 conceptfig
 
 #export
-ggsave(conceptfig, filename = "figures/conceptual_hypotheses.png", dpi=300, height = 7,width =5)
+ggsave(conceptfig, filename = "figures/conceptual_hypotheses.jpg", dpi=300, height = 7,width =5)
 
 #### Figure 2; ####
 # conceptual diagram/ visualization of methods used to estimate population growth 
@@ -348,7 +348,7 @@ summaryfig <- ggarrange(summaryfig,combinedlegend,nrow=2, ncol=1, heights = c(2,
 summaryfig
 
 #export
-ggsave(summaryfig, filename = "figures/summaryfig.png", dpi=300, height = 8,width =9)
+ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 8,width =9)
 
 
 #### Figure 4; ####
@@ -427,7 +427,7 @@ tradeoffcombo <- ggarrange(tradeoffcombo, shared_legend, nrow=2, heights = c(2.5
 tradeoffcombo
 
 #export
-ggsave(tradeoffcombo, filename = "figures/tradeoffcombo.png", dpi=300, height = 7,width =8)
+ggsave(tradeoffcombo, filename = "figures/tradeoffcombo.jpg", dpi=300, height = 7,width =8)
 
 
 #### Figure 5; ####
@@ -774,5 +774,5 @@ bplots<-annotate_figure(bplots,left = "                  Grassland")
 bplots
 
 #export
-ggsave(bplots, filename = "figures/bplots.png", dpi=300, height = 3,width =8)
+ggsave(bplots, filename = "figures/bplots.jpg", dpi=300, height = 3,width =8)
 
