@@ -196,6 +196,13 @@ NEWallsite <- NEWallsite %>% #ensure data is properly leveled
   mutate(grassland_type = fct_relevel(grassland_type,
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
+# differences in quadrat-level cover by year, treatment, and grassland
+allsum <- read.csv("data/allsum_quadrat.csv") #data
+allsum$year <- as.factor(allsum$year)
+allsum <- allsum %>% #ensure data is properly leveled
+  mutate(grassland_type = fct_relevel(grassland_type,
+                                      "Desert", "Southern Shortgrass", "Northern Shortgrass", 
+                                      "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
 # histograms of all calculated growth rate measures: 
 # (All are non-normal and have a right/positive skew). 
