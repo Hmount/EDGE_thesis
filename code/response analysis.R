@@ -47,7 +47,7 @@ anova(intcon,intcon2_fig)
 
 ### neighbors response in drought conditions: 
 intchr <- lm(chrdiff~intrinsicdiff, weights=weight2, NEWallsite[-106,]) #new main finding
-anova(intchr) #trade-off
+summary(intchr) #trade-off
 sqrt(summary(intchr)$adj.r.squared)#calculate r
 #run second model w/ grassland
 intchr2 <- lm(chrdiff~intrinsicdiff*grassland_type, weights=weight2, NEWallsite[-106,]) #old finding 
@@ -88,3 +88,4 @@ multcompView::multcompLetters4(con_anova, con_tuk) #letters for each site
 
 ### neighbors response in drought conditions in different grasslands: 
 summary(aov(chrdiff ~ grassland_type, NEWallsite)) #no difference
+

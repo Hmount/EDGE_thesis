@@ -74,19 +74,49 @@ ggplot(test, aes(y=chrdiff, x=traitdiff))+#, color=grassland_type))+
 ### pop responses as a function of trait difference
 summary(lm(chrdiff~traitdiff, test))
 
-#### ensure that ratio correlations are not mathematically inevitable)
+#### ensure that ratio correlations are not mathematically inevitable
 #make simulated data
-rinvA <- runif(100, -1,4)
-rinvD <- runif(100, -1,4)
-rintA <- runif(100, -1,4)
-rintD <- runif(100, -1,4)
+rinvA <- runif(100, -1,4) #invasion GR in ambient
+rinvD <- runif(100, -1,4) #invasion GR in drought
+rintA <- runif(100, -1,4) #intrinsic GR in ambient
+rintD <- runif(100, -1,4) #intrinsic GR in drought
 
 #find differences
-intdif <- rinvA - 
-invdif
-condif
-chrdif
+intdif <- rintD - rintA #response to drought without neighbors
+invdif <- rinvD - rinvA #response to drought with neighbors
+condif <- rinvA - rintA #response to neighbors in ambient
+chrdif <- rinvD - rintD #response to neighbors in drought
 
-#compare correlations amoung random variables
-cor.test()
+#make into one table
+simdat <- data.frame(intdif,invdif,condif,chrdif)
 
+#compare correlations among random variables
+cor(simdat)
+
+#in a model
+summary(lm(condif~intdif, simdat)) 
+summary(lm(chrdif~intdif, simdat)) 
+
+
+summary(lm(condif~chrdif, simdat)) 
+summary(lm(invdif~intdif, simdat)) 
+
+
+
+summary(lm(invasionLDGRcon~intrinsicLDGRchr, NEWallsite))
+plot(invasionLDGRcon~intrinsicLDGRchr, NEWallsite)
+
+summary(lm(invasionLDGRchr~intrinsicLDGRchr, NEWallsite))
+plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
+
+summary(lm(invasionLDGRcon~intrinsicLDGRcon, NEWallsite))
+plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
+
+summary(lm(invasionLDGRchr~invasionLDGRcon, NEWallsite))
+plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
+
+summary(lm(intrinsicLDGRchr~intrinsicLDGRcon, NEWallsite))
+plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
+
+summary(lm(intrinsicLDGRcon~invasionLDGRchr, NEWallsite))
+plot(intrinsicLDGRcon~invasionLDGRchr, NEWallsite)
