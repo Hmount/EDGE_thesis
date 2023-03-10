@@ -15,3 +15,16 @@ summary(m1)
 ggplot(dat, aes(x=effectN, y=effectND, color=source))+
   geom_point()+
   geom_smooth(method="lm")
+
+
+#trait relationships?
+NEWallsite <- read.csv("data/allsite_new.csv") #data
+NEWallsite <- NEWallsite %>% #ensure levels are correct
+  mutate(grassland_type = fct_relevel(grassland_type,
+                                      "Desert", "Southern Shortgrass", "Northern Shortgrass", 
+                                      "Northern Mixed", "Southern Mixed", "Tallgrass"))
+test <- merge(NEWallsite, dat, by = c("species", "source"))
+
+summary(lm(effectND~rootdiam, test))
+summary(lm(effectN~leafN, test))
+
