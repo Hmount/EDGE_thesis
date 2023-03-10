@@ -30,7 +30,8 @@ ancova = list()
 csc = list()
 coc = list()
 ##create dataframe to for ancova outputs
-NEWalldat <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA,weight=NA)
+NEWalldat <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA,weight=NA,
+                        effectN=NA, effectND=NA)
 ##loop for running ancova on each species and storing and manipulating outputs
 for (l in 1:length(spp)){
   CHYsp <-  CHY[CHY$species == spp[l],]
@@ -54,6 +55,9 @@ for (l in 1:length(spp)){
   NEWalldat[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4]) #find growth rate when cover intra = 0 and inter=mean in ambient
   NEWalldat[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #find growth rate when cover intra = 0 and inter=mean in drought (non-zero betas)
   NEWalldat[l,6] <- summary(ancova[[l]])$sigma #se for weighting estimates
+  ##assigns the betas to the proper column in the order of the loop
+  NEWalldat[l,7] <- (mco*coef(ancova[[l]])[4]) #get effect of neighbors when cover intra = 0 and inter=mean in ambient
+  NEWalldat[l,8] <- (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=mean in drought
   # create a figure for each species with intra- and inter-specific cover (for Figure S1)
   csc[[l]] <- ggplot(CHYsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none",
@@ -88,7 +92,8 @@ ancova = list()
 csh = list()
 coh = list()
 ##create dataframe to for ancova outputs
-NEWallHYS <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA, weight=NA)
+NEWallHYS <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA, weight=NA,
+                        effectN=NA, effectND=NA)
 ##loop for running ancova on each species and storing and manipulating outputs
 for (l in 1:length(spp)){
   HYSsp <-  HYS[HYS$species == spp[l],]
@@ -112,6 +117,9 @@ for (l in 1:length(spp)){
   NEWallHYS[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallHYS[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + + (mcr*coef(ancova[[l]])[6])
   NEWallHYS[l,6] <- summary(ancova[[l]])$sigma
+  ##assigns the betas to the proper column in the order of the loop
+  NEWallHYS[l,7] <- (mco*coef(ancova[[l]])[4]) #get effect of neighbors when cover intra = 0 and inter=mean in ambient
+  NEWallHYS[l,8] <- (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=mean in drought
   # create a figure for each species with intra- and inter-specific cover (for Figure S1)
   csh[[l]] <- ggplot(HYSsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
@@ -139,7 +147,8 @@ ancova = list()
 csk = list()
 cok = list()
 ##create dataframe to for ancova outputs
-NEWallKNZ <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA,weight=NA)
+NEWallKNZ <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA,weight=NA,
+                        effectN=NA, effectND=NA)
 ##loop for running ancova on each species and storing and manipulating outputs
 for (l in 1:length(spp)){
   KNZsp <-  KNZ[KNZ$species == spp[l],]
@@ -163,6 +172,9 @@ for (l in 1:length(spp)){
   NEWallKNZ[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallKNZ[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallKNZ[l,6] <- summary(ancova[[l]])$sigma
+  ##assigns the betas to the proper column in the order of the loop
+  NEWallKNZ[l,7] <- (mco*coef(ancova[[l]])[4]) #get effect of neighbors when cover intra = 0 and inter=mean in ambient
+  NEWallKNZ[l,8] <- (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=mean in drought
   # create a figure for each species with intra- and inter-specific cover (for Figure S1)
   csk[[l]] <- ggplot(KNZsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
@@ -191,7 +203,8 @@ ancova = list()
 css = list()
 cos = list()
 ##create dataframe to for ancova outputs
-NEWallSGS <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA,weight=NA)
+NEWallSGS <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRchr=NA,weight=NA,
+                        effectN=NA, effectND=NA)
 ##loop for running ancova on each species and storing and manipulating outputs
 for (l in 1:length(spp)){
   SGSsp <-  SGS[SGS$species == spp[l],]
@@ -215,6 +228,9 @@ for (l in 1:length(spp)){
   NEWallSGS[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallSGS[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallSGS[l,6] <- summary(ancova[[l]])$sigma
+  ##assigns the betas to the proper column in the order of the loop
+  NEWallSGS[l,7] <- (mco*coef(ancova[[l]])[4]) #get effect of neighbors when cover intra = 0 and inter=mean in ambient
+  NEWallSGS[l,8] <- (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=mean in drought
   # create a figure for each species with intra- and inter-specific cover (for Figure S1)
   css[[l]] <- ggplot(SGSsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
@@ -270,7 +286,8 @@ ancova = list()
 cssb = list()
 cosb = list()
 ##create dataframe to for ancova outputs
-NEWallSBL <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA,invasionLDGRchr=NA,weight=NA)
+NEWallSBL <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA,invasionLDGRchr=NA,weight=NA,
+                        effectN=NA, effectND=NA)
 ##loop for running ancova on each species and storing and manipulating outputs
 for (l in 1:length(spp)){
   SBLsp <-  SBL[SBL$species == spp[l],]
@@ -294,6 +311,9 @@ for (l in 1:length(spp)){
   NEWallSBL[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallSBL[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallSBL[l,6] <- summary(ancova[[l]])$sigma
+  ##assigns the betas to the proper column in the order of the loop
+  NEWallSBL[l,7] <- (mco*coef(ancova[[l]])[4]) #get effect of neighbors when cover intra = 0 and inter=mean in ambient
+  NEWallSBL[l,8] <- (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=mean in drought
   # create a figure for each species with intra- and inter-specific cover (for Figure S1)
   cssb[[l]] <- ggplot(SBLsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
@@ -354,7 +374,8 @@ ancova = list()
 cssbk = list()
 cosbk = list()
 ##create dataframe to for ancova outputs
-NEWallSBK <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA,invasionLDGRchr=NA,weight=NA)
+NEWallSBK <- data.frame(species = NA, intrinsicLDGRcon=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA,invasionLDGRchr=NA,weight=NA,
+                        effectN=NA, effectND=NA)
 ##loop for running ancova on each species and storing and manipulating outputs
 for (l in 1:length(spp)){
   SBKsp <-  SBK[SBK$species == spp[l],]
@@ -378,6 +399,9 @@ for (l in 1:length(spp)){
   NEWallSBK[l,4] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4])
   NEWallSBK[l,5] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6])
   NEWallSBK[l,6] <- summary(ancova[[l]])$sigma
+  ##assigns the betas to the proper column in the order of the loop
+  NEWallSBK[l,7] <- (mco*coef(ancova[[l]])[4]) #get effect of neighbors when cover intra = 0 and inter=mean in ambient
+  NEWallSBK[l,8] <- (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=mean in drought
   # create a figure for each species with intra- and inter-specific cover (for Figure S1)
   cssbk[[l]] <- ggplot(SBKsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", plot.margin=unit(c(.5,0,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
@@ -400,6 +424,7 @@ NEWalldata$condiff = NEWalldata$invasionLDGRcon - NEWalldata$intrinsicLDGRcon #i
 NEWalldata$chrdiff = NEWalldata$invasionLDGRchr - NEWalldata$intrinsicLDGRchr #in drought
 
 write.csv(NEWalldata, file='data/alldata.csv', row.names = F) #make csv
+write.csv(NEWalldata, file='data/alldata_redo.csv', row.names = F) #make csv
 
 ## Figure S1 shows the relationships modelled above, see 'figurs.R' script.
 
