@@ -97,6 +97,13 @@ cor(simdat)
 summary(lm(condif~intdif, simdat)) 
 summary(lm(chrdif~intdif, simdat)) 
 
+ggplot(simdat, aes(y=condif, x=intdif))+
+  geom_point()+
+  geom_smooth(method = "lm")
+
+ggplot(simdat, aes(y=chrdif, x=intdif))+
+  geom_point()+
+  geom_smooth(method = "lm")
 
 summary(lm(condif~chrdif, simdat)) 
 summary(lm(invdif~intdif, simdat)) 
