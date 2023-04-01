@@ -4,6 +4,7 @@ dat <- read.csv("data/alldata_redo.csv") #data
 dat <- dat[-109,]
 
 summary(lm(effectND~effectN, dat))
+summary(lm(effectND~effectN*source, dat)) #no effect of grassland
 
 ggplot(dat, aes(x=effectN, y=effectND))+
   geom_point()

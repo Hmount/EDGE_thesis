@@ -112,12 +112,23 @@ summary(lm(invdif~intdif, simdat))
 
 summary(lm(invasionLDGRcon~intrinsicLDGRchr, NEWallsite))
 plot(invasionLDGRcon~intrinsicLDGRchr, NEWallsite)
+anova(m1<-lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, NEWallsite))
+emmeans(m1, specs = pairwise~grassland_type)
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
 
 summary(lm(invasionLDGRchr~intrinsicLDGRchr, NEWallsite))
 plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
 
 summary(lm(invasionLDGRcon~intrinsicLDGRcon, NEWallsite))
 plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
+anova(m2 <- lm(invasionLDGRcon~intrinsicLDGRcon*grassland_type, NEWallsite))
+library(emmeans)
+emmeans(m2, specs = pairwise~grassland_type)
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRcon, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
 
 summary(lm(invasionLDGRchr~invasionLDGRcon, NEWallsite))
 plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
@@ -127,3 +138,37 @@ plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
 
 summary(lm(intrinsicLDGRcon~invasionLDGRchr, NEWallsite))
 plot(intrinsicLDGRcon~invasionLDGRchr, NEWallsite)
+
+
+##with daniel
+summary(lm(intrinsicLDGRchr~intrinsicLDGRcon, NEWallsite))
+plot(intrinsicLDGRchr~intrinsicLDGRcon, NEWallsite)
+abline(0,1)
+ggplot(NEWallsite, aes(y=intrinsicLDGRchr, x=intrinsicLDGRcon, color=lifespan))+
+  geom_point()+
+  geom_smooth(method="lm")
+
+
+summary(lm(invasionLDGRcon~intrinsicLDGRchr, NEWallsite))
+plot(invasionLDGRcon~intrinsicLDGRchr, NEWallsite)
+abline(0,1)
+
+anova(m1<-lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, NEWallsite))
+emmeans(m1, specs = pairwise~grassland_type)
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+
+
+summary(lm(invasionLDGRchr~intrinsicLDGRchr, NEWallsite))
+plot(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)
+abline(0,1)
+ggplot(NEWallsite, aes(y=invasionLDGRchr, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()

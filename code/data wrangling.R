@@ -58,6 +58,8 @@ for (l in 1:length(spp)){
   ##assigns the betas to the proper column in the order of the loop
   NEWalldat[l,7] <- (mco*coef(ancova[[l]])[4]) #get effect of neighbors when cover intra = 0 and inter=mean in ambient
   NEWalldat[l,8] <- (mcr*coef(ancova[[l]])[4]) + (mcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=mean in drought
+#  NEWalldat[l,9] <- (mmco*coef(ancova[[l]])[4]) #get effect of drought when cover intra = 0 and inter=min in ambient
+#  NEWalldat[l,10] <- (mmcr*coef(ancova[[l]])[4]) + (mmcr*coef(ancova[[l]])[6]) #get effect of neighbors when cover intra = 0 and inter=min in drought
   # create a figure for each species with intra- and inter-specific cover (for Figure S1)
   csc[[l]] <- ggplot(CHYsp, aes(x=log_cover, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none",
