@@ -1,249 +1,386 @@
+## Redoing analysis using LDGR's
+
+#### data and packages ####
+library(tidyverse)
+library(ggpubr)
+
 NEWallsite <- read.csv("data/allsite_new.csv") #data
 NEWallsite <- NEWallsite %>% #ensure levels are correct
   mutate(grassland_type = fct_relevel(grassland_type,
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
-CWM_sitedata <- read.csv("data/CWM_sitedata.csv") #trait data
-trtdata<-CWM_sitedata[,c(1:13,48)] #just variables I will use
-trtdata[,c(3:11)]<-log(trtdata[,c(3:11)]) #log CWM traits 
-trtdata[,12]<-log(abs(trtdata[,12])) #abs then log for TLP.x
-alldat <- merge(NEWallsite, trtdata, by = c("species", "grassland_type"))
-alldat[,c(7:15,17)]<-log(alldat[,c(7:15,17)]) #log focal traits
-
-# traits and LDGR's
-summary(lm(intrinsicLDGRcon ~ leafarea*site + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ leafarea*site + SLA.x + TLP.x, data=alldat))
-summary(lm(invasionLDGRcon ~ leafarea*site + SLA.x + TLP.x, data=alldat)) #**
-summary(lm(invasionLDGRchr ~ leafarea*site + SLA.x + TLP.x, data=alldat)) #**
-
-summary(lm(intrinsicLDGRcon ~ SLA*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ SLA*grassland_type + SLA.x + TLP.x, data=alldat)) #*
-summary(lm(invasionLDGRcon ~ SLA*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ SLA*grassland_type + SLA.x + TLP.x, data=alldat)) #***
-
-summary(lm(intrinsicLDGRcon ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-summary(lm(invasionLDGRcon ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-
-summary(lm(intrinsicLDGRcon ~ SRL*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ SRL*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRcon ~ SRL*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ SRL*grassland_type + SLA.x + TLP.x, data=alldat)) #*
-
-summary(lm(intrinsicLDGRcon ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #*
-summary(lm(invasionLDGRcon ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-summary(lm(invasionLDGRchr ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #***
-
-summary(lm(intrinsicLDGRcon ~ LTD*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ LTD*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRcon ~ LTD*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ LTD*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-
-summary(lm(intrinsicLDGRcon ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat)) #*
-summary(lm(invasionLDGRcon ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-
-summary(lm(intrinsicLDGRcon ~ rootdiam*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ rootdiam*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRcon ~ rootdiam*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ rootdiam*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-
-summary(lm(intrinsicLDGRcon ~ RTD*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ RTD*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRcon ~ RTD*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ RTD*grassland_type + SLA.x + TLP.x, data=alldat))
-
-summary(lm(intrinsicLDGRcon ~ height*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ height*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRcon ~ height*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ height*grassland_type + SLA.x + TLP.x, data=alldat)) #**
-
-summary(lm(intrinsicLDGRcon ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat))
-summary(lm(intrinsicLDGRchr ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat)) #*
-summary(lm(invasionLDGRcon ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat)) 
-summary(lm(invasionLDGRchr ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat)) #*
 
 
-##now examine ANOVA tables 
-anova(lm(invasionLDGRcon ~ leafarea*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, SLA, TLP
-anova(lm(invasionLDGRchr ~ leafarea*grassland_type + SLA.x + TLP.x, data=alldat)) #grassland, tlp, interaction
+#### relationship between growth rates ####
+# this model (probably most interesting) shows the relationship between LDGR with low
+# heterospecific density in drought (growth rate as effected by drought alone) and the 
+# relationship between LDGR with average heterospecific density in ambient (growth 
+# rate as effected by neighbors alone) ~~SHOULD THIS BE HIGH DENSISTY??~~
+summary(lm(invasionLDGRcon~intrinsicLDGRchr, NEWallsite))
+anova(m1<-lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, NEWallsite)) #does differ by grassland
+emmeans(m1, specs = pairwise~grassland_type) #but not super significant (potentially dry grasslands do not share the trend as much)
+#plot
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+# positive relationship suggests being better at living in drought is correlated with
+# that species doing better at living with more neighbors
+# below 1:1 line growth rate is higher in drought
+# above 1:1 line growth rate is higher with neighbors
 
-anova(lm(intrinsicLDGRchr ~ SLA*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP
-anova(lm(invasionLDGRchr ~ SLA*grassland_type + SLA.x + TLP.x, data=alldat)) #grassland, SLA, TLP
+#interactive
+library(plotly)
+p1 <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, label=species))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+ggplotly(p1)
+pg1 <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grass.forb, label=species))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+ggplotly(pg1)
+pg1 <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type, label=species))+
+  geom_point()+
+  geom_smooth(method="lm", se=F)+
+  geom_abline()
+ggplotly(pg1)
 
-anova(lm(intrinsicLDGRchr ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, TLP
-anova(lm(invasionLDGRchr ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, grassland, TLP
+#view one species
+onespecies <- NEWallsite %>% mutate(onespecies = ifelse(species=="Tragopogondubius","yes","no")) 
+onespecies <- NEWallsite %>% filter(species == "Boutelouagracilis")
+ggplot(onespecies, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point()+
+  geom_abline()
+#it seems like as precipitation increases growth increases, but the same relationship is maintained
 
-anova(lm(invasionLDGRchr ~ SRL*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP
+#subset species that have response estimates from multiple grasslands
+multiples <- as.data.frame(table(NEWallsite$species))
+multiples <- multiples%>%filter(Freq>=2) #get spp w/ 2+ observations
+multiples #check
+allmultiples <- NEWallsite %>% filter(species%in%multiples$Var1) #subset
 
-anova(lm(intrinsicLDGRcon ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
-anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
-anova(lm(invasionLDGRcon ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
-anova(lm(invasionLDGRchr ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, SLA, TLP, interaction
+p2<-ggplot(allmultiples, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type, label=species))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+ggplotly(p2)
 
-anova(lm(invasionLDGRchr ~ LTD*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, grassland, TLP
 
-anova(lm(intrinsicLDGRchr ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, TLP
-anova(lm(invasionLDGRchr ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, TLP
+# this model (also interesting) shows the relationship between LDGR with low
+# heterospecific density in drought (growth rate as effected by drought alone) and the 
+# relationship between LDGR with average heterospecific density in drought (growth 
+# rate as effected by neighbors after accounting for drought) ~~SHOULD THIS BE HIGH DENSISTY??~~
+summary(lm(invasionLDGRchr~intrinsicLDGRchr, NEWallsite))
+anova(m1<-lm(invasionLDGRchr~intrinsicLDGRchr*grassland_type, NEWallsite)) #does differ by grassland
+emmeans(m1, specs = pairwise~grassland_type) #but not super significant (potentially dry grasslands do not share the trend as much)
+#plot
+ggplot(NEWallsite, aes(y=invasionLDGRchr, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+# positive relationship suggests being better at living in drought is correlated with
+# that species doing better at living with more neighbors in drought
+# below 1:1 line growth rate is higher without neighbors
+# above 1:1 line growth rate is higher with neighbors
 
-anova(lm(invasionLDGRchr ~ rootdiam*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP, interaction
- 
-anova(lm(invasionLDGRchr ~ height*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
+###this is the main plot to use difference in perfect condition verus abiotic verus biotic
+summary(lm(invasionLDGRchr~intrinsicLDGRchr, NEWallsite)) #***
+anova(lm(invasionLDGRchr~intrinsicLDGRchr*grassland_type, NEWallsite)) #no interaction, consistent
+ggplot(NEWallsite, aes(y=invasionLDGRchr, x=intrinsicLDGRcon, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
 
-anova(lm(intrinsicLDGRchr ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP, interaction
-anova(lm(invasionLDGRchr ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP, interaction
-        
-
-##remaining deceant models
-anova(lm(invasionLDGRcon ~ leafarea*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, SLA, TLP
-anova(lm(invasionLDGRchr ~ leafarea*grassland_type + SLA.x + TLP.x, data=alldat)) #grassland, tlp, interaction
-
-anova(lm(invasionLDGRchr ~ SLA*grassland_type + SLA.x + TLP.x, data=alldat)) #grassland, SLA, TLP
-
-anova(lm(intrinsicLDGRchr ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, TLP
-anova(lm(invasionLDGRchr ~ leafN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, grassland, TLP
-
-anova(lm(intrinsicLDGRcon ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
-ggplot(alldat, aes(y=intrinsicLDGRcon, x=LDMC, color=grassland_type))+
+#### relationship between growth rate in drought with neighbors and traits ####
+data <- alldat[-44,]
+#Root N
+summary(lm(invasionLDGRchr ~ rootN, data=alldat)) #**
+ggplot(alldat, aes(y=invasionLDGRchr, x=rootN))+
   geom_point()+
   geom_smooth(method="lm")
-anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
-ggplot(alldat, aes(y=intrinsicLDGRchr, x=LDMC, color=grassland_type))+
+#SRL
+summary(lm(invasionLDGRchr ~ SRL*grassland_type+SLA.x+TLP.x, data=alldat[-53,])) #**
+ggplot(alldat[-53,], aes(y=invasionLDGRchr, x=SRL))+
   geom_point()+
   geom_smooth(method="lm")
-anova(lm(invasionLDGRcon ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
-ggplot(alldat, aes(y=invasionLDGRcon, x=LDMC, color=grassland_type))+
+#Leaf N
+summary(lm(invasionLDGRchr ~ leafN, data=alldat)) #**
+ggplot(alldat, aes(y=invasionLDGRchr, x=leafN))+
   geom_point()+
   geom_smooth(method="lm")
-anova(lm(invasionLDGRchr ~ LDMC*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, SLA, TLP, interaction
-ggplot(alldat, aes(y=invasionLDGRchr, x=LDMC, color=grassland_type))+
+#LDMC (lifespan and grassland type improves)
+summary(lm(invasionLDGRchr ~ LDMC*lifespan, data=alldat)) #**
+ggplot(alldat, aes(y=invasionLDGRchr, x=LDMC, color=lifespan))+
+  geom_point()+
+  geom_smooth(method="lm")
+ldmcplot <- ggplot(alldat, aes(y=invasionLDGRchr, x=LDMC, color=grass.forb, label=species))+
+  geom_point()+
+  geom_smooth(method="lm")
+ggplotly(ldmcplot)
+#TLP (grassland type tho!)
+summary(lm(invasionLDGRchr ~ TLP*grassland_type, data=alldat[-44,])) #**
+ggplot(alldat[-44,], aes(y=invasionLDGRchr, x=TLP, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
 
-anova(lm(invasionLDGRchr ~ LTD*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, grassland, TLP
 
-anova(lm(intrinsicLDGRchr ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, TLP
-anova(lm(invasionLDGRchr ~ rootN*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, TLP
-
-anova(lm(invasionLDGRchr ~ rootdiam*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP, interaction
-
-anova(lm(invasionLDGRchr ~ height*grassland_type + SLA.x + TLP.x, data=alldat)) #focal, interaction
-ggplot(alldat, aes(y=invasionLDGRchr, x=SLA, color=grassland_type))+
+#rootdiam?
+summary(lm(invasionLDGRchr ~ rootdiam, data=alldat)) #**
+ggplot(alldat, aes(y=invasionLDGRchr, x=rootdiam))+
   geom_point()+
   geom_smooth(method="lm")
-
-anova(lm(intrinsicLDGRchr ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP, interaction
-anova(lm(invasionLDGRchr ~ TLP_tran.y*grassland_type + SLA.x + TLP.x, data=alldat)) #TLP, interaction
-
-
-#what about just traits
-summary(lm(intrinsicLDGRcon ~ leafN, data=alldat))
-summary(lm(intrinsicLDGRchr ~ leafN, data=alldat)) #**
-ggplot(alldat, aes(y=intrinsicLDGRchr, x=leafN))+
-  geom_point()+
-  geom_smooth(method="lm")
-summary(lm(invasionLDGRcon ~ leafN, data=alldat)) #*
-summary(lm(invasionLDGRchr ~ leafN, data=alldat)) #*
-
-summary(lm(intrinsicLDGRcon ~ SRL, data=alldat))
-summary(lm(intrinsicLDGRchr ~ SRL, data=alldat))
-summary(lm(invasionLDGRcon ~ SRL, data=alldat)) 
-summary(lm(invasionLDGRchr ~ SRL, data=alldat)) #*
-
-summary(lm(intrinsicLDGRcon ~ LDMC, data=alldat)) #***
-ggplot(alldat, aes(y=intrinsicLDGRcon, x=LDMC))+
-  geom_point()+
-  geom_smooth(method="lm")
-summary(lm(intrinsicLDGRchr ~ LDMC, data=alldat)) #***
-ggplot(alldat, aes(y=intrinsicLDGRchr, x=LDMC))+
-  geom_point()+
-  geom_smooth(method="lm")
-summary(lm(invasionLDGRcon ~ LDMC, data=alldat)) #***
-ggplot(alldat, aes(y=invasionLDGRcon, x=LDMC))+
-  geom_point()+
-  geom_smooth(method="lm")
-summary(lm(invasionLDGRchr ~ LDMC, data=alldat)) #***
-ggplot(alldat, aes(y=invasionLDGRchr, x=LDMC))+
-  geom_point()+
-  geom_smooth(method="lm")
-
-summary(lm(intrinsicLDGRcon ~ LTD, data=alldat)) #**
-ggplot(alldat, aes(y=intrinsicLDGRcon, x=LTD))+
-  geom_point()+
-  geom_smooth(method="lm")
-summary(lm(intrinsicLDGRchr ~ LTD, data=alldat)) #*
-summary(lm(invasionLDGRcon ~ LTD, data=alldat)) #**
-ggplot(alldat, aes(y=invasionLDGRcon, x=LTD))+
-  geom_point()+
-  geom_smooth(method="lm")
+#LTD?
 summary(lm(invasionLDGRchr ~ LTD, data=alldat)) #**
 ggplot(alldat, aes(y=invasionLDGRchr, x=LTD))+
   geom_point()+
   geom_smooth(method="lm")
 
+
+
+##tests
+#effect of drought
+summary(lm(intrinsicLDGRchr~intrinsicLDGRcon, NEWallsite)) #**
+anova(lm(intrinsicLDGRchr~intrinsicLDGRcon*grassland_type, NEWallsite)) #no interaction, consistent
+ggplot(NEWallsite, aes(y=intrinsicLDGRchr, x=intrinsicLDGRcon, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+#effect of neighbors
+summary(lm(invasionLDGRcon~intrinsicLDGRcon, NEWallsite)) #***
+anova(lm(invasionLDGRcon~intrinsicLDGRcon*grassland_type, NEWallsite)) #***
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRcon, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+
+
+#### making all of the possible plots/options ####
+## option 1
+## correlation between growth rate in ideal conditions and natural conditions (biotic and abiotic effects)
+#both versus neither
+summary(lm(invasionLDGRchr~intrinsicLDGRcon, NEWallsite)) #**
+summary(lm(invasionLDGRchr~intrinsicLDGRcon, weights = weight2, NEWallsite[-106,]))
+cor.test(NEWallsite$invasionLDGRchr,NEWallsite$intrinsicLDGRcon)
+anova(lm(invasionLDGRchr~intrinsicLDGRcon*grassland_type, NEWallsite)) #no interaction, consistent
+ggplot(NEWallsite, aes(y=invasionLDGRchr, x=intrinsicLDGRcon, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+#LDMC (ideal conditions describes better???)
+summary(lm(intrinsicLDGRcon ~ LDMC, data=alldat)) #**
+ggplot(alldat, aes(y=intrinsicLDGRcon, x=LDMC))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(invasionLDGRchr ~ LDMC, data=alldat)) #**
+ggplot(alldat, aes(y=invasionLDGRchr, x=LDMC))+
+  geom_point()+
+  geom_smooth(method="lm")
+#root N
 summary(lm(intrinsicLDGRcon ~ rootN, data=alldat)) #**
 ggplot(alldat, aes(y=intrinsicLDGRcon, x=rootN))+
   geom_point()+
   geom_smooth(method="lm")
-summary(lm(intrinsicLDGRchr ~ rootN, data=alldat)) #*
-summary(lm(invasionLDGRcon ~ rootN, data=alldat)) #*
-summary(lm(invasionLDGRchr ~ rootN, data=alldat)) 
-
-summary(lm(intrinsicLDGRcon ~ rootdiam, data=alldat))
-summary(lm(intrinsicLDGRchr ~ rootdiam, data=alldat)) 
-summary(lm(invasionLDGRcon ~ rootdiam, data=alldat)) 
+summary(lm(invasionLDGRchr ~ rootN, data=alldat)) #.
+ggplot(alldat, aes(y=invasionLDGRchr, x=rootN))+
+  geom_point()+
+  geom_smooth(method="lm")
+#rootdiam
+summary(lm(intrinsicLDGRcon ~ rootdiam, data=alldat)) #.
+ggplot(alldat, aes(y=intrinsicLDGRcon, x=rootdiam))+
+  geom_point()+
+  geom_smooth(method="lm")
 summary(lm(invasionLDGRchr ~ rootdiam, data=alldat)) #*
-
-
-
-
-
-
-#### looking at models more in depth ####
-#GR w/ N in ambient predicted by GR w/o N in drought 
-#how responses to abiotic and biotic relate? 
-#does differ by grassland
-summary(lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, NEWallsite))
-anova(lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, NEWallsite))
-ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type))+
+ggplot(alldat, aes(y=invasionLDGRchr, x=rootdiam))+
+  geom_point()+
+  geom_smooth(method="lm")
+#TLP
+summary(lm(intrinsicLDGRcon ~ TLP, data=alldat[-44,])) #*
+ggplot(alldat[-53,], aes(y=intrinsicLDGRcon, x=TLP))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(invasionLDGRchr ~ TLP, data=alldat[-44,])) #*
+ggplot(alldat[-53,], aes(y=invasionLDGRchr, x=TLP))+
   geom_point()+
   geom_smooth(method="lm")
 
-#GR w/ N in ambient predicted by GR w/o N in ambient
-#is your GR depressed by neighbors?
-#does differ by grassland
-summary(lm(invasionLDGRcon~intrinsicLDGRcon*grassland_type, NEWallsite))
-anova(lm(invasionLDGRcon~intrinsicLDGRcon*grassland_type, NEWallsite))
-ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRcon, color=grassland_type))+
+## option 2
+## correlation between growth rate in under drought versus w/ neighbors
+#related effects
+summary(lm(invasionLDGRcon~intrinsicLDGRchr, NEWallsite)) #*
+summary(lm(invasionLDGRcon~intrinsicLDGRchr, weights = weight2, NEWallsite[-106,])) #*
+sqrt(0.3366)
+cor.test(NEWallsite$invasionLDGRcon,NEWallsite$intrinsicLDGRchr)
+anova(lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, NEWallsite)) #*
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+summary(lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, weights = weight2, NEWallsite[-106,])) #*
+anova(lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, weights = weight2, NEWallsite[-106,])) #*
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grass.forb))+
+  geom_point()+
+  geom_smooth(method="lm", se=F)+
+  geom_abline()
+#LDMC (ideal conditions describes better???)
+summary(lm(invasionLDGRcon ~ LDMC, data=alldat)) #**
+LDMCinvcon <- ggplot(alldat, aes(y=invasionLDGRcon, x=LDMC))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ LDMC, data=alldat)) #**
+LDMCintchr <- ggplot(alldat, aes(y=intrinsicLDGRchr, x=LDMC))+
+  geom_point()+
+  geom_smooth(method="lm")
+#root N
+summary(lm(invasionLDGRcon ~ rootN, data=alldat)) #*
+RNinvcon <- ggplot(alldat, aes(y=invasionLDGRcon, x=rootN))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ rootN, data=alldat)) #*
+RNintchr <- ggplot(alldat, aes(y=intrinsicLDGRchr, x=rootN))+
+  geom_point()+
+  geom_smooth(method="lm")
+#TLP
+summary(lm(invasionLDGRcon ~ TLP, data=alldat[-44,])) #*
+TLPinvcon <- ggplot(alldat[-44,], aes(y=invasionLDGRcon, x=TLP))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ TLP, data=alldat[-44,])) #*
+TLPintchr <- ggplot(alldat[-44,], aes(y=intrinsicLDGRchr, x=TLP))+
   geom_point()+
   geom_smooth(method="lm")
 
-#GR w/ N in drought predicted by GR w/o N in drought
-#effect of biotic stress during abiotic stress? 
-#does NOT differ by grassland
-summary(lm(invasionLDGRchr~intrinsicLDGRchr*grassland_type, NEWallsite))
-anova(lm(invasionLDGRchr~intrinsicLDGRchr*grassland_type, NEWallsite))
-ggplot(NEWallsite, aes(y=invasionLDGRchr, x=intrinsicLDGRchr, color=grassland_type))+
+library(patchwork)
+(LDMCinvcon + LDMCintchr)/(RNinvcon + RNintchr)/(TLPinvcon + TLPintchr)
+(LDMCinvcon/ LDMCintchr)|(RNinvcon/ RNintchr)|(TLPinvcon / TLPintchr)
+
+
+#with CWM [TALK TO DANIEL ABOUT THESE MODELS!]
+#LDMC
+summary(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #** 35%
+anova(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+ggplot(alldat, aes(y=invasionLDGRcon, x=LDMC, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #* 25%
+anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=LDMC, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+#root N
+summary(lm(invasionLDGRcon ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) # was sig. before other vars
+ggplot(alldat, aes(y=invasionLDGRcon, x=rootN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #* 27%
+anova(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=rootN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+#TLP
+summary(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #* 18% (not with CWM's)
+anova(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #focal, grassland
+ggplot(alldat[-44,], aes(y=invasionLDGRcon, x=TLP, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #* 23% (* 23%)
+anova(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #focal, interaction (interaction, TLP)
+ggplot(alldat[-44,], aes(y=intrinsicLDGRchr, x=TLP, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
 
-#GR w/ N in drought predicted by GR w/ N in ambient
-#effect of abiotic stress during biotic stress? 
-#slightly differs by grassland
-summary(lm(invasionLDGRchr~invasionLDGRcon*grassland_type, NEWallsite))
-anova(lm(invasionLDGRchr~invasionLDGRcon*grassland_type, NEWallsite))
-ggplot(NEWallsite, aes(y=invasionLDGRchr, x=invasionLDGRcon, color=grassland_type))+
+#test
+summary(lm(invasionLDGRcon ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #ehh
+ggplot(alldat, aes(y=invasionLDGRcon, x=leafN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #*** 41%
+anova(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=leafN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #* 31%
+anova(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, sla, tlp
+ggplot(alldat, aes(y=invasionLDGRcon, x=leafarea, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #. 21%
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=leafarea, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
 
-#GR w/o N in drought predicted by GR w/o N in ambient
-#is your GR depressed by drought?  
-#does NOT differ by grassland
-summary(lm(intrinsicLDGRchr~intrinsicLDGRcon*grassland_type, NEWallsite))
-anova(lm(intrinsicLDGRchr~intrinsicLDGRcon*grassland_type, NEWallsite))
-ggplot(NEWallsite, aes(y=intrinsicLDGRchr, x=intrinsicLDGRcon, color=grassland_type))+
+summary(con_anova <-aov(invasionLDGRcon ~ grassland_type, NEWallsite))
+con_tuk <- TukeyHSD(con_anova) 
+multcompView::multcompLetters4(con_anova, con_tuk) 
+#Northern mixed and driest sites differ in growth rate with neighbors in grasslands
+summary(con_anova <-aov(intrinsicLDGRchr ~ grassland_type, NEWallsite))
+con_tuk <- TukeyHSD(con_anova) 
+multcompView::multcompLetters4(con_anova, con_tuk) 
+#no differences in grwoth rates in drought in grasslands??
+
+### neighbors response in drought conditions: 
+mod1 <- lm(invasionLDGRcon~intrinsicLDGRchr, weights = weight2, NEWallsite[-106,]) #*
+summary(mod1) #trade-off
+sqrt(summary(mod1)$adj.r.squared)#calculate r
+#run second model w/ grassland
+mod2 <- lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, weights = weight2, NEWallsite[-106,]) #*
+anova(mod2) 
+#compare w/ anova
+anova(mod1,mod2)
+
+
+### OOPS with other dataframe
+#with CWM [TALK TO DANIEL ABOUT THESE MODELS!]
+#LDMC
+summary(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=NEWallsite)) #** 35%
+anova(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+ggplot(alldat, aes(y=invasionLDGRcon, x=LDMC, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #* 25%
+anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=LDMC, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+#root N
+summary(lm(invasionLDGRcon ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) # was sig. before other vars
+ggplot(alldat, aes(y=invasionLDGRcon, x=rootN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #* 27%
+anova(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=rootN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+#TLP
+summary(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #* 18% (not with CWM's)
+anova(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #focal, grassland
+ggplot(alldat[-44,], aes(y=invasionLDGRcon, x=TLP, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #* 23% (* 23%)
+anova(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #focal, interaction (interaction, TLP)
+ggplot(alldat[-44,], aes(y=intrinsicLDGRchr, x=TLP, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+
+#test
+summary(lm(invasionLDGRcon ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #ehh
+ggplot(alldat, aes(y=invasionLDGRcon, x=leafN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #*** 41%
+anova(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=leafN, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #* 31%
+anova(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, sla, tlp
+ggplot(alldat, aes(y=invasionLDGRcon, x=leafarea, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #. 21%
+ggplot(alldat, aes(y=intrinsicLDGRchr, x=leafarea, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")

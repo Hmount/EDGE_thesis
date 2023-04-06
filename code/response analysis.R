@@ -58,9 +58,9 @@ anova(intchr,intchr2)
 #### Supporting information ####
 #### re-do analysis with Standard Major Axis regression ####
 # RJG suggested to use SMA regression instead of OLS to avoid causal relationships. While SMA accounts
-# for uncertainty in our measurements of both variables, I was able to give specific measuremnts of 
+# for uncertainty in our measurements of both variables, I was able to give specific measurements of 
 # uncertainty using OLS and the SE of previous models. For this benefit, and because the final results
-# are qualitativley similar, we report with OLS.
+# are qualitatively similar, we report with OLS.
 library(tidyverse)
 library(smatr) #for major axis regression
 
