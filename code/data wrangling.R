@@ -499,7 +499,7 @@ NEWallsite <- NEWallsite %>% mutate(grassland_type = ifelse(site %in% "CHY","Nor
                                                             ifelse(site %in% "HYS","Southern Mixed",
                                                                    ifelse(site %in% "KNZ","Tallgrass",
                                                                           ifelse(site %in% "SGS","Northern Shortgrass",
-                                                                                 ifelse(site %in% "SBU","Southern Shortgrass","Desert"))))))
+                                                                                 ifelse(site %in% "SBU","Great Plains Shortgrass","Chihuahuan Desert"))))))
 
 ##reduce shrubs into forbs, remove old column
 NEWallsite <- NEWallsite %>% mutate(grass.forb = ifelse(grass.forb.shrub %in% c("S", "F"),"Other", "Grass"), grass.forb.shrub=NULL)
@@ -514,7 +514,7 @@ NEWallsite <- NEWallsite %>%
          leafarea = Leaf.area..cm2.,
          LDMC =LDMC..g.g.,
          TLP = tugor.loss.point,
-         SRL = SRL..m.g.,
+         SRL = SRL..mm.g.,
          rootN = Root.N..,
          RTD = Root.tissue.density.gcm.3.,
          rootdiam = Root.diameter..mm.,
@@ -531,7 +531,7 @@ NEWallsite <- NEWallsite %>% mutate(TLP_tran2 = log(TLP_tran)*-1)
 #relevel to view grassland_type facets along precipitation gradient 
 NEWallsite <- NEWallsite %>%
   mutate(grassland_type = fct_relevel(grassland_type,
-                                      "Desert", "Southern Shortgrass", "Northern Shortgrass", 
+                                      "Chihuahuan Desert", "Great Plains Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
 

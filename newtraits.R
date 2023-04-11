@@ -1,9 +1,9 @@
 NEWallsite <- read.csv("data/allsite_new.csv") #data
 NEWallsite <- NEWallsite %>% #ensure levels are correct
   mutate(grassland_type = fct_relevel(grassland_type,
-                                      "Desert", "Southern Shortgrass", "Northern Shortgrass", 
+                                      "Chihuahuan Desert", "Great Plains Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
-CWM_sitedata <- read.csv("data/CWM_sitedata.csv") #trait data
+CWM_sitedata <- read.csv("data/CWM_sitedata.csv") #CWM trait data
 trtdata<-CWM_sitedata[,c(1:13,48)] #just variables I will use
 trtdata[,c(3:11)]<-log(trtdata[,c(3:11)]) #log CWM traits 
 trtdata[,12]<-log(abs(trtdata[,12])) #abs then log for TLP.x
@@ -202,9 +202,29 @@ summary(lm(invasionLDGRcon ~ rootdiam, data=alldat))
 summary(lm(invasionLDGRchr ~ rootdiam, data=alldat)) #*
 
 
-
-
-
+sevtraits <- read.csv("data/sev333_plant_traits.csv")
+sevtraits <- sevtraits %>% mutate(species = str_c(genus_new, species_new))
+sevtraits <- sevtraits %>% select(species, site, PhotoPath, FunctionalGroup, LifeHistory, ldmc, srl, sla)
+species <- NEWallsite %>% filter(grassland_type=="Southern Shortgrass"|
+                                   grassland_type=="Desert")
+specieslist <- species$species
+subsev <- sevtraits %>% filter(species %in% specieslist) 
+subsev <- subsev %>% filter(site=="core_blue"|site=="core_black")
+subsev$species <- as.factor(subsev$species)
+subsevldmc <- aggregate(subsev$ldmc, by=list(subsev$species, subsev$site), FUN=mean, na.rm=T)
+subsevldmc <- subsevldmc %>% rename("species"="Group.1",
+                                    "site"="Group.2",
+                                    "ldmc"="x")
+subsevsrl <- aggregate(subsev$srl, by=list(subsev$species,subsev$site), FUN=mean, na.rm=T)
+subsevsrl <- subsevsrl %>% rename("species"="Group.1",
+                                  "site"="Group.2",
+                                    "srl"="x")
+test <- subsevsrl %>% mutate(srl_m = srl*1000) #make proper units
+subsevtrt <- merge(subsevldmc,subsevsrl, by=c("species","site"))
+subsevsla <- aggregate(subsev$sla, by=list(subsev$species,subsev$site), FUN=mean, na.rm=T)
+subsevsla <- subsevsla %>% rename("species"="Group.1",
+                                  "site"="Group.2",
+                                  "sla"="x")
 
 #### looking at models more in depth ####
 #GR w/ N in ambient predicted by GR w/o N in drought 

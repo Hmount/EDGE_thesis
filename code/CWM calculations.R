@@ -12,14 +12,14 @@ MasterTraitNew <- MasterTrait %>% mutate(grassland_type = ifelse(site %in% "CHY"
                                                                  ifelse(site %in% "HYS","Southern Mixed",
                                                                         ifelse(site %in% "KNZ","Tallgrass",
                                                                                ifelse(site %in% "SGS","Northern Shortgrass",
-                                                                                      ifelse(site %in% "SBU","Southern Shortgrass","Desert"))))))
+                                                                                      ifelse(site %in% "SBU","Great Plains Shortgrass","Chihuahuan Desert"))))))
 
 all<- read.csv("data/allraw.csv")#raw site data
 allnew <- all %>% mutate(grassland_type = ifelse(site %in% "CHY","Northern Mixed",
                                                  ifelse(site %in% "HYS","Southern Mixed",
                                                         ifelse(site %in% "KNZ","Tallgrass",
                                                                ifelse(site %in% "SGS","Northern Shortgrass",
-                                                                      ifelse(site %in% "sev.blue","Southern Shortgrass","Desert"))))))
+                                                                      ifelse(site %in% "sev.blue","Great Plains Shortgrass","Chihuahuan Desert"))))))
 
 #edit column names to make them easy to write out
 MasterTraitNew <- MasterTraitNew %>%
@@ -29,7 +29,7 @@ MasterTraitNew <- MasterTraitNew %>%
          leafarea = Leaf.area..cm2.,
          LDMC =LDMC..g.g.,
          TLP = tugor.loss.point,
-         SRL = SRL..m.g.,
+         SRL = SRL..mm.g.,
          rootN = Root.N..,
          RTD = Root.tissue.density.gcm.3.,
          rootdiam = Root.diameter..mm.,
@@ -85,8 +85,7 @@ awt1 <- awt1 %>%
 # functcomp function does not work with intraspecific variation, so a model for each 
 # grassland is made individually with a loop 
 # (five are looped, then tallgrass is done alone because it had a different number of traits)
-awt1.5 <- awt1 %>% filter(grassland_type!="Tallgrass") %>% #subset out tallgrass
-  filter(grassland_type!="Southern Shortgrass") #and southern shortgrass/sev blue
+awt1.5 <- awt1 %>% filter(grassland_type!="Tallgrass") #and southern shortgrass/sev blue
 gland <- unique(awt1.5$grassland_type) #create grassland list
 CWM <- data.frame() #create dataframe to fill
 CWMtemp <- data.frame()
@@ -150,7 +149,7 @@ CWM_sitedata <- merge(CWM_sitedata, awt1[c(1,2,44)], by=c("species", "grassland_
 #relevel to view grassland_type facets along precipitation gradient 
 CWM_sitedata <- CWM_sitedata %>%
   mutate(grassland_type = fct_relevel(grassland_type,
-                                      "Desert", "Northern Shortgrass", #no southern shortgrass, not enough data
+                                      "Chihuahuan Desert", "Northern Shortgrass", #no southern shortgrass, not enough data
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
 

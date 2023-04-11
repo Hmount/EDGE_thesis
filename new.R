@@ -332,55 +332,69 @@ anova(mod1,mod2)
 
 ### OOPS with other dataframe
 #with CWM [TALK TO DANIEL ABOUT THESE MODELS!]
+traits <- NEWallsite
+traits[,c(6:14,16)] <- log(traits[,c(6:14,16)])
+traits[,15] <- log(abs(traits[,15]))
 #LDMC
-summary(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=NEWallsite)) #** 35%
-anova(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+summary(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #** 18%
+anova(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal
 ggplot(alldat, aes(y=invasionLDGRcon, x=LDMC, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
-summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #* 25%
-anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
-ggplot(alldat, aes(y=intrinsicLDGRchr, x=LDMC, color=grassland_type))+
+summary(mod1<-lm(intrinsicLDGRchr ~ LDMC*grassland_type, data=traits)) #** 20%
+anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type, data=traits)) #focal, interaction
+ggplot(traits, aes(y=intrinsicLDGRchr, x=LDMC, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
 #root N
-summary(lm(invasionLDGRcon ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) # was sig. before other vars
-ggplot(alldat, aes(y=invasionLDGRcon, x=rootN, color=grassland_type))+
+summary(lm(invasionLDGRcon ~ rootN*grassland_type, data=traits)) # was sig. before other vars
+ggplot(NEWallsite, aes(y=invasionLDGRcon, x=SRL, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
-summary(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #* 27%
+anova(testmod1,testmod2)
+summary(lm(intrinsicLDGRchr ~ rootN*grassland_type, data=traits)) #
 anova(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
 ggplot(alldat, aes(y=intrinsicLDGRchr, x=rootN, color=grassland_type))+
   geom_point()+
-  geom_smooth(method="lm")
+  geom_smooth(method="lm", se=F)
 #TLP
-summary(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #* 18% (not with CWM's)
-anova(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #focal, grassland
-ggplot(alldat[-44,], aes(y=invasionLDGRcon, x=TLP, color=grassland_type))+
+summary(lm(invasionLDGRcon ~ TLP*grassland_type, data=traits)) #. 14% (not with CWM's)
+anova(lm(invasionLDGRcon ~ TLP*grassland_type, data=traits)) #focal, grassland
+ggplot(traits, aes(y=invasionLDGRcon, x=TLP, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
-summary(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #* 23% (* 23%)
+summary(lm(intrinsicLDGRchr ~ TLP*grassland_type, data=traits)) #. 16% (* 23%)
 anova(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat[-44,])) #focal, interaction (interaction, TLP)
-ggplot(alldat[-44,], aes(y=intrinsicLDGRchr, x=TLP, color=grassland_type))+
+ggplot(traits, aes(y=intrinsicLDGRchr, x=TLP, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
 
 #test
-summary(lm(invasionLDGRcon ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #ehh
+summary(lm(invasionLDGRcon ~ leafN*grassland_type, data=traits)) #* 16%
 ggplot(alldat, aes(y=invasionLDGRcon, x=leafN, color=grassland_type))+
   geom_point()+
-  geom_smooth(method="lm")
-summary(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #*** 41%
+  geom_smooth(method="lm", se=F)
+summary(lm(intrinsicLDGRchr ~ leafN*grassland_type, data=traits)) #* 16%
 anova(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
 ggplot(alldat, aes(y=intrinsicLDGRchr, x=leafN, color=grassland_type))+
   geom_point()+
-  geom_smooth(method="lm")
-summary(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #* 31%
+  geom_smooth(method="lm")+
+  ylim(-5,5)
+summary(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=traits)) #* 31%
 anova(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, sla, tlp
 ggplot(alldat, aes(y=invasionLDGRcon, x=leafarea, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
 summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #. 21%
 ggplot(alldat, aes(y=intrinsicLDGRchr, x=leafarea, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(invasionLDGRcon ~ SLA*grassland_type, data=traits)) #* 14%
+anova(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, sla, tlp
+ggplot(traits, aes(y=invasionLDGRcon, x=SLA, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")
+summary(lm(intrinsicLDGRchr ~ SLA*grassland_type, data=traits)) # no
+ggplot(traits, aes(y=intrinsicLDGRchr, x=SLA, color=grassland_type))+
   geom_point()+
   geom_smooth(method="lm")
