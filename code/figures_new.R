@@ -80,3 +80,65 @@ conceptfig
 
 #export
 ggsave(conceptfig, filename = "figures/conceptual_hypotheses.jpg", dpi=300, height = 7,width =5)
+
+
+#### Figure 2; ####
+#### Figure 3; ####
+#### Figure 4; ####
+ggplot(NEWallsite[-110,], aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  geom_abline()
+# response to drought in relation to neighbors response in ambient conditions
+corr_fig <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr))+
+  geom_point(shape=16) +
+  geom_abline()+
+  geom_smooth(method="lm", se=T, color="black")+
+  geom_hline(yintercept=0, linetype="dashed")+
+  geom_vline(xintercept=0, linetype="dashed")+
+  #geom_text(aes(label=species),hjust=0, vjust=0) +
+  labs(y=" ", x = " ")+
+  theme_classic()+
+  theme(axis.title.y.left = element_blank())
+#plot again by grassland type
+corrgl_fig <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point(alpha=.5, shape=16)+
+  geom_abline()+
+  geom_smooth(method = "lm", se = F) +
+  geom_hline(yintercept=0, linetype="dashed")+
+  geom_vline(xintercept=0, linetype="dashed")+
+  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  labs(y=" ", x = " ", color="Grassland")+
+  theme_classic()+
+  theme(legend.position = "none",
+        axis.title.y.left = element_blank())
+
+## figure together
+# plot for extracting legend:
+forlegend <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, color=grassland_type))+
+  geom_point(size=1)+
+  geom_smooth(method = "lm", se = F) +
+  geom_hline(yintercept=0, linetype="dashed")+
+  geom_vline(xintercept=0, linetype="dashed")+
+  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  #labs(x=" ",y=" ", color="Grassland Type")+
+  labs(y=" ", x = " ", color="Grassland")+
+  theme_classic()+
+  theme(legend.position = "bottom", legend.direction = "horizontal")+
+  guides(colour = guide_legend(nrow = 1))
+# Apply user-defined function to extract legend
+shared_legend <- as_ggplot(extract_legend(forlegend))
+
+# combine all
+corrfig <- ggarrange(corr_fig, corrgl_fig, nrow=2, ncol=1, common.legend = F, 
+                     labels = c("a","b"), label.x = .9)
+corrfig <-annotate_figure(corrfig,
+                          bottom = text_grob(bquote("("*italic(r)[intD]*")")), 
+                          left = text_grob(bquote("("*italic(r)[rinvA]*")"), rot = 90))
+corrfig <- ggarrange(corrfig, shared_legend, nrow=2, heights = c(2.5,.5)) #legend
+corrfig
+
+#export
+ggsave(tradeoffcombo, filename = "figures/tradeoffcombo.jpg", dpi=300, height = 7,width =8)
+
+

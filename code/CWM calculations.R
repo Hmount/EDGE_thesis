@@ -85,7 +85,8 @@ awt1 <- awt1 %>%
 # functcomp function does not work with intraspecific variation, so a model for each 
 # grassland is made individually with a loop 
 # (five are looped, then tallgrass is done alone because it had a different number of traits)
-awt1.5 <- awt1 %>% filter(grassland_type!="Tallgrass") #and southern shortgrass/sev blue
+awt1.5 <- awt1 %>% filter(grassland_type!="Tallgrass") %>%  #do tallgrass seperate#and southern shortgrass/sev blue
+                  filter(grassland_type!="Great Plains Shortgrass")
 gland <- unique(awt1.5$grassland_type) #create grassland list
 CWM <- data.frame() #create dataframe to fill
 CWMtemp <- data.frame()
@@ -149,7 +150,7 @@ CWM_sitedata <- merge(CWM_sitedata, awt1[c(1,2,44)], by=c("species", "grassland_
 #relevel to view grassland_type facets along precipitation gradient 
 CWM_sitedata <- CWM_sitedata %>%
   mutate(grassland_type = fct_relevel(grassland_type,
-                                      "Chihuahuan Desert", "Northern Shortgrass", #no southern shortgrass, not enough data
+                                      "Chihuahuan Desert","Great Plains Shortgrass", "Northern Shortgrass", #no southern shortgrass, not enough data
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
 
