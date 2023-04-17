@@ -31,12 +31,11 @@ all <- all %>%
 
 #ANOVA of calculated growth rate measures: no differences in growth rates by
 # grassland type. (corresponding boxplots in 'code/figures.R')
-summary(aov(intrinsicLDGRcon ~ grassland_type, data = NEWallsite)) #no difference (but close)
+summary(aov(intrinsicLDGRcon ~ grassland_type, data = NEWallsite)) #no difference
 summary(aov(intrinsicLDGRchr ~ grassland_type, data = NEWallsite)) #no difference
-summary(aov(invasionLDGRchr ~ grassland_type, data = NEWallsite)) #no difference (but close)
-summary(siganova <- aov(invasionLDGRcon ~ grassland_type, data = NEWallsite)) # sig. diff
-  tuk.siganova <- TukeyHSD(siganova) #NS differs from D and SS
-  multcompView::multcompLetters4(siganova, tuk.siganova) #letters for each site
+summary(aov(invasionLDGRchr ~ grassland_type, data = NEWallsite)) #no difference
+summary(aov(invasionLDGRcon ~ grassland_type, data = NEWallsite)) #no difference
+## All grasslands had all fitness responses 
 
 
 #### How does precipitation effect cover? ####
@@ -67,25 +66,27 @@ summary(lm_covsum <- lm(totalcov ~ grassland_type, data = allsum)) #sig. pos., 6
 # corresponding figures in 'code/figures.R', Figure 3
 
 #sum all the cover for each plot/ year/ grassland/ species (bounding measures between 0 and 100/300)
+#growth with neighbors
 allothermeans <- all %>%
   filter(trt=="con") %>%
   group_by(grassland_type, species, plot, year, subplot) %>%
   summarize(meanother = mean(other)) %>% ungroup 
-covergrassland <- full_join(NEWallsite, allothermeans, by=c("grassland_type", "species"))#merge dataframes
+covergrasslandcon <- full_join(NEWallsite, allothermeans, by=c("grassland_type", "species"))#merge dataframes
 #make a model
-summary(m1<-lm(condiff~meanother, covergrassland)) 
+summary(m1<-lm(invasionLDGRcon~meanother, covergrasslandcon)) 
 anova(m1)
-#repeat for chrdiff (no diff)
+#repeat for growth in drought
 allothermeans <- all %>%
   filter(trt=="chr")%>%
   group_by(grassland_type, species, plot, year, subplot) %>%
   summarize(meanother = mean(other)) %>% ungroup 
-covergrassland <- full_join(NEWallsite, allothermeans, by=c("grassland_type", "species"))
+covergrasslandchr <- full_join(NEWallsite, allothermeans, by=c("grassland_type", "species"))
 #make a model
-summary(m2 <- lm(chrdiff~meanother, covergrassland)) 
+summary(m2 <- lm(chrdiff~meanother, covergrasslandchr)) 
 anova(m2)
 
-# although the mean density of cover is significantly related to the response to neighbors, 
-# mean neighbor density actually explains very little variation in response to neighbors 
-# in either precip. conditions (although, con > chr) 
-# (increases in cover = decreases in GR responses to neighbors/ worse w/ neighbors)
+# The mean density of cover is significantly negatively related to the focal species 
+# growth rates in drought AND with neighbor cover, implying a size-density relationship. 
+# However, because both models have the same relationship, these effects are unlkiley to 
+# be greatly effecting our modelling results. 
+# (increases in cover = decreases in GR responses drought and to neighbors)

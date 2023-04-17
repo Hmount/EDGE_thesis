@@ -326,7 +326,8 @@ concov <- ggplot(covergrassland,aes(x=meanother, y=condiff, color=grassland_type
   scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
   theme_classic()+
   labs(y="Response to neighbors in ambient", x = "Interspecific cover (%)")+
-  theme(legend.position="none")
+  theme(legend.position="none")+
+  geom_smooth(method="lm")
 #for response to neighbors in drought
 chrcov <- ggplot(covergrassland,aes(x=meanother, y=chrdiff, color=grassland_type))+
   geom_point()+
