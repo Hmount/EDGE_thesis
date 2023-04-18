@@ -387,7 +387,8 @@ ggsave(corrfig, filename = "figures/corrfig.jpg", dpi=300, height = 6,width =6)
 
 
 #### Figure 5;#### 
-LDMCmodA <- lm(invasionLDGRcon~LDMC*grassland_type + SLA.x+TLP.x, data=alldat)
+library(visreg)
+LDMCmodA <- lm(invasionLDGRcon~LDMC*grassland_type, data=alldat)
 summary(LDMCmodA) 
 anova(LDMCmodA)
 trtfig <- visreg(LDMCmodA, xvar="LDMC", by="grassland_type", rug=F, 
@@ -412,7 +413,7 @@ cwmtlpfig <- visreg::visreg(LDMCmodA, xvar="TLP.x", rug=F, partial=F,
   coord_cartesian(ylim = c(-3, 3))+
   theme_classic()
 
-LDMCmodD <- lm(intrinsicLDGRchr~LDMC*grassland_type + SLA.x+TLP.x, data=alldat)
+LDMCmodD <- lm(intrinsicLDGRchr~LDMC*grassland_type, data=alldat)
 summary(LDMCmodD) 
 anova(LDMCmodD)
 trtfig2 <- visreg(LDMCmodD, xvar="LDMC", by="grassland_type", rug=F, 
@@ -452,6 +453,7 @@ ldmcfig <- ggarrange(ldmccon,ldmcchr, nrow=2)
 #export
 ggsave(ldmcfig, filename = "figures/ldmcfig.png", dpi=300, height = 4,width =8)
 
+ggarrange(trtfig, trtfig2, nrow=2)
 
 #
 #### Figure S1; ####
