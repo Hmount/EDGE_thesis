@@ -18,9 +18,9 @@ alldat[,c(7:15,17)]<-log(alldat[,c(7:15,17)]) #log focal traits
 
 #### basic stats and relationships ####
 # how many populations have data?
-sum(complete.cases(NEWallsite[,c(6:16)])) #20 species have all rows
+sum(complete.cases(NEWallsite[,c(6:16)])) #21 species have all rows
 trtcnt <- rowSums(!is.na(NEWallsite[,c(6:16)])) #count for each row w/ traits filled in
-sum(trtcnt == 0) #12 have no trait data 
+sum(trtcnt == 0) #11 have no trait data 
 sum(trtcnt > 5) #59 have more than 5 traits
 (sum(trtcnt > 5)/sum(trtcnt >= 0))*100 #52% of data has more than 5 traits
 
@@ -33,17 +33,6 @@ anova(mod)
 cor.test(alldat$SLA.x,alldat$SLA) # a little corr
 cor.test(alldat$TLP.x,alldat$TLP) # pretty corr
 
-#view:
-ggplot(alldat, aes(x=TLP.x, y=SLA.x, color=grassland_type))+ 
-  geom_point()
-
-# do CWMs differ between grasslands? by both traits? 
-summary(aov(SLA.x ~ grassland_type, alldat)) # Yes
-ggplot(alldat, aes(y=SLA.x, x=grassland_type, color=grassland_type))+ 
-  geom_boxplot()
-summary(aov(TLP.x ~ grassland_type, alldat)) # Yes
-ggplot(alldat, aes(y=TLP.x, x=grassland_type, color=grassland_type))+ 
-  geom_boxplot()
 
 #### modelling; traits as predictors of population growth ####
 # models first included focal species traits, interacting with grassland, and the 
@@ -114,10 +103,10 @@ anova(lm(intrinsicLDGRchr ~ height*grassland_type+SLA.x+TLP.x, data=alldat)) #TL
 
 # These models do not include CWM but are better overall
 # LDMC
-summary(lm(invasionLDGRcon ~ LDMC*grassland_type, data=alldat)) #*** 27%
-summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type, data=alldat)) #*** 21%
+summary(lm(invasionLDGRcon ~ LDMC*grassland_type, data=alldat)) #*** 25%
+summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type, data=alldat)) #*** 19%
 # SLA (messy, weak relationship)
-summary(lm(invasionLDGRcon ~ SLA*grassland_type, data=alldat)) #* 10%
+summary(lm(invasionLDGRcon ~ SLA*grassland_type, data=alldat)) #* 11%
 summary(lm(intrinsicLDGRchr ~ SLA*grassland_type, data=alldat)) #nah
 # LTD (little to no representation of driest sites)
 summary(lm(invasionLDGRcon ~ LTD*grassland_type, data=alldat)) #* 16%
@@ -126,8 +115,8 @@ summary(lm(intrinsicLDGRchr ~ LTD*grassland_type, data=alldat)) #nah
 summary(lm(invasionLDGRcon ~ leafarea*grassland_type, data=alldat)) # not sig
 summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type, data=alldat)) # not sig
 # leafN
-summary(lm(invasionLDGRcon ~ leafN*grassland_type, data=alldat)) # none
-summary(lm(intrinsicLDGRchr ~ leafN*grassland_type, data=alldat)) #. 16%
+summary(lm(invasionLDGRcon ~ leafN*grassland_type, data=alldat)) # * 25
+summary(lm(intrinsicLDGRchr ~ leafN*grassland_type, data=alldat)) # nah
 # TLP
 summary(lm(invasionLDGRcon ~ TLP*grassland_type, data=alldat)) #* 18%
 summary(lm(intrinsicLDGRchr ~ TLP*grassland_type, data=alldat)) #** 21%

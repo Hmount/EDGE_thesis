@@ -40,6 +40,7 @@ sqrt(summary(m1)$adj.r.squared) #calculate r
 summary(m2 <-lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type, weights = weight2, NEWallsite[-110,])) #*** 43% 
 sqrt(summary(m2)$adj.r.squared) #calculate r
 anova(m2) #grassland interaction is very sig., but 
+library(emmeans)
 emmeans(m2, specs = pairwise~grassland_type) #contrasts are weak, but driest differ from
 # northern shortgrass (+ N mixed)
 #(potentially dry grasslands do not share the trend as much?)
@@ -77,5 +78,4 @@ summary(aov(invasionLDGRcon ~ grassland_type, NEWallsite)) # No
 
 # Does population growth with low neighbor cover in drought differ between grasslands? 
 summary(aov(intrinsicLDGRchr ~ grassland_type, NEWallsite)) # No
-
 

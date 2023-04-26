@@ -172,3 +172,73 @@ ggplot(NEWallsite, aes(y=invasionLDGRchr, x=intrinsicLDGRchr, color=grassland_ty
   geom_point()+
   geom_smooth(method="lm")+
   geom_abline()
+
+
+#### from redo
+#total cover at each grassland does not have a relationship with pop. responses to neighbors:
+#for response to neighbors in ambient
+concov <- ggplot(covergrasslandcon,aes(x=meanother, y=invasionLDGRcon, color=grassland_type))+
+  #geom_point()+
+  geom_smooth(method="lm")+
+  geom_hline(aes(yintercept=0), linetype="dotted")+
+  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  theme_classic()+
+  labs(y=expression(italic(r)[rinvA]), x = "Interspecific cover (%)")+
+  theme(legend.position="none")
+#for response to neighbors in drought
+chrcov <- ggplot(covergrasslandchr,aes(x=meanother, y=intrinsicLDGRchr, color=grassland_type))+
+  #geom_point()+
+  geom_smooth(method="lm")+
+  geom_hline(aes(yintercept=0), linetype="dotted")+
+  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  theme_classic()+
+  labs(y=expression(italic(r)[rintD]), x = "Interspecific cover (%)")+
+  theme(legend.position="none")
+
+##combine
+#figure together
+covfig <- ggarrange(gcover,chrcov,concov, nrow=3, ncol=1, common.legend = F, 
+                    labels = c("i","j","k"), label.x = .9)
+
+#all combined summary stats figure for paper
+summaryfig <- ggarrange(histboxcombo,covfig,nrow=1, ncol=2, widths = c(2,1.5))
+#add legend
+forlegend <- ggplot(covergrassland,aes(x=meanother, y=condiff, color=grassland_type))+
+  geom_point()+
+  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  labs(color="Grassland type")+
+  theme(legend.direction = "horizontal")+
+  guides(colour = guide_legend(nrow = 1))
+combinedlegend <- as_ggplot(extract_legend(forlegend))
+summaryfig <- ggarrange(summaryfig,combinedlegend,nrow=2, ncol=1, heights = c(2,.15))
+summaryfig
+
+#export
+ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 8,width =9)
+
+
+
+###other figures
+library(visreg)
+LDMCmodA <- lm(invasionLDGRcon~LDMC*grassland_type, data=alldat)
+summary(LDMCmodA) 
+anova(LDMCmodA)
+trtfig <- visreg(LDMCmodA, xvar="LDMC", by="grassland_type", rug=F, 
+                 partial=F,xlab= "log(leaf dry matter content)", ylab=" ", 
+                 line=list(col="black"), gg=T)+
+  geom_rug(sides="b")+
+  theme(axis.title.y.left=element_blank())+
+  coord_cartesian(ylim = c(-3, 4))+
+  theme_classic()
+
+LDMCmodD <- lm(intrinsicLDGRchr~LDMC*grassland_type, data=alldat)
+summary(LDMCmodD) 
+anova(LDMCmodD)
+trtfig2 <- visreg(LDMCmodD, xvar="LDMC", by="grassland_type", rug=F, 
+                  partial=F,xlab= "log(leaf dry matter content)", ylab=" ", 
+                  line=list(col="black"), gg=T)+
+  geom_rug(sides="b")+
+  theme(axis.title.y.left=element_blank())+
+  coord_cartesian(ylim = c(-3, 4))+
+  theme_classic()
+

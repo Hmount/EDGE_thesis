@@ -33,91 +33,35 @@ generate_label_df <- function(TUKEY, variable){
   Tukey.labels=Tukey.labels[order(Tukey.labels$treatment) , ]
   return(Tukey.labels)
 }
-.
+
 #
 #### Figure 1; ####             
-#NOT CHANGED/FIXED YET!
-# conceptual diagram #1 shows the options for a hypothesized trade-off between
+# conceptual diagram #1 shows the options for a hypothesized relationship between
 # population response to drought and to neighbors
+set.seed(114009)
+x= runif(100,-10,10)
+y= x * rnorm(100,-1,1) -x
+fd1=data.frame(x,y, group="Grime")
+y= - x * rnorm(100,-1,1)+x
+fd2=data.frame(x,y, group="Tilman")
 
-#create gradient
-grad <- make_gradient(
-  deg = 130, n = 500, cols = c("darkgrey","White","darkgrey")
-)
-#for Hypothesis B:
-set.seed(1998)
-x= rnorm(50, 10, 1) #set response to drought mean and sd 
-y= -x - rnorm(50,1,3) + rnorm(50,.1,.1) # add response to neighbors (high for wet) weak slope
-fd1=data.frame(x,y, group="Xeric")
-x= rnorm(50, 15, 1) #set response to drought mean and sd 
-y= -x - rnorm(50,5,1.5) # add response to neighbors (med for int) some variation
-fd2=data.frame(x,y, group="Mesic")
-x= rnorm(50, 20, 1) #set response to drought mean and sd 
-y= -x - rnorm(50,8,.6) # add response to neighbors (low for dry), just a little variation
-fd3=data.frame(x,y, group="Intermediate")
-fakedata <- rbind(fd1,fd2,fd3)
-#figure
-B <- ggplot(fakedata, aes(x=x,y=y,color=group))+
-  annotation_custom(grad,xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)+
-  geom_point(size=1)+
-  geom_smooth(method="lm", se=F)+
-  scale_color_manual(values=c("sky blue", "dark blue", "black"), labels=c("Xeric", "Intermediate", "Mesic"))+
-  labs(y=" ", x = " ", color = "Precipitation gradient")+
-  #theme_classic()+
-  annotate(geom="text", x=22, y=-7, label="Darwinian 
-Demon", size=5, family="serif")+
-  annotate(geom="text", x=9.1, y=-30, label="Competitively 
-Excluded", size=5, family="serif")+
-  theme(legend.text = element_text(family = "serif"),
-        legend.title = element_text(family = "serif"),
-        axis.text.x=element_blank(),
-        axis.text.y=element_blank(), 
-        axis.title.x=element_blank(),
-        axis.title.y=element_text(size=20),
-        axis.line = element_line(arrow = arrow(type='closed', length = unit(10,'pt'))))
-B
+fakedata <- rbind(fd1,fd2)
 
-#this one for hypothesis A:
-set.seed(210122)
-x= rnorm(50, 10, 1)
-y= -x*x*rnorm(50, 9.8, .8) + rnorm(50, 10, 1)
-fd1=data.frame(x,y, group="Xeric")
-xx= rnorm(50, 10, .05)
-y= -xx*x*x
-fd2=data.frame(x,y, group="Intermediate")
-xx= rnorm(50, 10, .5)
-y= -xx*x*x
-fd3=data.frame(x,y, group="Mesic")
-fakedata=rbind(fd1,fd2,fd3)
-fakedatajitter <- fakedata %>% filter(group=="Mesic")
-fakedata2 <- fakedata %>% filter(group!="Mesic")
-A <- ggplot(fakedata, aes(x=x,y=y,color=group))+
-  annotation_custom(grad,xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)+
-  geom_point(size=1)+
-  geom_smooth(method="lm", se=F)+
-  scale_color_manual(values=c("sky blue", "dark blue", "black"), labels=c("Xeric", "Intermediate", "Mesic"))+
-  labs(y=" ", x = " ", color = "Precipitation gradient")+
+conceptfig_redo <- ggplot(fakedata, aes(x=x,y=y,color=group))+
+  geom_point(size=1, alpha=.5)+
+  geom_smooth(method="lm", se=F,size=2)+
+  labs(y="Fitness with neighbor cover", x = "Fitness in drought", color = "Theory")+
   theme_classic()+
-  annotate(geom="text", x=12,y=-690, label="Darwinian 
-Demon", size=5, family="serif")+
-  annotate(geom="text", x=8.5, y=-1500, label="Competitively 
-Excluded", size=5, family="serif")+
-  theme(legend.text = element_text(family = "serif"),
-        legend.title = element_text(family = "serif"),
-        axis.text.x=element_blank(),
-        axis.text.y=element_blank(), 
-        axis.title.x=element_text(size=20),
-        axis.title.y=element_text(size=20),
-        axis.line = element_line(arrow = arrow(type='closed', length = unit(10,'pt'))))
-A
-
-#combine
-conceptfig<-ggarrange(A,B,nrow=2, ncol=1, common.legend = T, labels = c("a","b"))
-conceptfig<-annotate_figure(conceptfig,left =text_grob("Response to neighbors", size =20, rot=90, family="serif"), bottom=text_grob("Response to drought", size=20, family="serif"))
-conceptfig
-
+  theme(axis.text.x = element_text(color = "white"),
+        axis.text.y.left = element_text(color = "white"),
+        axis.line.y = element_line(arrow = grid::arrow(length = unit(0.3, "cm"), 
+                                                       ends = "last")),
+        axis.line.x = element_line(arrow = grid::arrow(length = unit(0.3, "cm"), 
+                                                       ends = "last")))
+conceptfig_redo
+best # unknown best, 2023 pretty good, 4009
 #export
-ggsave(conceptfig, filename = "figures/conceptual_hypotheses.jpg", dpi=300, height = 7,width =5)
+ggsave(conceptfig_redo, filename = "figures/conceptual_redo.jpg", dpi=300, height = 3,width =5)
 
 
 #### Figure 2; ####
@@ -168,8 +112,7 @@ points3d(x=0,y=-2,z=0,cex=0.5, pch=24, size=20,col="darkred")
 #### Figure 3; ####
 # large combined figure showing the population growth rates distribution in different 
 # conditions (histograms), differences in growth rates between grasslands (boxplots),
-# differences in total cover between grasslands (boxplot), and the effect of cover on
-# responses to neighbors.
+# differences in total cover between grasslands (boxplot).
 NEWallsite <- read.csv("data/allsite_new.csv") #data
 NEWallsite <- NEWallsite %>% #ensure data is properly leveled
   mutate(grassland_type = fct_relevel(grassland_type,
@@ -264,6 +207,12 @@ boxcombo <- annotate_figure(boxcombo,left = "Grassland")
 histboxcombo <- ggarrange(histcombo, boxcombo, nrow=1, ncol=2, common.legend = F)
 histboxcombo #view
 
+#export
+ggsave(histboxcombo, filename = "figures/summaryfig.jpg", dpi=300, height = 5,width =6)
+
+
+
+
 #precipitation gradient and gradient of competition for light:
 summary(anova_cov <- aov(totalcov ~ grassland_type, data = allsum)) #remake anova  
 tuk_cov <- TukeyHSD(anova_cov) #do tukey hosthoc
@@ -286,46 +235,10 @@ gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, fill=grassland_type))
         #axis.text.y.left = element_blank(),
         axis.text.x = element_text(angle = 20, hjust = 1))
 
-#total cover at each grassland does not have a relationship with pop. responses to neighbors:
-#for response to neighbors in ambient
-concov <- ggplot(covergrasslandcon,aes(x=meanother, y=invasionLDGRcon, color=grassland_type))+
-  #geom_point()+
-  geom_smooth(method="lm")+
-  geom_hline(aes(yintercept=0), linetype="dotted")+
-  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  theme_classic()+
-  labs(y=expression(italic(r)[rinvA]), x = "Interspecific cover (%)")+
-  theme(legend.position="none")
-#for response to neighbors in drought
-chrcov <- ggplot(covergrasslandchr,aes(x=meanother, y=intrinsicLDGRchr, color=grassland_type))+
-  #geom_point()+
-  geom_smooth(method="lm")+
-  geom_hline(aes(yintercept=0), linetype="dotted")+
-  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  theme_classic()+
-  labs(y=expression(italic(r)[rintD]), x = "Interspecific cover (%)")+
-  theme(legend.position="none")
-
-##combine
-#figure together
-covfig <- ggarrange(gcover,chrcov,concov, nrow=3, ncol=1, common.legend = F, 
-                    labels = c("i","j","k"), label.x = .9)
-
-#all combined summary stats figure for paper
-summaryfig <- ggarrange(histboxcombo,covfig,nrow=1, ncol=2, widths = c(2,1.5))
-#add legend
-forlegend <- ggplot(covergrassland,aes(x=meanother, y=condiff, color=grassland_type))+
-  geom_point()+
-  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  labs(color="Grassland type")+
-  theme(legend.direction = "horizontal")+
-  guides(colour = guide_legend(nrow = 1))
-combinedlegend <- as_ggplot(extract_legend(forlegend))
-summaryfig <- ggarrange(summaryfig,combinedlegend,nrow=2, ncol=1, heights = c(2,.15))
-summaryfig
-
 #export
-ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 8,width =9)
+summaryfig <- ggarrange(histboxcombo, gcover, nrow=2, heights = c(3.5,1.5))
+ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 6,width =5)
+
 
 
 #### Figure 4; ####
@@ -387,74 +300,78 @@ ggsave(corrfig, filename = "figures/corrfig.jpg", dpi=300, height = 6,width =6)
 
 
 #### Figure 5;#### 
-library(visreg)
+
+#using ggpredict
+library(ggeffects)
+library(sjmisc)
 LDMCmodA <- lm(invasionLDGRcon~LDMC*grassland_type, data=alldat)
-summary(LDMCmodA) 
-anova(LDMCmodA)
-trtfig <- visreg(LDMCmodA, xvar="LDMC", by="grassland_type", rug=F, 
-                partial=F,xlab= "log(leaf dry matter content)", ylab=" ", 
-                line=list(col="black"), gg=T)+
-  geom_rug(sides="b")+
-  theme(axis.title.y.left=element_blank())+
-  coord_cartesian(ylim = c(-3, 4))+
-  theme_classic()
-cwmslafig <- visreg::visreg(LDMCmodA, xvar="SLA.x", rug=F, partial=F,
-                           cond=list(grassland_type="Northern Mixed"),
-                           xlab= "log(community weighted mean SLA)", 
-                           ylab=" ", gg=T, line=list(col="black"), band=T)+
-  geom_rug(sides="b")+
-  coord_cartesian(ylim = c(-3, 3))+
-  theme_classic()
-cwmtlpfig <- visreg::visreg(LDMCmodA, xvar="TLP.x", rug=F, partial=F,
-                            cond=list(grassland_type="Northern Mixed"),
-                            xlab= "log(community weighted mean TLP)", 
-                            ylab=" ", gg=T, line=list(col="black"), band=T)+
-  geom_rug(sides="b")+
-  coord_cartesian(ylim = c(-3, 3))+
-  theme_classic()
+preddata <- ggpredict(LDMCmodA, terms = c("LDMC", "grassland_type"))
+mycols <- list("red", "rosybrown3", "skyblue2", "steelblue", "dark blue")
+LDMCmodA_fig <- plot(preddata, add.data=T, colors = mycols, 
+                     dot.alpha = .65, alpha = .5, limit.range = T,
+                     show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= expression(italic(r)[rinvA]))+
+  scale_x_continuous(n.breaks = 3)+
+  theme_classic()+
+  theme(strip.text = element_text(size=6))
+  
 
 LDMCmodD <- lm(intrinsicLDGRchr~LDMC*grassland_type, data=alldat)
-summary(LDMCmodD) 
-anova(LDMCmodD)
-trtfig2 <- visreg(LDMCmodD, xvar="LDMC", by="grassland_type", rug=F, 
-                 partial=F,xlab= "log(leaf dry matter content)", ylab=" ", 
-                 line=list(col="black"), gg=T)+
-  geom_rug(sides="b")+
-  theme(axis.title.y.left=element_blank())+
-  coord_cartesian(ylim = c(-3, 4))+
-  theme_classic()
-cwmslafig2 <- visreg::visreg(LDMCmodD, xvar="SLA.x", rug=F, partial=F,
-                            cond=list(grassland_type="Northern Mixed"),
-                            xlab= "log(community weighted mean SLA)", 
-                            ylab=" ", gg=T, line=list(col="black"), band=T)+
-  geom_rug(sides="b")+
-  coord_cartesian(ylim = c(-3, 3))+
-  theme_classic()
-cwmtlpfig2 <- visreg::visreg(LDMCmodD, xvar="TLP.x", rug=F, partial=F,
-                            cond=list(grassland_type="Northern Mixed"),
-                            xlab= "log(community weighted mean TLP)", 
-                            ylab=" ", gg=T, line=list(col="black"), band=T)+
-  geom_rug(sides="b")+
-  coord_cartesian(ylim = c(-3, 3))+
-  theme_classic()
+preddata2 <- ggpredict(LDMCmodD, terms = c("LDMC", "grassland_type"))
+LDMCmodD_fig <- plot(preddata2, add.data=T, colors = mycols, 
+                     dot.alpha = .65, alpha = .5, limit.range = T,
+                     show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= expression(italic(r)[intD]))+
+  scale_x_continuous(n.breaks = 3)+
+  theme_classic()+
+  theme(strip.text = element_text(size=6))
 
-#combine
-ldmccon <- ggarrange(trtfig, cwmslafig, cwmtlpfig, nrow=1, ncol=3,
-                        widths = c(2,1,1))
-ldmccon<-annotate_figure(ldmccon,left = text_grob(bquote("("*italic(r)[rinvA]*")"),rot=90))
 
-ldmcchr <- ggarrange(trtfig2, cwmslafig2, cwmtlpfig2, nrow=1, ncol=3,
-                     widths = c(2,1,1))
-ldmcchr<-annotate_figure(ldmcchr,left = text_grob(bquote("("*italic(r)[intD]*")"),rot=90))
+#combine LDMC panel
+LDMCpanel <- ggarrange(LDMCmodA_fig,LDMCmodD_fig, nrow=2)
+LDMCpanel <- annotate_figure(LDMCpanel,bottom = "log(leaf dry matter content)") #add axis label
+LDMCpanel
 
-#all
-ldmcfig <- ggarrange(ldmccon,ldmcchr, nrow=2)
+#TLP
+TLPmodA <- lm(invasionLDGRcon~TLP*grassland_type, data=alldat)
+preddata3 <- ggpredict(TLPmodA, terms = c("TLP", "grassland_type"))
+TLPmodA_fig <- plot(preddata3, add.data=T, colors = mycols, 
+                    dot.alpha = .65, alpha = .5, limit.range = T,
+                    show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= " ")+
+  theme_classic()+
+  theme(strip.text = element_text(size=6))
+
+
+TLPmodD <- lm(intrinsicLDGRchr~TLP*grassland_type, data=alldat)
+preddata4 <- ggpredict(TLPmodD, terms = c("TLP", "grassland_type"))
+TLPmodD_fig <- plot(preddata4, add.data=T, colors = mycols, 
+                    dot.alpha = .65, alpha = .5, limit.range = T,
+                    show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= " ")+
+  scale_x_continuous(n.breaks = 4)+
+  theme_classic()+
+  theme(strip.text = element_text(size=6))
+
+#combine TLP panel
+TLPpanel <- ggarrange(TLPmodA_fig,TLPmodD_fig, nrow=2)
+TLPpanel <- annotate_figure(TLPpanel,bottom = "log(tugor loss point)") #add axis label
+TLPpanel
+
+#combine both trait panels
+trtfig <- ggarrange(LDMCpanel,TLPpanel, ncol=2)
+trtfig
 
 #export
-ggsave(ldmcfig, filename = "figures/ldmcfig.png", dpi=300, height = 4,width =8)
+ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 4,width =7)
 
-ggarrange(trtfig, trtfig2, nrow=2)
 
+
+#
 #
 #### Figure S1; ####
 # population cover relationship with intra- and inter-specific cover
@@ -707,43 +624,3 @@ supsum <- ggplot(allsum, aes(x=year, y=totalcov, fill=trt))+
   facet_wrap(~grassland_type, ncol=2, scales="free")
 #export:
 ggsave(supsum, filename = "figures/supsum.png", dpi=300, height = 6,width =5)
-
-#### Figure S3; ####
-# boxplots showing ANOVA results for each difference in mean population response ~ grassland
-#population responses to drought (no significant differences):
-boxd <- ggplot(NEWallsite,aes(x=intrinsicLDGRchr, y=grassland_type, fill = grassland_type)) +
-  geom_boxplot()+
-  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  labs(y=" ",x=expression(italic(r)[intD]), fill="Grassland")+
-  theme_classic()+
-  theme(legend.position = "none",
-        axis.text.y = element_blank())
-
-#population response to neighbors in drought conditions (no significant differences): 
-boxn <- ggplot(NEWallsite,aes(x=invasionLDGRcon, y=grassland_type, fill = grassland_type)) +
-  geom_boxplot()+
-  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  labs(y=" ",x=expression(italic(r)[rinvA]), fill="Grassland")+
-  theme_classic()+
-  theme(legend.position = "none",
-        axis.text.y = element_blank())+
-  guides(colour = guide_legend(nrow = 1))
-
-# plot for extracting legend:
-forlegend <- ggplot(NEWallsite,aes(x=invasionLDGRcon, y=grassland_type, fill = grassland_type)) +
-  geom_boxplot()+
-  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  labs(y=" ",x="", fill="Grassland")+
-  theme_classic()+
-  theme(legend.direction = "horizontal",
-        axis.text.y = element_blank())+
-  guides(fill = guide_legend(nrow = 1))
-shared_legend <- as_ggplot(extract_legend(forlegend))
-
-bplots <- ggarrange(boxd, boxn, nrow=1, ncol=2,labels = c("a","b"))
-bplots <- ggarrange(bplots, shared_legend, nrow = 2, ncol=1, heights = c(2,.2))
-bplots<-annotate_figure(bplots,left = "                  Grassland")
-bplots
-
-#export
-ggsave(bplots, filename = "figures/bplots.jpg", dpi=300, height = 3,width =8)
