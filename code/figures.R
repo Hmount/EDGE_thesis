@@ -47,10 +47,10 @@ fd2=data.frame(x,y, group="Tilman")
 
 fakedata <- rbind(fd1,fd2)
 
-conceptfig_redo <- ggplot(fakedata, aes(x=x,y=y,color=group))+
-  geom_point(size=1, alpha=.5)+
-  geom_smooth(method="lm", se=F,size=2)+
-  labs(y="Fitness with neighbor cover", x = "Fitness in drought", color = "Theory")+
+conceptfig_redo <- ggplot(fakedata, aes(x=x,y=y,lty=group))+
+ # geom_point(size=1, alpha=.5)+
+  geom_smooth(method="lm", se=F,size=1, color="black")+
+  labs(y="Fitness with neighbors", x = "Fitness in drought", lty = "Theory")+
   theme_classic()+
   theme(axis.text.x = element_text(color = "white"),
         axis.text.y.left = element_text(color = "white"),
@@ -59,7 +59,6 @@ conceptfig_redo <- ggplot(fakedata, aes(x=x,y=y,color=group))+
         axis.line.x = element_line(arrow = grid::arrow(length = unit(0.3, "cm"), 
                                                        ends = "last")))
 conceptfig_redo
-best # unknown best, 2023 pretty good, 4009
 #export
 ggsave(conceptfig_redo, filename = "figures/conceptual_redo.jpg", dpi=300, height = 3,width =5)
 
@@ -101,12 +100,12 @@ plot3d(ae.norm, type = 'n', xlim = c(-2, 2), ylim = c(-2, 2), zlim = c(-3, 3), x
 planes3d(-.5, 1, 2, 2, col = 'red', alpha = 0.6)
 planes3d(-.5, 1, 2, -1, col = 'cyan', alpha = 0.6)
 lines3d(x=c(0, 0),y=c(-2, -2),z=c(-3, 3),col="black") 
-lines3d(x=c(0, 2),y=c(-2, -2),z=c(0, 0),col="darkred") 
+#lines3d(x=c(0, 2),y=c(-2, -2),z=c(0, 0),col="darkred") 
 lines3d(x=c(0, 2),y=c(-2, -2),z=c(1.5, 1.5),col="darkcyan", lwd=2) 
-points3d(x=2,y=-2,z=2,cex=0.5, pch=19, size=10,col="darkcyan")
+#points3d(x=2,y=-2,z=2,cex=0.5, pch=19, size=10,col="darkcyan")
 points3d(x=2,y=-2,z=.5,cex=0.5, pch=19, size=10,col="darkred")
 points3d(x=0,y=-2,z=1.5, pch=1,size=20, col="darkcyan")
-points3d(x=0,y=-2,z=0,cex=0.5, pch=24, size=20,col="darkred")
+#points3d(x=0,y=-2,z=0,cex=0.5, pch=24, size=20,col="darkred")
 
 
 #### Figure 3; ####
@@ -128,13 +127,13 @@ allsum <- allsum %>% #ensure data is properly leveled
 
 # histograms of all calculated growth rate measures: 
 # (All are non-normal and have a right/positive skew). 
-#intrinsic growth rate ambient (rintA)
-rinta_hist <- ggplot(NEWallsite, aes(x=intrinsicLDGRcon))+
-  geom_histogram(binwidth = .1, fill="black")+
-  theme_classic()+
-  labs(x=expression(italic(r)[intA]), y = " ")+
-  xlim(-1,4)+
-  theme(legend.position = "right", axis.title.x = element_text(size=15))
+# #intrinsic growth rate ambient (rintA)
+# rinta_hist <- ggplot(NEWallsite, aes(x=intrinsicLDGRcon))+
+#   geom_histogram(binwidth = .1, fill="black")+
+#   theme_classic()+
+#   labs(x=expression(italic(r)[intA]), y = " ")+
+#   xlim(-1,4)+
+#   theme(legend.position = "right", axis.title.x = element_text(size=15))
 #intrinsic growth rate drought (rintD)
 rintd_hist <- ggplot(NEWallsite, aes(x=intrinsicLDGRchr))+
   geom_histogram(binwidth = .1, fill="black")+
@@ -149,28 +148,28 @@ rrinva_hist <- ggplot(NEWallsite, aes(x=invasionLDGRcon))+
   labs(x=expression(italic(r)[rinvA]), y = " ")+
   xlim(-1,4)+
   theme(legend.position = "right", axis.title.x = element_text(size=15))
-#realized invasion drought (rrinvD)
-rrinvd_hist <- ggplot(NEWallsite, aes(x=invasionLDGRchr))+
-  geom_histogram(binwidth = .1, fill="black")+
-  theme_classic()+
-  labs(x=expression(italic(r)[rinvD]), y = " ")+
-  xlim(-1,4)+
-  theme(legend.position = "right", axis.title.x = element_text(size=15))
+# #realized invasion drought (rrinvD)
+# rrinvd_hist <- ggplot(NEWallsite, aes(x=invasionLDGRchr))+
+#   geom_histogram(binwidth = .1, fill="black")+
+#   theme_classic()+
+#   labs(x=expression(italic(r)[rinvD]), y = " ")+
+#   xlim(-1,4)+
+#   theme(legend.position = "right", axis.title.x = element_text(size=15))
 #combined histogram figure for larger combo figure 
-histcombo <- ggarrange(rinta_hist, rintd_hist, rrinva_hist, rrinvd_hist, nrow=4, ncol=1, 
-                       common.legend = F, labels = c("a","b","c","d"), label.x = .9)
+histcombo <- ggarrange(rintd_hist, rrinva_hist, nrow=2, ncol=1, 
+                       common.legend = F, labels = c("a","b"), label.x = .9)
 histcombo <- annotate_figure(histcombo,left = "Number of Observations") #add axis label
 
 # Boxplots showing differences in population growth rates between grasslands: 
-#intrinsic rate of increase in ambient 
-rinta_box <- ggplot(NEWallsite, aes(x=intrinsicLDGRcon, y=grassland_type, fill=grassland_type))+
-  geom_boxplot()+
-  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  theme_classic()+
-  labs(x=expression(italic(r)[intA]), y = " ")+
-  xlim(-1,4)+
-  theme(legend.position="none",
-        axis.text.y.left = element_blank(), axis.title.x = element_text(size=15))
+# #intrinsic rate of increase in ambient 
+# rinta_box <- ggplot(NEWallsite, aes(x=intrinsicLDGRcon, y=grassland_type, fill=grassland_type))+
+#   geom_boxplot()+
+#   scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+#   theme_classic()+
+#   labs(x=expression(italic(r)[intA]), y = " ")+
+#   xlim(-1,4)+
+#   theme(legend.position="none",
+#         axis.text.y.left = element_blank(), axis.title.x = element_text(size=15))
 #intrinsic rate of increase in drought
 rintd_box <- ggplot(NEWallsite, aes(x=intrinsicLDGRchr, y=grassland_type, fill=grassland_type))+
   geom_boxplot()+
@@ -189,28 +188,23 @@ rrinva_box<- ggplot(NEWallsite, aes(x=invasionLDGRcon, y=grassland_type, fill=gr
   xlim(-1,4)+
   theme(legend.position="none",
         axis.text.y.left = element_blank(), axis.title.x = element_text(size=15))
-#realized invasion rate of increase in drought
-rrinvd_box<- ggplot(NEWallsite, aes(x=invasionLDGRcon, y=grassland_type, fill=grassland_type))+
-  geom_boxplot()+
-  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  theme_classic()+
-  labs(x=expression(italic(r)[rinvD]), y = " ")+
-  xlim(-1,4)+
-  theme(legend.position="none",
-        axis.text.y.left = element_blank(), axis.title.x = element_text(size=15))
+# #realized invasion rate of increase in drought
+# rrinvd_box<- ggplot(NEWallsite, aes(x=invasionLDGRcon, y=grassland_type, fill=grassland_type))+
+#   geom_boxplot()+
+#   scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+#   theme_classic()+
+#   labs(x=expression(italic(r)[rinvD]), y = " ")+
+#   xlim(-1,4)+
+#   theme(legend.position="none",
+#         axis.text.y.left = element_blank(), axis.title.x = element_text(size=15))
 #boxplot figure combined
-boxcombo <- ggarrange(rinta_box, rintd_box, rrinva_box, rrinvd_box, nrow=4, ncol=1, 
-                      common.legend = F, labels = c("e","f","g","h"), label.x = .9)
+boxcombo <- ggarrange(rintd_box, rrinva_box, nrow=2, ncol=1, 
+                      common.legend = F, labels = c("c","d"), label.x = .9)
 boxcombo <- annotate_figure(boxcombo,left = "Grassland")
 
 ## combined boxplot/histogram figure 
 histboxcombo <- ggarrange(histcombo, boxcombo, nrow=1, ncol=2, common.legend = F)
 histboxcombo #view
-
-#export
-ggsave(histboxcombo, filename = "figures/summaryfig.jpg", dpi=300, height = 5,width =6)
-
-
 
 
 #precipitation gradient and gradient of competition for light:
@@ -223,12 +217,13 @@ names(sum_labels)<-c('Letters','grassland_type')#rename columns for merging
 yvalue<-aggregate(totalcov~grassland_type, data=allsum, mean)# obtain letter position for y axis using means
 tukeylabel<-merge(sum_labels,yvalue) #merge dataframes
 #boxplot w/ labels and regression line
-gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, fill=grassland_type))+
+gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, color=grassland_type))+
   geom_boxplot()+
   geom_smooth(method="lm", se=T, color="black", aes(group=1))+
-  scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  #scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
   geom_text(data = tukeylabel, aes(x = grassland_type, y = totalcov, label = Letters), 
-            hjust=2, vjust=-1.75 )+
+            hjust=2, vjust=-1.75, color="black")+
   theme_classic()+
   labs(x="Grassland", y = "Total cover (%)")+
   theme(legend.position="none",
@@ -236,8 +231,9 @@ gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, fill=grassland_type))
         axis.text.x = element_text(angle = 20, hjust = 1))
 
 #export
-summaryfig <- ggarrange(histboxcombo, gcover, nrow=2, heights = c(3.5,1.5))
-ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 6,width =5)
+summaryfig <- ggarrange(histboxcombo, gcover, nrow=2, heights = c(3,2), 
+                        labels = c(" ","e"), label.x = .95)
+ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 5,width =5)
 
 
 

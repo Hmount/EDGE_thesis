@@ -16,7 +16,7 @@ library(emmeans)
 NEWallsite <- read.csv("data/allsite_new.csv") #data
 NEWallsite <- NEWallsite %>% #ensure levels are correct
   mutate(grassland_type = fct_relevel(grassland_type,
-                                      "Chihuahuan Desert", "Great Plains Shortgrass", "Northern Shortgrass", 
+                                      "Desert", "Southern Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
 
