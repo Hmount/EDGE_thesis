@@ -310,7 +310,7 @@ LDMCmodA_fig <- plot(preddata, add.data=T, colors = mycols,
   labs(x=" ", y= expression(italic(r)[rinvA]))+
   scale_x_continuous(n.breaks = 3)+
   theme_classic()+
-  theme(strip.text = element_text(size=6))
+  theme(strip.text = element_text(size=7))
   
 
 LDMCmodD <- lm(intrinsicLDGRchr~LDMC*grassland_type, data=alldat)
@@ -322,11 +322,11 @@ LDMCmodD_fig <- plot(preddata2, add.data=T, colors = mycols,
   labs(x=" ", y= expression(italic(r)[intD]))+
   scale_x_continuous(n.breaks = 3)+
   theme_classic()+
-  theme(strip.text = element_text(size=6))
+  theme(strip.text = element_text(size=7))
 
 
 #combine LDMC panel
-LDMCpanel <- ggarrange(LDMCmodA_fig,LDMCmodD_fig, nrow=2)
+LDMCpanel <- ggarrange(LDMCmodD_fig,LDMCmodA_fig, nrow=2, labels = c("a","b"))
 LDMCpanel <- annotate_figure(LDMCpanel,bottom = "log(leaf dry matter content)") #add axis label
 LDMCpanel
 
@@ -339,7 +339,7 @@ TLPmodA_fig <- plot(preddata3, add.data=T, colors = mycols,
   facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
   labs(x=" ", y= " ")+
   theme_classic()+
-  theme(strip.text = element_text(size=6))
+  theme(strip.text = element_text(size=7))
 
 
 TLPmodD <- lm(intrinsicLDGRchr~TLP*grassland_type, data=alldat)
@@ -351,10 +351,10 @@ TLPmodD_fig <- plot(preddata4, add.data=T, colors = mycols,
   labs(x=" ", y= " ")+
   scale_x_continuous(n.breaks = 4)+
   theme_classic()+
-  theme(strip.text = element_text(size=6))
+  theme(strip.text = element_text(size=7))
 
 #combine TLP panel
-TLPpanel <- ggarrange(TLPmodA_fig,TLPmodD_fig, nrow=2)
+TLPpanel <- ggarrange(TLPmodD_fig,TLPmodA_fig, nrow=2,labels = c("c","d"))
 TLPpanel <- annotate_figure(TLPpanel,bottom = "log(tugor loss point)") #add axis label
 TLPpanel
 
