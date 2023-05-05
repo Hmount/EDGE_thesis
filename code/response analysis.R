@@ -23,7 +23,7 @@ NEWallsite <- NEWallsite %>% #ensure levels are correct
 #### How are drought tolerence and competetive resistence related? ####
 # using lm function to incorporate weights and compare model w/ and w/out grassland,
 # but calculating r to report in paper (same as cor)
-# (removing row 106 for -inf)
+# (removing row 110 for -inf)
 
 ## Model in words: this model shows the relationship between LDGR with low
 # heterospecific density in drought (proxy for drought tolerence) and the 
@@ -79,3 +79,15 @@ summary(aov(invasionLDGRcon ~ grassland_type, NEWallsite)) # No
 # Does population growth with low neighbor cover in drought differ between grasslands? 
 summary(aov(intrinsicLDGRchr ~ grassland_type, NEWallsite)) # No
 
+
+## including grassland?
+summary(m3 <-lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type*lifespan, weights = weight2, NEWallsite[-110,])) #*** 43% 
+sqrt(summary(m3)$adj.r.squared) #calculate r
+anova(m3) #grassland interaction is very sig., but 
+library(emmeans)
+emmeans(m2, specs = pairwise~grassland_type) #contrasts are weak, but driest differ from
+# northern shortgrass (+ N mixed)
+#(potentially dry grasslands do not share the trend as much?)
+
+## compare models
+anova(m2,m3) # model with grassland is better

@@ -31,11 +31,9 @@ all <- all %>%
 
 #ANOVA of calculated growth rate measures: no differences in growth rates by
 # grassland type. (corresponding boxplots in 'code/figures.R')
-summary(aov(intrinsicLDGRcon ~ grassland_type, data = NEWallsite)) #no difference
 summary(aov(intrinsicLDGRchr ~ grassland_type, data = NEWallsite)) #no difference
-summary(aov(invasionLDGRchr ~ grassland_type, data = NEWallsite)) #no difference
 summary(aov(invasionLDGRcon ~ grassland_type, data = NEWallsite)) #no difference
-## All grasslands had all fitness responses 
+## grasslands don't differ in fitness to eother dirver
 
 
 #### How does precipitation effect cover? ####

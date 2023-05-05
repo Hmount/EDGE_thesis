@@ -12,7 +12,9 @@ CWM_sitedata <- read.csv("data/CWM_sitedata.csv") #CWM trait data
 trtdata<-CWM_sitedata[,c(1,2,8,12)] #just CWM variables I will use
 trtdata[,c(3)]<-log(trtdata[,c(3)]) #log CWM traits 
 trtdata[,4]<-log(abs(trtdata[,4])) #abs then log for TLP.x
-alldat <- merge(NEWallsite, trtdata, by = c("species", "grassland_type"))
+alldat <- merge(NEWallsite, trtdata, 
+                by.x = c("species", "grassland_type"),
+                by.y = c("Species", "grassland_type"))
 alldat[,c(7:15,17)]<-log(alldat[,c(7:15,17)]) #log focal traits
 
 
@@ -94,37 +96,82 @@ anova(lm(intrinsicLDGRchr ~ height*grassland_type+SLA.x+TLP.x, data=alldat)) #TL
 
 # These models do not include CWM but are better overall
 # LDMC
-summary(lm(invasionLDGRcon ~ LDMC*grassland_type, data=alldat)) #*** 25%
 summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type, data=alldat)) #*** 19%
-# SLA (messy, weak relationship)
-summary(lm(invasionLDGRcon ~ SLA*grassland_type, data=alldat)) #* 11%
-summary(lm(intrinsicLDGRchr ~ SLA*grassland_type, data=alldat)) #nah
-# LTD (little to no representation of driest sites)
-summary(lm(invasionLDGRcon ~ LTD*grassland_type, data=alldat)) #* 16%
-summary(lm(intrinsicLDGRchr ~ LTD*grassland_type, data=alldat)) #nah
-# leafarea
-summary(lm(invasionLDGRcon ~ leafarea*grassland_type, data=alldat)) # not sig
-summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type, data=alldat)) # not sig
-# leafN
-summary(lm(invasionLDGRcon ~ leafN*grassland_type, data=alldat)) # * 25
-summary(lm(intrinsicLDGRchr ~ leafN*grassland_type, data=alldat)) # nah
+summary(lm(invasionLDGRcon ~ LDMC*grassland_type, data=alldat)) #*** 25%
 # TLP
-summary(lm(invasionLDGRcon ~ TLP*grassland_type, data=alldat)) #* 18%
 summary(lm(intrinsicLDGRchr ~ TLP*grassland_type, data=alldat)) #** 21%
-# rootN
-summary(lm(invasionLDGRcon ~ rootN*grassland_type, data=alldat)) #nah
-summary(lm(intrinsicLDGRchr ~ rootN*grassland_type, data=alldat)) #nah
-# rootdiam
-summary(lm(invasionLDGRcon ~ rootdiam*grassland_type, data=alldat)) #nah
-summary(lm(intrinsicLDGRchr ~ rootdiam*grassland_type, data=alldat)) #nah
-# SRL
-summary(lm(invasionLDGRcon ~ SRL*grassland_type, data=alldat)) #nah
-summary(lm(intrinsicLDGRchr ~ SRL*grassland_type, data=alldat)) #nah
-# RTD
-summary(lm(invasionLDGRcon ~ RTD*grassland_type, data=alldat)) #nah
-summary(lm(intrinsicLDGRchr ~ RTD*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ TLP*grassland_type, data=alldat)) #* 18%
+
+
+# SLA (messy, weak relationship)
+summary(lm(intrinsicLDGRchr ~ SLA*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ SLA*grassland_type, data=alldat)) #* 11%
+# LTD (little to no representation of driest sites)
+summary(lm(intrinsicLDGRchr ~ LTD*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ LTD*grassland_type, data=alldat)) #* 16%
+# leafarea
+summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type, data=alldat)) # not sig
+summary(lm(invasionLDGRcon ~ leafarea*grassland_type, data=alldat)) # not sig
+# leafN
+summary(lm(intrinsicLDGRchr ~ leafN*grassland_type, data=alldat)) # nah
+summary(lm(invasionLDGRcon ~ leafN*grassland_type, data=alldat)) # * 25
+
 #height (more competitive to be tall in tallgrass and short in shortgrass)
-summary(lm(invasionLDGRcon ~ height*grassland_type, data=alldat)) #* 14% 
 summary(lm(intrinsicLDGRchr ~ height*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ height*grassland_type, data=alldat)) #* 14% 
+
+# SRL
+summary(lm(intrinsicLDGRchr ~ SRL*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ SRL*grassland_type, data=alldat)) #nah
+# RTD
+summary(lm(intrinsicLDGRchr ~ RTD*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ RTD*grassland_type, data=alldat)) #nah
+# rootN
+summary(lm(intrinsicLDGRchr ~ rootN*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ rootN*grassland_type, data=alldat)) #nah
+# rootdiam
+summary(lm(intrinsicLDGRchr ~ rootdiam*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ rootdiam*grassland_type, data=alldat)) #nah
+
+
+#### anova output to report
+# LDMC
+anova(lm(invasionLDGRcon ~ LDMC*grassland_type, data=alldat)) 
+anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type, data=alldat))
+# TLP
+anova(lm(invasionLDGRcon ~ TLP*grassland_type, data=alldat)) 
+anova(lm(intrinsicLDGRchr ~ TLP*grassland_type, data=alldat))
+
+# SLA (messy, weak relationship)
+anova(lm(intrinsicLDGRchr ~ SLA*grassland_type, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ SLA*grassland_type, data=alldat)) #* 11%
+# LTD (little to no representation of driest sites)
+anova(lm(intrinsicLDGRchr ~ LTD*grassland_type, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ LTD*grassland_type, data=alldat)) #* 16%
+# leafarea
+anova(lm(intrinsicLDGRchr ~ leafarea*grassland_type, data=alldat)) # not sig
+anova(lm(invasionLDGRcon ~ leafarea*grassland_type, data=alldat)) # not sig
+# leafN
+anova(lm(intrinsicLDGRchr ~ leafN*grassland_type, data=alldat)) # nah
+anova(lm(invasionLDGRcon ~ leafN*grassland_type, data=alldat)) # * 25
+
+#height (more competitive to be tall in tallgrass and short in shortgrass)
+anova(lm(intrinsicLDGRchr ~ height*grassland_type, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ height*grassland_type, data=alldat)) #* 14% 
+
+# SRL
+anova(lm(intrinsicLDGRchr ~ SRL*grassland_type, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ SRL*grassland_type, data=alldat)) #nah
+# RTD
+anova(lm(intrinsicLDGRchr ~ RTD*grassland_type, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ RTD*grassland_type, data=alldat)) #nah
+# rootN
+anova(lm(intrinsicLDGRchr ~ rootN*grassland_type, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ rootN*grassland_type, data=alldat)) #nah
+# rootdiam
+anova(lm(intrinsicLDGRchr ~ rootdiam*grassland_type, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ rootdiam*grassland_type, data=alldat)) #nah
+
+
 
 

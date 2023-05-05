@@ -518,7 +518,7 @@ NEWallsite <- NEWallsite %>%
          rootN = Root.N..,
          RTD = Root.tissue.density.gcm.3.,
          rootdiam = Root.diameter..mm.,
-         height = max.height.mm.,
+         height = max.height.cm.,
          species = Species
   )
 
