@@ -242,3 +242,52 @@ trtfig2 <- visreg(LDMCmodD, xvar="LDMC", by="grassland_type", rug=F,
   coord_cartesian(ylim = c(-3, 4))+
   theme_classic()
 
+
+
+## is it fucked up?
+CHY <- cover %>% 
+  filter(site == "CHY" & year != "2017" & trt != "int") %>% # filter dataset 
+  group_by(species) %>%
+  mutate(cnt = n()) %>%
+  filter(cnt >= 50) %>%
+  ungroup()
+##ANCOVA across different treatments: extract LDGR, slopes. produce multipanel plot.
+spp =  unique(CHY$species) # list unique spp in CHY dataset
+##ANCOVA 
+ancova = list()
+csc = list()
+coc = list()
+##create dataframe to for ancova outputs
+NEWalldat <- data.frame(species = NA, intrinsicLDGRchrOLD=NA,intrinsicLDGRchr=NA,invasionLDGRcon=NA, invasionLDGRconOLD=NA,weight=NA,
+                        effectN=NA, effectND=NA)
+##loop for running ancova on each species and storing and manipulating outputs
+for (l in 1:length(spp)){
+  CHYsp <-  CHY[CHY$species == spp[l],]
+  CHYsp$trt <- relevel(as.factor(CHYsp$trt), ref = "con")
+  ancova[[l]] <-lm(log_lambda~log_cover*trt + log_other*trt, data=CHYsp)
+  ##finds minimum for intrinsic growth rates
+  Cmin <- CHYsp %>% filter(trt=="chr")
+  mmcov <- min(Cmin$log_cover)
+  Cmin2 <- CHYsp %>% filter(trt=="chr")
+  mmcr <- min(Cmin2$log_other)
+  ##finds mean for invasion
+  Csub <- CHYsp %>% filter(trt=="con")
+  mco <- mean(Csub$log_other)
+  Csub2 <- CHYsp %>% filter(trt=="con")
+  mcov <- mean(Csub2$log_cover)
+  ##assigns species names to column one in the order they were looped
+  NEWalldat[l,1] <- spp[l]
+  ##assigns the list of coef values to the proper column in the order of the loop
+  NEWalldat[l,2] <- coef(ancova[[l]])[1] + coef(ancova[[l]])[3] + (mmcr*coef(ancova[[l]])[4]) + (mmcr*coef(ancova[[l]])[6]) #find growth rate when cover intra = 0 and inter=min in drought (non-zero betas)
+  NEWalldat[l,3] <- coef(ancova[[l]])[1] +(mmcov*coef(ancova[[l]])[2]) + (mmcov*coef(ancova[[l]])[5]) + coef(ancova[[l]])[3] + (mmcr*coef(ancova[[l]])[4]) + (mmcr*coef(ancova[[l]])[6]) #find growth rate when cover intra = 0 and inter=min in drought (non-zero betas)
+  NEWalldat[l,4] <- coef(ancova[[l]])[1] +(mcov*coef(ancova[[l]])[2])+ (mco*coef(ancova[[l]])[4]) #find growth rate when cover intra = 0 and inter=mean in ambient
+  NEWalldat[l,5] <- coef(ancova[[l]])[1] + (mco*coef(ancova[[l]])[4]) #find growth rate when cover intra = 0 and inter=mean in ambient
+  NEWalldat[l,6] <- summary(ancova[[l]])$sigma #se for weighting estimates
+}
+
+teest <- NEWalldat
+teest <- NEWalldat %>% mutate(weight2 = 1/weight)
+teest <- NEWallsite %>% filter(grassland_type=="Northern Mixed")
+summary(tmod <-lm(invasionLDGRcon~intrinsicLDGRchr, weights = weight2, teest)) #*** 43% 
+sqrt(summary(tmod)$adj.r.squared) #calculate r
+anova(tmod) 

@@ -208,7 +208,8 @@ histboxcombo #view
 
 
 #precipitation gradient and gradient of competition for light:
-summary(anova_cov <- aov(totalcov ~ grassland_type, data = allsum)) #remake anova  
+summary(anova_cov <- lm(totalcov ~ grassland_type, data = allsum)) 
+summary(anova_cov <- aov(totalcov ~ grassland_type, data = allsum))   
 tuk_cov <- TukeyHSD(anova_cov) #do tukey hosthoc
 multcompView::multcompLetters4(anova_cov, tuk_cov) #letters for each site
 #use function made earlier for tukey numbers
@@ -219,8 +220,7 @@ tukeylabel<-merge(sum_labels,yvalue) #merge dataframes
 #boxplot w/ labels and regression line
 gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, color=grassland_type))+
   geom_boxplot()+
-  geom_smooth(method="lm", se=T, color="black", aes(group=1))+
-  #scale_fill_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
+  #geom_smooth(method="lm", se=T, color="black", aes(group=1))+
   scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
   geom_text(data = tukeylabel, aes(x = grassland_type, y = totalcov, label = Letters), 
             hjust=2, vjust=-1.75, color="black")+
@@ -284,8 +284,8 @@ spacer <- ggplot()+
 corrfig <- ggarrange(corr_fig, corrgl_fig, nrow=2, ncol=1, common.legend = F, 
                      labels = c("a","b"), label.x = .95, label.y = 1.02)
 corrfig <-annotate_figure(corrfig,
-                          bottom = text_grob(bquote("("*italic(r)[intD]*")")), 
-                          left = text_grob(bquote("("*italic(r)[rinvA]*")"), rot = 90))
+                          bottom = text_grob(bquote(""*italic(r)[intD]*"")), 
+                          left = text_grob(bquote(""*italic(r)[rinvA]*""), rot = 90))
 corrlegend <- ggarrange(spacer,shared_legend, nrow = 2, heights = c(1,2))
 corrfig <- ggarrange(corrfig, corrlegend, ncol=2, widths = c(2.2,.8)) #legend
 corrfig
@@ -355,7 +355,7 @@ TLPmodD_fig <- plot(preddata4, add.data=T, colors = mycols,
 
 #combine TLP panel
 TLPpanel <- ggarrange(TLPmodD_fig,TLPmodA_fig, nrow=2,labels = c("c","d"))
-TLPpanel <- annotate_figure(TLPpanel,bottom = "log(tugor loss point)") #add axis label
+TLPpanel <- annotate_figure(TLPpanel,bottom = "log(turgor loss point)") #add axis label
 TLPpanel
 
 #combine both trait panels
@@ -370,6 +370,21 @@ ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 4,width =7)
 #
 #
 #### Figure S1; ####
+# differences in quadrat-level cover by year, treatment, and grassland
+allsum <- read.csv("data/allsum_quadrat.csv") #data (Cover summed at quadrrat level)
+allsum$year <- as.factor(allsum$year)
+#plot
+supsum <- ggplot(allsum, aes(x=year, y=totalcov, fill=trt))+
+  geom_boxplot()+
+  scale_fill_manual(values=c("darkred", "darkcyan"), labels=c("Extreme drought", "Ambient precipitation"))+
+  theme_classic()+
+  labs(x="Year", y = "Cover", fill= "Treatment")+
+  theme(legend.position="bottom",
+        axis.text.x = element_text(angle = 20, hjust = 1))+
+  facet_wrap(~grassland_type, ncol=2, scales="free")
+#export:
+ggsave(supsum, filename = "figures/supsum.png", dpi=300, height = 6,width =5)
+#### Figure S2; ####
 # population cover relationship with intra- and inter-specific cover
 # create 12 panels to export as part of one single figure
 
@@ -468,13 +483,14 @@ SGS <- allraw %>% filter(site=="SGS")
 SGSintra <- ggplot(SGS, aes(x=log_cover, y=log_lambda, color = trt)) + 
   geom_point(size=.5) + 
   geom_smooth(method="lm") + 
+  ylim(-4,4)+
   facet_wrap(~new_species, scales = "fixed",
              nrow = 7, ncol=4,
              labeller = labeller(new_species = label_wrap_gen(10))) + 
   theme(legend.position = "bottom", plot.margin=unit(c(.5,0,.5,.5), "cm")) + 
   scale_color_manual(values = c("blue", "red"))+
   labs(x = "log(intraspecific cover)", y= "log(lambda)", 
-       title="Shortgrass-intraspecific",
+       title="Northern Shortgrass-intraspecific",
        color="Treatment")+
   theme_bw()+
   theme(strip.text = element_text(face = "italic"),
@@ -484,7 +500,8 @@ ggsave(SGSintra, filename = "figures/SGSintra.png", dpi=300, height = 8,width =6
 # SGSinter
 SGSinter <- ggplot(SGS, aes(x=log_other, y=log_lambda, color = trt)) + 
   geom_point(size=.5) + 
-  geom_smooth(method="lm") + 
+  geom_smooth(method="lm") +
+  ylim(-6,6)+
   facet_wrap(~new_species, scales = "fixed",
              nrow = 7, ncol=4,
              labeller = labeller(new_species = label_wrap_gen(10))) +
@@ -495,9 +512,9 @@ SGSinter <- ggplot(SGS, aes(x=log_other, y=log_lambda, color = trt)) +
         strip.text = element_text(face = "italic")) +
   scale_color_manual(values = c("blue", "red"))+
   labs(x = "log(interspecific cover)", y= "log(lambda)", 
-       title="Shortgrass-interspecific",
-       color="Treatment")+
-  ggsave(SGSinter, filename = "figures/SGSinter.png", dpi=300, height = 8,width =6)
+       title="Northern Shortgrass-interspecific",
+       color="Treatment")
+ggsave(SGSinter, filename = "figures/SGSinter.png", dpi=300, height = 8,width =6)
 
 # KNZintra
 KNZ <- allraw %>% filter(site=="KNZ")
@@ -605,18 +622,4 @@ SBKinter <- ggplot(SBK, aes(x=log_other, y=log_lambda, color = trt)) +
 ggsave(SBKinter, filename = "figures/SBKinter.png", dpi=300, height = 7,width =6)
 
 
-#### Figure S2; ####
-# differences in quadrat-level cover by year, treatment, and grassland
-allsum <- read.csv("data/allsum_quadrat.csv") #data (Cover summed at quadrrat level)
-allsum$year <- as.factor(allsum$year)
-#plot
-supsum <- ggplot(allsum, aes(x=year, y=totalcov, fill=trt))+
-  geom_boxplot()+
-  scale_fill_manual(values=c("darkred", "darkcyan"), labels=c("Extreme drought", "Ambient precipitation"))+
-  theme_classic()+
-  labs(x="Year", y = "Cover", fill= "Treatment")+
-  theme(legend.position="bottom",
-        axis.text.x = element_text(angle = 20, hjust = 1))+
-  facet_wrap(~grassland_type, ncol=2, scales="free")
-#export:
-ggsave(supsum, filename = "figures/supsum.png", dpi=300, height = 6,width =5)
+
