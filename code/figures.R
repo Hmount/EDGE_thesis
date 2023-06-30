@@ -9,7 +9,7 @@ library(factoextra)
 NEWallsite <- read.csv("data/allsite_new.csv") #data
 NEWallsite <- NEWallsite %>% #ensure levels are correct
   mutate(grassland_type = fct_relevel(grassland_type,
-                                      "Chihuahuan Desert", "Great Plains Shortgrass", "Northern Shortgrass", 
+                                      "Desert", "Southern Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
 ## functions
@@ -63,7 +63,7 @@ conceptfig_redo
 ggsave(conceptfig_redo, filename = "figures/conceptual_redo.jpg", dpi=300, height = 3,width =5)
 
 
-#### Figure 2; ####
+#### Figure 1; ####
 # conceptual diagram/ visualization of methods used to estimate population growth 
 # rates in different conditions and the response to drought and/or neighbors.
 # Mathematical graphs produced below, rest of figure constructed in PowerPoint.
@@ -108,7 +108,7 @@ points3d(x=0,y=-2,z=1.5, pch=1,size=20, col="darkcyan")
 #points3d(x=0,y=-2,z=0,cex=0.5, pch=24, size=20,col="darkred")
 
 
-#### Figure 3; ####
+#### Figure 2; ####
 # large combined figure showing the population growth rates distribution in different 
 # conditions (histograms), differences in growth rates between grasslands (boxplots),
 # differences in total cover between grasslands (boxplot).
@@ -217,15 +217,19 @@ sum_labels <- generate_label_df(TUKEY=tuk_cov , variable = "grassland_type")#gen
 names(sum_labels)<-c('Letters','grassland_type')#rename columns for merging
 yvalue<-aggregate(totalcov~grassland_type, data=allsum, mean)# obtain letter position for y axis using means
 tukeylabel<-merge(sum_labels,yvalue) #merge dataframes
+newletters <- data.frame(grassland_type = c("Desert","Northern Mixed","Northern Shortgrass","Southern Mixed","Southern Shortgrass","Tallgrass"),
+                           betterletters = c("a","d","c","e","b","f"))
+tukeylabel<-merge(tukeylabel,newletters) #merge dataframes
+
 #boxplot w/ labels and regression line
 gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, color=grassland_type))+
   geom_boxplot()+
   #geom_smooth(method="lm", se=T, color="black", aes(group=1))+
-  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "dark blue"))+
-  geom_text(data = tukeylabel, aes(x = grassland_type, y = totalcov, label = Letters), 
+  scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "darkblue"))+
+  geom_text(data = tukeylabel, aes(x = grassland_type, y = totalcov, label = betterletters), 
             hjust=2, vjust=-1.75, color="black")+
   theme_classic()+
-  labs(x="Grassland", y = "Total cover (%)")+
+  labs(x="Grassland", y = "Cover (%)")+
   theme(legend.position="none",
         #axis.text.y.left = element_blank(),
         axis.text.x = element_text(angle = 20, hjust = 1))
@@ -237,7 +241,7 @@ ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 5,widt
 
 
 
-#### Figure 4; ####
+#### Figure 3; ####
 # response to drought in relation to neighbors response in ambient conditions
 corr_fig <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr))+
   geom_point(shape=16) +
@@ -284,8 +288,8 @@ spacer <- ggplot()+
 corrfig <- ggarrange(corr_fig, corrgl_fig, nrow=2, ncol=1, common.legend = F, 
                      labels = c("a","b"), label.x = .95, label.y = 1.02)
 corrfig <-annotate_figure(corrfig,
-                          bottom = text_grob(bquote(""*italic(r)[intD]*"")), 
-                          left = text_grob(bquote(""*italic(r)[rinvA]*""), rot = 90))
+                          bottom = text_grob(bquote(""*"Intrinsic growth rate in drought "(italic(r)[intD])*"")), 
+                          left = text_grob(bquote(""*"Realized invasion growth rate in ambient "(italic(r)[rinvA])*""), rot = 90))
 corrlegend <- ggarrange(spacer,shared_legend, nrow = 2, heights = c(1,2))
 corrfig <- ggarrange(corrfig, corrlegend, ncol=2, widths = c(2.2,.8)) #legend
 corrfig
@@ -295,8 +299,7 @@ ggsave(corrfig, filename = "figures/corrfig.jpg", dpi=300, height = 6,width =6)
 
 
 
-#### Figure 5;#### 
-
+#### Figure 4;#### 
 #using ggpredict
 library(ggeffects)
 library(sjmisc)
@@ -308,9 +311,12 @@ LDMCmodA_fig <- plot(preddata, add.data=T, colors = mycols,
                      show.legend = F, show.title = F)+
   facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
   labs(x=" ", y= expression(italic(r)[rinvA]))+
-  scale_x_continuous(n.breaks = 3)+
+  scale_x_continuous(breaks= c(0.0,.3,.6), n.breaks = 3)+
+  scale_y_continuous(breaks= c(-1,1,3), n.breaks = 3)+
   theme_classic()+
-  theme(strip.text = element_text(size=7))
+  theme(strip.text = element_text(size=7),
+        #axis.text.x = element_text(angle=50, vjust=.5),
+        axis.title.x = element_blank())
   
 
 LDMCmodD <- lm(intrinsicLDGRchr~LDMC*grassland_type, data=alldat)
@@ -320,14 +326,15 @@ LDMCmodD_fig <- plot(preddata2, add.data=T, colors = mycols,
                      show.legend = F, show.title = F)+
   facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
   labs(x=" ", y= expression(italic(r)[intD]))+
-  scale_x_continuous(n.breaks = 3)+
+  scale_x_continuous(breaks= c(0.0,.3,.6), n.breaks = 3)+
+  scale_y_continuous(breaks= c(-1,1,3), n.breaks = 3)+
   theme_classic()+
-  theme(strip.text = element_text(size=7))
-
+  theme(strip.text = element_text(size=7),
+        axis.title.x = element_blank())
 
 #combine LDMC panel
 LDMCpanel <- ggarrange(LDMCmodD_fig,LDMCmodA_fig, nrow=2, labels = c("a","b"))
-LDMCpanel <- annotate_figure(LDMCpanel,bottom = "log(leaf dry matter content)") #add axis label
+LDMCpanel <- annotate_figure(LDMCpanel,bottom = "leaf dry matter content (g/g)") #add axis label
 LDMCpanel
 
 #TLP
@@ -337,9 +344,11 @@ TLPmodA_fig <- plot(preddata3, add.data=T, colors = mycols,
                     dot.alpha = .65, alpha = .5, limit.range = T,
                     show.legend = F, show.title = F)+
   facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
-  labs(x=" ", y= " ")+
+  labs(x=" ", y= expression(italic(r)[rinvA]))+
+  scale_y_continuous(breaks= c(-1,1,3), n.breaks = 3)+
   theme_classic()+
-  theme(strip.text = element_text(size=7))
+  theme(strip.text = element_text(size=7),
+        axis.title.x = element_blank())
 
 
 TLPmodD <- lm(intrinsicLDGRchr~TLP*grassland_type, data=alldat)
@@ -348,27 +357,32 @@ TLPmodD_fig <- plot(preddata4, add.data=T, colors = mycols,
                     dot.alpha = .65, alpha = .5, limit.range = T,
                     show.legend = F, show.title = F)+
   facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
-  labs(x=" ", y= " ")+
+  labs(x=" ", y= expression(italic(r)[intD]))+
   scale_x_continuous(n.breaks = 4)+
+  scale_y_continuous(breaks= c(-1,1,3), n.breaks = 3)+
   theme_classic()+
-  theme(strip.text = element_text(size=7))
+  theme(strip.text = element_text(size=7),
+        axis.title.x = element_blank())
 
 #combine TLP panel
 TLPpanel <- ggarrange(TLPmodD_fig,TLPmodA_fig, nrow=2,labels = c("c","d"))
-TLPpanel <- annotate_figure(TLPpanel,bottom = "log(turgor loss point)") #add axis label
+TLPpanel <- annotate_figure(TLPpanel,bottom = "leaf turgor loss point (MPa)") #add axis label
 TLPpanel
 
 #combine both trait panels
-trtfig <- ggarrange(LDMCpanel,TLPpanel, ncol=2)
+blankplot <- ggplot()+
+  geom_blank()+
+  theme_minimal()
+trtfig <- ggarrange(LDMCpanel, blankplot, TLPpanel, ncol=1, heights = c(4,.25,4))
 trtfig
 
 #export
-ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 4,width =7)
-
-
+#ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 4,width =7)
+ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 7,width =6)
 
 #
-#
+
+#for supplemental
 #### Figure S1; ####
 # differences in quadrat-level cover by year, treatment, and grassland
 allsum <- read.csv("data/allsum_quadrat.csv") #data (Cover summed at quadrrat level)
@@ -620,6 +634,3 @@ SBKinter <- ggplot(SBK, aes(x=log_other, y=log_lambda, color = trt)) +
        color="Treatment")
 
 ggsave(SBKinter, filename = "figures/SBKinter.png", dpi=300, height = 7,width =6)
-
-
-
