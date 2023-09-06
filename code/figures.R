@@ -300,12 +300,20 @@ ggsave(corrfig, filename = "figures/corrfig.jpg", dpi=300, height = 6,width =6)
 
 
 #### Figure 4;#### 
+alldat <- NEWallsite
+alldat$grassland_type <- droplevels(alldat$grassland_type)
+alldat <- alldat %>% filter(grassland_type!="Southern Shortgrass")
+alldat <- alldat %>%
+  mutate(grassland_type = fct_relevel(grassland_type,
+                                      "Desert", "Northern Shortgrass", 
+                                      "Northern Mixed", "Southern Mixed", "Tallgrass"))
+unique(alldat$grassland_type)
 #using ggpredict
 library(ggeffects)
 library(sjmisc)
 LDMCmodA <- lm(invasionLDGRcon~LDMC*grassland_type, data=alldat)
 preddata <- ggpredict(LDMCmodA, terms = c("LDMC", "grassland_type"))
-mycols <- list("red", "rosybrown3", "skyblue2", "steelblue", "dark blue")
+mycols <- list("red", "rosybrown3", "skyblue2", "steelblue", "darkblue")
 LDMCmodA_fig <- plot(preddata, add.data=T, colors = mycols, 
                      dot.alpha = .65, alpha = .5, limit.range = T,
                      show.legend = F, show.title = F)+

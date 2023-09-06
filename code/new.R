@@ -426,3 +426,271 @@ library(patchwork)
 /
   (p3 + p4)/
   (TLPinvcon + TLPintchr)
+
+#### onld plot, but mat still use a####
+#using ggpredict
+library(ggeffects)
+library(sjmisc)
+LDMCmodA <- lm(invasionLDGRcon~LDMC*grassland_type, data=alldat)
+preddata <- ggpredict(LDMCmodA, terms = c("LDMC", "grassland_type"))
+mycols <- list("red", "rosybrown3", "skyblue2", "steelblue", "dark blue")
+LDMCmodA_fig <- plot(preddata, add.data=T, colors = mycols, 
+                     dot.alpha = .65, alpha = .5, limit.range = T,
+                     show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= expression(italic(r)[rinvA]))+
+  scale_x_continuous(n.breaks = 3)+
+  theme_classic()+
+  theme(strip.text = element_text(size=7))
+
+
+LDMCmodD <- lm(intrinsicLDGRchr~LDMC*grassland_type, data=alldat)
+preddata2 <- ggpredict(LDMCmodD, terms = c("LDMC", "grassland_type"))
+LDMCmodD_fig <- plot(preddata2, add.data=T, colors = mycols, 
+                     dot.alpha = .65, alpha = .5, limit.range = T,
+                     show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= expression(italic(r)[intD]))+
+  scale_x_continuous(n.breaks = 3)+
+  theme_classic()+
+  theme(strip.text = element_text(size=7))
+
+
+#combine LDMC panel
+LDMCpanel <- ggarrange(LDMCmodD_fig,LDMCmodA_fig, nrow=2, labels = c("a","b"))
+LDMCpanel <- annotate_figure(LDMCpanel,bottom = "leaf dry matter content") #add axis label
+LDMCpanel
+
+#TLP
+TLPmodA <- lm(invasionLDGRcon~TLP*grassland_type, data=alldat)
+preddata3 <- ggpredict(TLPmodA, terms = c("TLP", "grassland_type"))
+TLPmodA_fig <- plot(preddata3, add.data=T, colors = mycols, 
+                    dot.alpha = .65, alpha = .5, limit.range = T,
+                    show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= " ")+
+  theme_classic()+
+  theme(strip.text = element_text(size=7))
+
+
+TLPmodD <- lm(intrinsicLDGRchr~TLP*grassland_type, data=alldat)
+preddata4 <- ggpredict(TLPmodD, terms = c("TLP", "grassland_type"))
+TLPmodD_fig <- plot(preddata4, add.data=T, colors = mycols, 
+                    dot.alpha = .65, alpha = .5, limit.range = T,
+                    show.legend = F, show.title = F)+
+  facet_wrap(~group, nrow=1, labeller = label_wrap_gen(width = 5))+
+  labs(x=" ", y= " ")+
+  scale_x_continuous(n.breaks = 4)+
+  theme_classic()+
+  theme(strip.text = element_text(size=7))
+
+#combine TLP panel
+TLPpanel <- ggarrange(TLPmodD_fig,TLPmodA_fig, nrow=2,labels = c("c","d"))
+TLPpanel <- annotate_figure(TLPpanel,bottom = "leaf turgor loss point") #add axis label
+TLPpanel
+
+#combine both trait panels
+#trtfig <- ggarrange(LDMCpanel,TLPpanel, ncol=2)
+trtfig <- ggarrange(LDMCpanel,TLPpanel, ncol=1)
+trtfig
+
+#export
+#ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 4,width =7)
+ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 8,width =6)
+
+
+
+
+
+####
+# models first included focal species traits, interacting with grassland, and the 
+# additive effects of CWM SLA and TLP. 
+# CWM were never signifigant (only )
+# LDMC
+summary(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #** 35%
+anova(lm(invasionLDGRcon ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #* 20%
+anova(lm(intrinsicLDGRchr ~ LDMC*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+
+# SLA
+summary(lm(invasionLDGRcon ~ SLA*grassland_type+SLA.x+TLP.x, data=alldat)) #. 11%
+anova(lm(invasionLDGRcon ~ SLA*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
+summary(lm(intrinsicLDGRchr ~ SLA*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+
+# LTD
+summary(lm(invasionLDGRcon ~ LTD*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+summary(lm(intrinsicLDGRchr ~ LTD*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+
+# leafarea
+summary(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #* 27%
+anova(lm(invasionLDGRcon ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, SLA, TLP
+summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+
+# leafN
+summary(lm(invasionLDGRcon ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) # nah
+anova(lm(invasionLDGRcon ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) # none
+summary(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) #. 20%
+anova(lm(intrinsicLDGRchr ~ leafN*grassland_type+SLA.x+TLP.x, data=alldat)) # focal, interaction
+
+# TLP
+summary(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, interaction
+summary(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat)) #. 19%
+anova(lm(intrinsicLDGRchr ~ TLP*grassland_type+SLA.x+TLP.x, data=alldat)) #TLP, interaction
+
+# rootN
+summary(lm(invasionLDGRcon ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
+summary(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #. 27%
+anova(lm(intrinsicLDGRchr ~ rootN*grassland_type+SLA.x+TLP.x, data=alldat)) #focal, TLP
+
+# rootdiam
+summary(lm(invasionLDGRcon ~ rootdiam*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ rootdiam*grassland_type+SLA.x+TLP.x, data=alldat)) #TLP
+summary(lm(intrinsicLDGRchr ~ rootdiam*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+anova(lm(intrinsicLDGRchr ~ rootdiam*grassland_type+SLA.x+TLP.x, data=alldat)) #TLP
+
+# SRL
+summary(lm(invasionLDGRcon ~ SRL*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+anova(lm(invasionLDGRcon ~ SRL*grassland_type+SLA.x+TLP.x, data=alldat)) #TLP
+summary(lm(intrinsicLDGRchr ~ SRL*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+anova(lm(intrinsicLDGRchr ~ SRL*grassland_type+SLA.x+TLP.x, data=alldat)) #TLP
+
+# RTD
+summary(lm(invasionLDGRcon ~ RTD*grassland_type+SLA.x+TLP.x, data=alldat)) # nah
+anova(lm(invasionLDGRcon ~ RTD*grassland_type+SLA.x+TLP.x, data=alldat)) # none
+summary(lm(intrinsicLDGRchr ~ RTD*grassland_type+SLA.x+TLP.x, data=alldat)) # nah
+anova(lm(intrinsicLDGRchr ~ RTD*grassland_type+SLA.x+TLP.x, data=alldat)) # none
+
+#height
+summary(lm(invasionLDGRcon ~ height*grassland_type+SLA.x+TLP.x, data=alldat)) #. 13%
+anova(lm(invasionLDGRcon ~ height*grassland_type+SLA.x+TLP.x, data=alldat)) #TLP
+summary(lm(intrinsicLDGRchr ~ height*grassland_type+SLA.x+TLP.x, data=alldat)) #nah
+anova(lm(intrinsicLDGRchr ~ height*grassland_type+SLA.x+TLP.x, data=alldat)) #TLP
+
+
+# These models do not include CWM but are better overall
+# LDMC not logged
+summary(lm(intrinsicLDGRchr ~ LDMC*grassland_type, data=alldat)) #*** 20%
+summary(lm(invasionLDGRcon ~ LDMC*grassland_type, data=alldat)) #*** 25%
+# TLP
+summary(lm(intrinsicLDGRchr ~ TLP*grassland_type, data=alldat)) #** 21%
+summary(lm(invasionLDGRcon ~ TLP*grassland_type, data=alldat)) #* 18%
+
+
+# SLA (messy, weak relationship)
+summary(lm(intrinsicLDGRchr ~ SLA*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ SLA*grassland_type, data=alldat)) #* 11%
+# LTD (little to no representation of driest sites)
+summary(lm(intrinsicLDGRchr ~ LTD*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ LTD*grassland_type, data=alldat)) #* 16%
+# leafarea
+summary(lm(intrinsicLDGRchr ~ leafarea*grassland_type, data=alldat)) # not sig
+summary(lm(invasionLDGRcon ~ leafarea*grassland_type, data=alldat)) # not sig
+# leafN
+summary(lm(intrinsicLDGRchr ~ leafN*grassland_type, data=alldat)) # nah
+summary(lm(invasionLDGRcon ~ leafN*grassland_type, data=alldat)) # * 25
+
+#height (more competitive to be tall in tallgrass and short in shortgrass)
+summary(lm(intrinsicLDGRchr ~ height*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ height*grassland_type, data=alldat)) #* 14% 
+
+# SRL
+summary(lm(intrinsicLDGRchr ~ SRL*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ SRL*grassland_type, data=alldat)) #nah
+# RTD
+summary(lm(intrinsicLDGRchr ~ RTD*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ RTD*grassland_type, data=alldat)) #nah
+# rootN
+summary(lm(intrinsicLDGRchr ~ rootN*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ rootN*grassland_type, data=alldat)) #nah
+# rootdiam
+summary(lm(intrinsicLDGRchr ~ rootdiam*grassland_type, data=alldat)) #nah
+summary(lm(invasionLDGRcon ~ rootdiam*grassland_type, data=alldat)) #nah
+
+
+
+
+##supp
+##
+#traits by site
+trtsite <- read.csv("trtsite.csv") #data
+
+## CHY
+chytrts <- trtsite %>% filter(EDGE_site=="CHY") #26
+#for site CHY how many populations have onsite (DB_HPG)
+trtsite %>% filter(EDGE_site=="CHY") %>% 
+  summarise(fromsite = (sum(!is.na(DB_WY))/26)*100) #80.8
+#AS_MO and DB_CPER regional
+trtsite %>% filter(EDGE_site=="CHY") %>% 
+  summarise(fromsite = (sum(!is.na(AS_MO))/26)*100) #3.8
+trtsite %>% filter(EDGE_site=="CHY") %>% 
+  summarise(fromsite = (sum(!is.na(DB_CO))/26)*100) #7.7
+#wider
+trtsite %>% filter(EDGE_site=="CHY") %>% 
+  summarise(fromsite = (sum(!is.na(TRY_AZ))/26)*100) #3.8
+
+## SGS
+sgstrts <- trtsite %>% filter(EDGE_site=="SGS") #17
+#for site SGS how many populations have DB/CPER
+trtsite %>% filter(EDGE_site=="SGS") %>% 
+  summarise(fromsite = (sum(!is.na(DB_CO))/17)*100) #52.9
+#wider
+trtsite %>% filter(EDGE_site=="SGS") %>% 
+  summarise(fromsite = (sum(!is.na(TRY_multiple))/17)*100) #5.9
+
+## HYS
+hystrts <- trtsite %>% filter(EDGE_site=="HYS") #29
+#for site HYS how many populations have AS_HAYS
+trtsite %>% filter(EDGE_site=="HYS") %>% 
+  summarise(fromsite = (sum(!is.na(AS_KS))/29)*100) #41.4
+#ST_KUT and TRY_KZ regional/ averages
+trtsite %>% filter(EDGE_site=="HYS") %>% 
+  summarise(fromsite = (sum(!is.na(ST_KS))/29)*100) #10.3
+trtsite %>% filter(EDGE_site=="HYS") %>% 
+  summarise(fromsite = (sum(!is.na(TRY_KS))/29)*100) #34.5
+
+## KNZ
+knztrts <- trtsite %>% filter(EDGE_site=="KNZ") #17
+#for site KNZ how many populations have ST_KUT
+trtsite %>% filter(EDGE_site=="KNZ") %>% 
+  summarise(fromsite = (sum(!is.na(ST_KS))/17)*100) #35.3
+#AS_HAYS and TRY_KZ and AF_iowa regional/ averages #60
+trtsite %>% filter(EDGE_site=="KNZ") %>% 
+  summarise(fromsite = (sum(!is.na(AS_KS))/17)*100) #17.6
+trtsite %>% filter(EDGE_site=="KNZ") %>% 
+  summarise(fromsite = (sum(!is.na(TRY_KS))/17)*100) #64.7
+trtsite %>% filter(EDGE_site=="KNZ") %>% 
+  summarise(fromsite = (sum(!is.na(AF_IA))/17)*100) #23.5
+#TRY_CAN global 
+(2/17)*100 #11.8
+
+## SBL
+SBLtrts <- trtsite %>% filter(EDGE_site=="SBU") #11
+#for site SBL how many populations have sevLTER/blue
+# RG/sev also good
+trtsite %>% filter(EDGE_site=="SBU") %>% 
+  summarise(fromsite = (sum(!is.na(SEV_NM))/11)*100) #63.63
+trtsite %>% filter(EDGE_site=="SBU") %>% 
+  summarise(fromsite = (sum(!is.na(RG_NM))/11)*100) #90.9
+#regional sevLTER/black
+trtsite %>% filter(EDGE_site=="SBU") %>% 
+  summarise(fromsite = (sum(!is.na(SEV_NM))/11)*100) #30
+
+## SBK
+SBKtrts <- trtsite %>% filter(EDGE_site=="SBK") #13
+#for site SBK how many populations have sevLTER/black
+trtsite %>% filter(EDGE_site=="SBK") %>% 
+  summarise(fromsite = (sum(!is.na(SEV_NM))) #18.2
+            #regional sevLTER/blue and RG/sev and AS_NM and TRY_AZ
+            trtsite %>% filter(EDGE_site=="SBK") %>% 
+              summarise(fromsite = (sum(!is.na(RG_sev))/11)*100) #63.6
+            trtsite %>% filter(EDGE_site=="SBK") %>% 
+              summarise(fromsite = (sum(!is.na(sevLTER_blue))/11)*100) #36.4
+            trtsite %>% filter(EDGE_site=="SBK") %>% 
+              summarise(fromsite = (sum(!is.na(AS_NM))/11)*100) #18.18
+            trtsite %>% filter(EDGE_site=="SBK") %>% 
+              summarise(fromsite = (sum(!is.na(TRY_AZ))/11)*100) #27.3
+            # global
+            trtsite %>% filter(EDGE_site=="SBK") %>% 
+              summarise(fromsite = (sum(!is.na(TRY_global))/11)*100) #9.1
