@@ -79,9 +79,7 @@ allothermeans <- all %>%
   group_by(grassland_type, species, plot, year, subplot) %>%
   summarize(meanother = mean(other)) %>% ungroup 
 covergrasslandchr <- full_join(NEWallsite, allothermeans, by=c("grassland_type", "species"))
-#make a model
-summary(m2 <- lm(chrdiff~meanother, covergrasslandchr)) 
-anova(m2)
+
 
 # The mean density of cover is significantly negatively related to the focal species 
 # growth rates in drought AND with neighbor cover, implying a size-density relationship. 

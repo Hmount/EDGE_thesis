@@ -72,9 +72,6 @@ for (l in 1:length(spp)){
                                  axis.title.x = element_blank(), 
                                  plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
-##add columns to calculate the difference in LDGR btwn con and chr
-NEWalldat$intrinsicdiff = NEWalldat$intrinsicLDGRchr - NEWalldat$intrinsicLDGRcon
-NEWalldat$invasiondiff = NEWalldat$invasionLDGRchr - NEWalldat$invasionLDGRcon
 
 
 ## Hays (HYS)
@@ -128,9 +125,6 @@ for (l in 1:length(spp)){
   coh[[l]] <- ggplot(HYSsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
-##add columns to calculate the difference in LDGR btwn con and chr
-NEWallHYS$intrinsicdiff = NEWallHYS$intrinsicLDGRchr - NEWallHYS$intrinsicLDGRcon
-NEWallHYS$invasiondiff = NEWallHYS$invasionLDGRchr - NEWallHYS$invasionLDGRcon
 
 
 ## Konza
@@ -183,9 +177,7 @@ for (l in 1:length(spp)){
   cok[[l]] <- ggplot(KNZsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
-##add columns to calculate the difference in LDGR btwn con and chr
-NEWallKNZ$intrinsicdiff = NEWallKNZ$intrinsicLDGRchr - NEWallKNZ$intrinsicLDGRcon
-NEWallKNZ$invasiondiff = NEWallKNZ$invasionLDGRchr - NEWallKNZ$invasionLDGRcon 
+
 
 
 ## SGS 
@@ -239,9 +231,6 @@ for (l in 1:length(spp)){
   cos[[l]] <- ggplot(SGSsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
-##add columns to calculate the difference in LDGR btwn con and chr
-NEWallSGS$intrinsicdiff = NEWallSGS$intrinsicLDGRchr - NEWallSGS$intrinsicLDGRcon
-NEWallSGS$invasiondiff = NEWallSGS$invasionLDGRchr - NEWallSGS$invasionLDGRcon 
 
 
 ##NMblue (sevietta)
@@ -322,9 +311,7 @@ for (l in 1:length(spp)){
   cosb[[l]] <- ggplot(SBLsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
-##add columns to calculate the difference in LDGR btwn con and chr
-NEWallSBL$intrinsicdiff = NEWallSBL$intrinsicLDGRchr - NEWallSBL$intrinsicLDGRcon 
-NEWallSBL$invasiondiff = NEWallSBL$invasionLDGRchr - NEWallSBL$invasionLDGRcon 
+
 
 
 ##NMblack
@@ -410,9 +397,6 @@ for (l in 1:length(spp)){
   cosbk[[l]] <- ggplot(SBKsp, aes(x=log_other, y=log_lambda, color = trt)) + geom_point() + geom_smooth(method="lm") + 
     facet_wrap(~species) + theme(legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), plot.margin=unit(c(.5,1,.5,.5), "cm")) + scale_color_manual(values = c("blue", "red"))
 }
-##add columns to calculate the difference in LDGR btwn con and chr
-NEWallSBK$intrinsicdiff = NEWallSBK$intrinsicLDGRchr - NEWallSBK$intrinsicLDGRcon
-NEWallSBK$invasiondiff = NEWallSBK$invasionLDGRchr - NEWallSBK$invasionLDGRcon 
 
 
 ## Bind all site data together
@@ -421,9 +405,6 @@ write.csv(all, "data/allraw.csv", row.names = F)
 
 NEWalldata <- bind_rows(NEWalldat, NEWallHYS, NEWallKNZ, NEWallSGS, NEWallSBL, NEWallSBK, .id = "source") ##all calculated site data
 
-## find response to neighbors
-NEWalldata$condiff = NEWalldata$invasionLDGRcon - NEWalldata$intrinsicLDGRcon #in ambient
-NEWalldata$chrdiff = NEWalldata$invasionLDGRchr - NEWalldata$intrinsicLDGRchr #in drought
 
 write.csv(NEWalldata, file='data/alldata.csv', row.names = F) #make csv
 write.csv(NEWalldata, file='data/alldata_redo.csv', row.names = F) #make csv
@@ -522,18 +503,14 @@ NEWallsite <- NEWallsite %>%
          species = Species
   )
 
-#make TLP positive so it can be logged with everything else
-NEWallsite <- NEWallsite %>% mutate(TLP_tran = abs(TLP))
-#make negative again for any figures/ interpretation 
-NEWallsite <- NEWallsite %>% mutate(TLP_tran2 = log(TLP_tran)*-1) 
-
-
 #relevel to view grassland_type facets along precipitation gradient 
 NEWallsite <- NEWallsite %>%
   mutate(grassland_type = fct_relevel(grassland_type,
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
+#remove unecessary columns
+NEWallsite <- NEWallsite %>% select(-author.location, -source)
 
 #save
 write.csv(NEWallsite, file='data/allsite_new.csv', row.names = F) #make csv

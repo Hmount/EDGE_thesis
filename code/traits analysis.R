@@ -12,8 +12,8 @@ alldat <- NEWallsite
 
 #### basic stats and relationships ####
 # how many populations have data?
-sum(complete.cases(NEWallsite[,c(6:16)])) #21 species have all rows
-trtcnt <- rowSums(!is.na(NEWallsite[,c(6:16)])) #count for each row w/ traits filled in
+sum(complete.cases(NEWallsite[,c(5:15)])) #21 species have all rows
+trtcnt <- rowSums(!is.na(NEWallsite[,c(5:16=5)])) #count for each row w/ traits filled in
 sum(trtcnt == 0) #11 have no trait data 
 sum(trtcnt > 5) #59 have more than 5 traits
 (sum(trtcnt > 5)/sum(trtcnt >= 0))*100 #52% of data has more than 5 traits
