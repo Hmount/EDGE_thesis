@@ -401,13 +401,13 @@ for (l in 1:length(spp)){
 
 ## Bind all site data together
 all <- bind_rows(CHY, HYS, KNZ, SGS, SBL, SBK) ##all raw site data
-write.csv(all, "data/allraw.csv", row.names = F)
+write.csv(all, "data/EDGE_covers.csv", row.names = F)
 
 NEWalldata <- bind_rows(NEWalldat, NEWallHYS, NEWallKNZ, NEWallSGS, NEWallSBL, NEWallSBK, .id = "source") ##all calculated site data
 
 
 write.csv(NEWalldata, file='data/alldata.csv', row.names = F) #make csv
-write.csv(NEWalldata, file='data/alldata_redo.csv', row.names = F) #make csv
+
 
 ## Figure S1 shows the relationships modelled above, see 'figurs.R' script.
 
@@ -513,7 +513,7 @@ NEWallsite <- NEWallsite %>%
 NEWallsite <- NEWallsite %>% select(-author.location, -source)
 
 #save
-write.csv(NEWallsite, file='data/allsite_new.csv', row.names = F) #make csv
+write.csv(NEWallsite, file='data/all_pop_data.csv', row.names = F) #make csv
 
 #clean environment, save final data frame only
 rm(list=setdiff(ls(), "NEWallsite"))
