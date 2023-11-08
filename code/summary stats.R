@@ -7,13 +7,13 @@
 #### load in data and packages ####
 library(tidyverse)
 library(ggpubr)
-NEWallsite <- read.csv("data/allsite_new.csv")
+NEWallsite <- read.csv("data/all_pop_data.csv")
 #ensure this data is re-leveled with grassland_type facets along precipitation gradient 
 NEWallsite <- NEWallsite %>%
   mutate(grassland_type = fct_relevel(grassland_type,
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
-all <- read.csv("data/allraw.csv")
+all <- read.csv("data/EDGE_covers.csv")
 all <- all %>% mutate(grassland_type = ifelse(site %in% "CHY","Northern Mixed",
                                               ifelse(site %in% "HYS","Southern Mixed",
                                                      ifelse(site %in% "KNZ","Tallgrass",
@@ -46,7 +46,8 @@ allsum <- allsum %>%
   mutate(grassland_type = fct_relevel(grassland_type, 
                                       "Desert", "Southern Shortgrass","Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
-write.csv(allsum, "data/allsum_quadrat.csv", row.names = F)
+#write.csv(allsum, "data/allsum_quadrat.csv", row.names = F) #save as csv if needed
+
 #is cover significantly different between grasslands? (yes, each is uniquely different)
 #corresponds to Figure 3 in 'code/figures.R'
 summary(anova_cov <- aov(totalcov ~ grassland_type, data = allsum)) #anova sig. 

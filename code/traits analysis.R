@@ -3,7 +3,7 @@
 #### data and packages + cleaning ####
 library(tidyverse)
 
-NEWallsite <- read.csv("data/allsite_new.csv") #data
+NEWallsite <- read.csv("data/all_pop_data.csv") #data
 NEWallsite <- NEWallsite %>% #ensure levels are correct
   mutate(grassland_type = fct_relevel(grassland_type,
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
