@@ -509,8 +509,8 @@ NEWallsite <- NEWallsite %>%
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
 
-#remove unecessary columns
-NEWallsite <- NEWallsite %>% select(-author.location, -source)
+#remove necessary + ultimatley unused columns
+NEWallsite <- NEWallsite %>% select(-author.location, -source, -effectN, -effectND)
 
 #save
 write.csv(NEWallsite, file='data/all_pop_data.csv', row.names = F) #make csv

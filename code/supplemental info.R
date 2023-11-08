@@ -1,3 +1,5 @@
+#### Supporting information ####
+
 library(tidyverse)
 library(ggpubr)
 
@@ -36,6 +38,53 @@ responsep1 <- ggarrange(lifeplot1, lifeplot2, ncol=2, labels = c("a","b"))
 responsep1 <- annotate_figure(responsep1, left = "Lifespan")
 responsep1
 
+
+#### re-do analysis with Standard Major Axis regression ####
+# RJG suggested to use SMA regression instead of OLS to avoid causal relationships. While SMA accounts
+# for uncertainty in our measurements of both variables, I was able to give specific measurements of 
+# uncertainty using OLS and the SE of previous models. For this benefit, and because the final results
+# are qualitatively similar, we report with OLS.
+library(smatr) #for major axis regression
+# re-run model of response to neighbors and response to drought as major axis regression
+# uncertainty is incorporated. cannot use weights because uncertainty is needed for both sides.
+test <- sma(invasionLDGRcon~intrinsicLDGRchr,NEWallsite[-110,]) # weights=weight2, ) 
+summary(test)
+sqrt(test$r2[[1]]) # .55 correlation
+plot(test)
+#other model is slightly better
+
+test1 <- sma(invasionLDGRcon~intrinsicLDGRchr+grassland_type,NEWallsite[-110,])
+summary(test1)
+sqrt(test1$r2[[1]]) # .05 correlation
+plot(test1)
+#grassland does not improve?
+
+
+#### Do grasslands generally differ significantly in population growth? ####
+# Does population growth with neighbor cover in ambient differ between grasslands?
+summary(aov(invasionLDGRcon ~ grassland_type, NEWallsite)) # No
+
+# Does population growth with low neighbor cover in drought differ between grasslands? 
+summary(aov(intrinsicLDGRchr ~ grassland_type, NEWallsite)) # No
+
+
+## including grassland?
+summary(m3 <-lm(invasionLDGRcon~intrinsicLDGRchr*grassland_type*lifespan, weights = weight2, NEWallsite[-110,])) #*** 43% 
+sqrt(summary(m3)$adj.r.squared) #calculate r
+anova(m3) #grassland interaction is very sig., but 
+library(emmeans)
+emmeans(m2, specs = pairwise~grassland_type) #contrasts are weak, but driest differ from
+# northern shortgrass (+ N mixed)
+#(potentially dry grasslands do not share the trend as much?)
+
+## compare models
+anova(m2,m3) # model with grassland is better
+
+
+
+
+#### additional ####
+
 #compare response models
 main <- lm(invasionLDGRcon~intrinsicLDGRchr, weights=weight2, NEWallsite[-110,]) #new main finding
 anova(main) #trade-off
@@ -58,8 +107,5 @@ corrlifespan <- ggplot(NEWallsite, aes(y=invasionLDGRcon, x=intrinsicLDGRchr, co
 
 responsep2 <- ggarrange(responsep1, corrlifespan, nrow=2, heights = c(.5,1.5), labels = c("","c"))
 responsep2
-
-
-
 
 
