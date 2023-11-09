@@ -6,7 +6,7 @@ library(ggpubr)
 library(stringr)
 library(factoextra)
 
-NEWallsite <- read.csv("data/allsite_new.csv") #data
+NEWallsite <- read.csv("data/all_pop_data.csv") #data
 NEWallsite <- NEWallsite %>% #ensure levels are correct
   mutate(grassland_type = fct_relevel(grassland_type,
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
@@ -61,6 +61,8 @@ conceptfig_redo <- ggplot(fakedata, aes(x=x,y=y,lty=group))+
 conceptfig_redo
 #export
 ggsave(conceptfig_redo, filename = "figures/conceptual_redo.jpg", dpi=300, height = 3,width =5)
+#explort as pdf for JOE
+ggsave(conceptfig_redo, filename = "figures/conceptual_redo.pdf", dpi=1000, height = 3,width =5)
 
 
 #### Figure 1; ####
@@ -112,7 +114,7 @@ points3d(x=0,y=-2,z=1.5, pch=1,size=20, col="darkcyan")
 # large combined figure showing the population growth rates distribution in different 
 # conditions (histograms), differences in growth rates between grasslands (boxplots),
 # differences in total cover between grasslands (boxplot).
-NEWallsite <- read.csv("data/allsite_new.csv") #data
+NEWallsite <- read.csv("data/all_pop_data.csv") #data
 NEWallsite <- NEWallsite %>% #ensure data is properly leveled
   mutate(grassland_type = fct_relevel(grassland_type,
                                       "Desert", "Southern Shortgrass", "Northern Shortgrass", 
@@ -227,7 +229,7 @@ gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, color=grassland_type)
   #geom_smooth(method="lm", se=T, color="black", aes(group=1))+
   scale_color_manual(values=c("red", "tomato", "rosybrown3", "skyblue2", "steelblue", "darkblue"))+
   geom_text(data = tukeylabel, aes(x = grassland_type, y = totalcov, label = betterletters), 
-            hjust=2, vjust=-1.75, color="black")+
+            hjust=2.5, vjust=-1.75, color="black")+
   theme_classic()+
   labs(x="Grassland", y = "Cover (%)")+
   theme(legend.position="none",
@@ -238,6 +240,8 @@ gcover <- ggplot(allsum, aes(x=grassland_type, y=totalcov, color=grassland_type)
 summaryfig <- ggarrange(histboxcombo, gcover, nrow=2, heights = c(3,2), 
                         labels = c(" ","e"), label.x = .95)
 ggsave(summaryfig, filename = "figures/summaryfig.jpg", dpi=300, height = 5,width =5)
+#save as pdf for JOE
+ggsave(summaryfig, filename = "figures/Figure_2.pdf", dpi=1000, height = 5,width =5, device = "pdf")
 
 
 
@@ -296,6 +300,8 @@ corrfig
 
 #export
 ggsave(corrfig, filename = "figures/corrfig.jpg", dpi=300, height = 6,width =6)
+#explort to pdf for JOE
+ggsave(corrfig, filename = "figures/Figure_3.pdf", dpi=1000, height = 6,width =6, device="pdf")
 
 
 
@@ -387,6 +393,9 @@ trtfig
 #export
 #ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 4,width =7)
 ggsave(trtfig, filename = "figures/trtfig.png", dpi=300, height = 7,width =6)
+#explort to pdf for JOE
+ggsave(trtfig, filename = "figures/Figure_4.pdf", dpi=1000, height = 7,width =6, device="pdf")
+
 
 #
 
@@ -406,6 +415,7 @@ supsum <- ggplot(allsum, aes(x=year, y=totalcov, fill=trt))+
   facet_wrap(~grassland_type, ncol=2, scales="free")
 #export:
 ggsave(supsum, filename = "figures/supsum.png", dpi=300, height = 6,width =5)
+
 #### Figure S2; ####
 # population cover relationship with intra- and inter-specific cover
 # create 12 panels to export as part of one single figure

@@ -46,7 +46,7 @@ allsum <- allsum %>%
   mutate(grassland_type = fct_relevel(grassland_type, 
                                       "Desert", "Southern Shortgrass","Northern Shortgrass", 
                                       "Northern Mixed", "Southern Mixed", "Tallgrass"))
-#write.csv(allsum, "data/allsum_quadrat.csv", row.names = F) #save as csv if needed
+write.csv(allsum, "data/allsum_quadrat.csv", row.names = F) #save as csv if needed
 
 #is cover significantly different between grasslands? (yes, each is uniquely different)
 #corresponds to Figure 3 in 'code/figures.R'
